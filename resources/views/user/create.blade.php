@@ -3,6 +3,7 @@
 @endpush
 
 @section('content')
+
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
 
@@ -21,7 +22,7 @@
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
                                     <li class="breadcrumb-item"><a href="{{ route('users.index') }}">All
-                                        User</a></li>
+                                            User</a></li>
                                     <li class="breadcrumb-item active">User Add</li>
                                 </ol>
                             </div>
@@ -34,11 +35,12 @@
 
                     @if ($errors->any())
                         @foreach ($errors->all() as $error)
-                        <div class="alert alert-danger alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
-                            {{$error}}
-                          </div>
+                            <div class="alert alert-danger alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert"
+                                    aria-hidden="true">&times;</button>
+                                <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                                {{ $error }}
+                            </div>
                         @endforeach
                     @endif
 
@@ -73,20 +75,23 @@
 
                                         <div class="form-group">
                                             <label for="inputPassword">User Password</label>
-                                            <input type="password" id="inputPassword" name="password" class="form-control">
+                                            <input type="password" id="inputPassword" name="password"
+                                                class="form-control">
                                         </div>
 
 
                                         <div class="form-group">
                                             <label>User phone</label>
                                             <div class="input-group">
-                                            <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                            </div>
-                                            <input type="text" name="contact" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" inputmode="text">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                                </div>
+                                                <input type="text" name="contact" class="form-control"
+                                                    data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;"
+                                                    data-mask="" inputmode="text">
                                             </div>
 
-                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <label for="inputDescription">User Address</label>
                                             <input type="text" id="inputName" name="address" class="form-control">
@@ -95,19 +100,19 @@
                                             <label for="inputClientCompany">User image</label>
                                             <div class="custom-file">
                                                 <input type="file" name="photo" class="custom-file-input" id="customFile">
-                                                <label class="custom-file-label" for="customFile">Choose file</label>
+                                                <label class="custom-file-label" for="customFile">Choose Image</label>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label>User Role</label>
                                             <select class="form-control" name="role_id" style="width: 100%;">
-                                              <option value="">--select role --</option>
-                                              <option value="1" >Admin</option>
-                                              <option value="2" >Author</option>
+                                                <option value="">--select role --</option>
+                                                <option value="1">Admin</option>
+                                                <option value="2">Author</option>
 
                                             </select>
-                                          </div>
+                                        </div>
 
                                     </div>
                                     <!-- /.card-body -->
@@ -144,7 +149,7 @@
         <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
 
         <script src="{{ asset('assets/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/jquery-validation/additional-methods.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/jquery-validation/additional-methods.min.js') }}"></script>
 
 
         <script>
@@ -153,54 +158,54 @@
             });
         </script>
 
-<script>
-    $(function () {
-      $('#quickForm').validate({
-        rules: {
-          name: {
-            required: true,
-            minlength: 4
-          },
-          email: {
-            required: true,
-            email: true,
-          },
-          password: {
-            required: true,
-            minlength: 6
-          },
+        <script>
+            $(function() {
+                $('#quickForm').validate({
+                    rules: {
+                        name: {
+                            required: true,
+                            minlength: 4
+                        },
+                        email: {
+                            required: true,
+                            email: true,
+                        },
+                        password: {
+                            required: true,
+                            minlength: 6
+                        },
 
-        },
-        messages: {
+                    },
+                    messages: {
 
-            name: {
-            required: "Please provide a Name",
-            minlength: "Your name must be at least 4 characters long"
-          },
+                        name: {
+                            required: "Please provide a Name",
+                            minlength: "Your name must be at least 4 characters long"
+                        },
 
-          email: {
-            required: "Please enter a email address",
-            email: "Please enter a valid email address"
-          },
-          password: {
-            required: "Please provide a password",
-            minlength: "Your password must be at least 6 characters long"
-          },
+                        email: {
+                            required: "Please enter a email address",
+                            email: "Please enter a valid email address"
+                        },
+                        password: {
+                            required: "Please provide a password",
+                            minlength: "Your password must be at least 6 characters long"
+                        },
 
 
-        },
-        errorElement: 'span',
-        errorPlacement: function (error, element) {
-          error.addClass('invalid-feedback');
-          element.closest('.form-group').append(error);
-        },
-        highlight: function (element, errorClass, validClass) {
-          $(element).addClass('is-invalid');
-        },
-        unhighlight: function (element, errorClass, validClass) {
-          $(element).removeClass('is-invalid');
-        }
-      });
-    });
-    </script>
+                    },
+                    errorElement: 'span',
+                    errorPlacement: function(error, element) {
+                        error.addClass('invalid-feedback');
+                        element.closest('.form-group').append(error);
+                    },
+                    highlight: function(element, errorClass, validClass) {
+                        $(element).addClass('is-invalid');
+                    },
+                    unhighlight: function(element, errorClass, validClass) {
+                        $(element).removeClass('is-invalid');
+                    }
+                });
+            });
+        </script>
     @endpush

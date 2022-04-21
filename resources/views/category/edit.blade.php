@@ -108,7 +108,6 @@
         <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
 
         <script src="{{ asset('assets/plugins/filterizr/jquery.filterizr.min.js') }}"></script>
-        <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
         <script src="{{ asset('assets/plugins/ekko-lightbox/ekko-lightbox.min.js') }}"></script>
 
         <script>

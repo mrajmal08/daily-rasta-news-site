@@ -218,8 +218,6 @@
 
                     var url = $(this).attr('href');
 
-                    alert(url);
-
                     $.ajax({
                         url: url,
                         type: 'GET',
@@ -227,14 +225,12 @@
                             _token: '{{ csrf_token() }}'
                         },
                         success: function(result) {
-                            alert('User Deleted');
+                            window.location.reload();
                         }
                     });
 
 
                 });
-
-
 
             </script>
     @endpush

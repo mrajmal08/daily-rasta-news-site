@@ -28,12 +28,12 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1>Categories</h1>
+                                <h1>News</h1>
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active">Categories</li>
+                                    <li class="breadcrumb-item active">News</li>
                                 </ol>
                             </div>
                         </div>
@@ -49,47 +49,72 @@
 
                                 <div class="card">
                                     <div class="card-header">
-                                        <a href="{{ route('categories.create') }}" class="btn btn-success">Add New
-                                            Category</a>
+                                        <a href="{{ route('news.create') }}" class="btn btn-success">Add New
+                                            News</a>
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body">
                                         <table id="example1" class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th>#</th>
                                                     <th>Title</th>
-                                                    <th>Description</th>
-                                                    <th>Image</th>
+                                                    {{-- <th>Description</th> --}}
+                                                    <th>Feature Image</th>
+                                                    <th>Type</th>
+                                                    <th>Breaking News</th>
+                                                    {{-- <th>Total views</th> --}}
                                                     <th>Action</th>
+
                                                 </tr>
                                             </thead>
                                             <tbody>
 
-
-                                                @foreach ($categories as $item)
+                                                @foreach ($news as $item)
                                                     <tr>
-                                                        <td>{{ $item->id }}</td>
                                                         <td>{{ $item->title }}</td>
-                                                        <td>{{ $item->description }}</td>
+                                                        {{-- <td>{!! $item->description !!}</td> --}}
                                                         <td>
                                                             <div class="">
-                                                                <a href="{{ asset('assets/categoryImages') . '/' . $item->image }}?text=1"
+                                                                <a href="{{ asset('assets/postImages') . '/' . $item->feature_image }}?text=1"
                                                                     data-toggle="lightbox"
                                                                     data-title="{{ $item->title }}"
                                                                     data-gallery="gallery">
-                                                                    <img src="{{ asset('assets/categoryImages') . '/' . $item->image }}?text=1"
+                                                                    <img src="{{ asset('assets/postImages') . '/' . $item->feature_image }}?text=1"
                                                                         class="img-fluid" alt="{{ $item->title }}"
                                                                         style="width:40px" />
                                                                 </a>
                                                             </div>
-
                                                         </td>
                                                         <td>
-                                                            <a href="{{ route("categories.edit",[$item->id]) }}" class="btn btn-warning btn-sm">
+                                                            <?php
+                                                            if($item->type == 'trending'){
+                                                                echo '<span class="badge badge-success">Trending</span>';
+                                                            }else{
+                                                                echo '<span class="badge badge-warning">Popular</span>';
+
+                                                            }
+                                                            ?>
+                                                        </td>
+
+                                                        <td>
+                                                            <?php
+                                                            if($item->breaking_news == '1'){
+                                                                echo '<span class="badge badge-success">Breaking News</span>';
+                                                            }else{
+                                                                echo '<span class="badge badge-warning">Normal News</span>';
+                                                            }
+                                                            ?>
+
+                                                        </td>
+                                                        {{-- <td>{{ $item->views }}</td> --}}
+
+                                                        <td>
+                                                            <a href="{{ route('news.edit', [$item->id]) }}"
+                                                                class="btn btn-warning btn-sm">
                                                                 <i class="fas fa-edit"></i>
                                                             </a>
-                                                            <a href="{{ route('categories.destroy', [$item->id]) }}" class="btn btn-danger btn-sm delete-btn">
+                                                            <a href="{{ route('news.delete', [$item->id]) }}"
+                                                                class="btn btn-danger btn-sm delete-btn">
                                                                 <i class="fas fa-trash"></i>
                                                             </a>
                                                         </td>
@@ -100,11 +125,14 @@
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <th>#</th>
                                                     <th>Title</th>
-                                                    <th>Description</th>
-                                                    <th>Image</th>
+                                                    {{-- <th>Description</th> --}}
+                                                    <th>Feature Image</th>
+                                                    <th>Type</th>
+                                                    <th>Breaking News</th>
+                                                    {{-- <th>Total views</th> --}}
                                                     <th>Action</th>
+
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -151,7 +179,6 @@
         <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
 
         <script src="{{ asset('assets/plugins/filterizr/jquery.filterizr.min.js') }}"></script>
-        <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
         <script src="{{ asset('assets/plugins/ekko-lightbox/ekko-lightbox.min.js') }}"></script>
 
         {{-- Seet Alert --}}
@@ -198,31 +225,28 @@
                 });
             })
         </script>
-<script>
-    $('.delete-btn').on('click', function(event) {
-           event.preventDefault();
 
-          confirm("Are you sure? if you delete category , all the related newses will be deleted");
+        <script>
+             $('.delete-btn').on('click', function(event) {
+                    event.preventDefault();
 
-           var url = $(this).attr('href');
+                   confirm("Are you sure?");
 
-           $.ajax({
-               url: url,
-               type: 'GET',
-               data: {
-                   _token: '{{ csrf_token() }}'
-               },
-               success: function(result) {
-                window.location.reload();
+                    var url = $(this).attr('href');
 
-               }
-           });
-
-
-       });
+                    $.ajax({
+                        url: url,
+                        type: 'GET',
+                        data: {
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function(result) {
+                            window.location.reload();
+                        }
+                    });
 
 
+                });
 
-   </script>
-
+            </script>
     @endpush

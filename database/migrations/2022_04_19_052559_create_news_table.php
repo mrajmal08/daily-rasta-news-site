@@ -16,11 +16,10 @@ return new class extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->string('description')->nullable();
-            $table->string('image')->nullable();
-            $table->string('type')->nullable(); // trending , popular
+            $table->longText('description')->nullable();
+            $table->string('type')->nullable();
             $table->string('breaking_news')->nullable();
-
+            $table->string('feature_image')->nullable();
             $table->string('views')->nullable();
 
             $table->unsignedBigInteger('user_id')->nullable();

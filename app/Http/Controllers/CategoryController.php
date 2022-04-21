@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\News;
 use Carbon\Carbon;
+use Redirect;
 use Validator;
 
 
@@ -54,7 +56,6 @@ class CategoryController extends Controller
 
         $validator = Validator::make($request->all(), [
             'title' => 'required',
-            'description' => 'required',
             'image' => 'required',
         ]);
 
@@ -115,8 +116,6 @@ class CategoryController extends Controller
 
             } catch (\Exception$e) {
 
-                // return redirect()->route('categories.index')->with('error', 'Image not found');
-
                 $imageName = Carbon::now()->timestamp . '.' . $request->image->extension();
                 $request->image->move(public_path('assets/categoryImages'), $imageName);
 
@@ -157,14 +156,20 @@ class CategoryController extends Controller
 
         try {
 
+            $posts = News::where('cat_id', $id)->get();
             unlink('assets/categoryImages' . '/' . $category->image);
             $category->delete();
+            foreach ($posts as $post) {
+                $post->delete();
+            }
             return redirect()->route('categories.index')->with('message', 'Category deleted Successfully');
 
         } catch (\Exception$e) {
 
             $category->delete();
-
+            foreach ($posts as $post) {
+                $post->delete();
+            }
             return redirect()->route('categories.index')->with('message', 'Category deleted Successfully');
         }
     }

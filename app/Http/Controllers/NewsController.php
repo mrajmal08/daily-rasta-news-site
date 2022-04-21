@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\News;
 use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\News;
+use Carbon\Carbon;
+use Validator;
+use Redirect;
+
+
 
 class NewsController extends Controller
 {
@@ -14,7 +20,11 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+
+
+        return view('news.index', [
+            'news' => News::all()
+        ]);
     }
 
     /**
@@ -24,7 +34,8 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('news.create', compact('categories'));
     }
 
     /**
@@ -35,7 +46,34 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:255',
+        ]);
+
+        if($validator->fails()) {
+            return Redirect::back()->withErrors($validator);
+        }
+
+        if ($request->has('feature_image')) {
+
+            $imageName = time() . '.' . $request->feature_image->extension();
+            $request->feature_image->move(public_path('assets/postImages'), $imageName);
+
+            $data['feature_image'] = $imageName;
+        }
+
+            $data['title'] = $request->title;
+            $data['description'] = $request->description;
+            $data['type'] = $request->type;
+            $data['breaking_news'] = $request->breaking_news;
+            $data['cat_id'] = $request->cat_id;
+            $data['user_id'] = auth()->user()->id;
+
+
+         News::create($data);
+
+        return redirect()->route('news.index');
     }
 
     /**
@@ -55,9 +93,12 @@ class NewsController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(News $post)
+    public function edit($id)
     {
-        //
+        $categories = Category::all();
+        $news = News::find($id);
+        return view('news.edit', compact('news', 'categories'));
+
     }
 
     /**
@@ -67,9 +108,67 @@ class NewsController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, News $post)
+    public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:255',
+        ]);
+
+        if($validator->fails()) {
+            return Redirect::back()->withErrors($validator);
+        }
+
+        $news = News::find($id);
+
+        if (!$news) {
+            return redirect()->route('news.index')->with('error','Id not found');
+        }
+
+        $data = $request->all();
+
+        if ($request->file('feature_image')) {
+
+            try {
+
+                unlink('assets/postImages' . '/' . $news->feature_image);
+
+            } catch (\Exception $e) {
+
+                $imageName = Carbon::now()->timestamp . '.' . $request->feature_image->extension();
+                $request->feature_image->move(public_path('assets/postImages'), $imageName);
+
+                $data['feature_image'] = $imageName;
+                $news->feature_image = $data['feature_image'];
+            }
+        }
+
+        if ($request->title) {
+            $news->title = $request->title;
+        }
+
+        if ($request->description) {
+            $news->description = $request->description;
+        }
+
+        if ($request->type) {
+            $news->type = $request->type;
+        }
+        if ($request->breaking_news) {
+            $news->breaking_news = $request->breaking_news;
+        }
+        if ($request->breaking_news) {
+            $news->breaking_news = $request->breaking_news;
+        }
+
+        if ($request->cat_id) {
+            $news->cat_id = $request->cat_id;
+        }
+
+        $news->user_id = auth()->user()->id;
+        $news->save();
+
+
+        return redirect()->route('news.index')->with('message','News updated Successfully');
     }
 
     /**
@@ -78,8 +177,25 @@ class NewsController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(News $post)
+    public function destroy($id)
     {
-        //
+        $news = News::find($id);
+
+        if (!$news) {
+            return redirect()->route('news.index')->with('error','Id not found');
+        }
+
+        try {
+
+            unlink('assets/postImages' . '/' . $news->feature_image);
+            $news->delete();
+            return redirect()->route('users.index')->with('message', 'News deleted Successfully');
+
+        } catch (\Exception $e) {
+
+            $news->delete();
+
+            return redirect()->route('users.index')->with('message', 'News deleted Successfully');
+        }
     }
 }

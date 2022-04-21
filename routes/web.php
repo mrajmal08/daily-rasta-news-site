@@ -37,7 +37,15 @@ Route::get('/user/delete/{id}', [web\UserController::class, 'destroy'])->name('u
 Route::get('/categories', [web\CategoryController::class, 'index'])->name('categories.index');
 Route::get('/categories/create', [web\CategoryController::class, 'create'])->name('categories.create');
 Route::post('/categories/store', [web\CategoryController::class, 'store'])->name('categories.store');
-Route::get('/edit/{id}  ', [web\CategoryController::class, 'edit'])->name('categories.edit');
-Route::post('/update/{id}', [web\CategoryController::class, 'update'])->name('categories.update');
+Route::get('/categories/edit/{id}  ', [web\CategoryController::class, 'edit'])->name('categories.edit');
+Route::post('/categories/update/{id}', [web\CategoryController::class, 'update'])->name('categories.update');
 Route::get('/category/delete/{id}', [web\CategoryController::class, 'destroy'])->name('categories.destroy');
+
+// News Route
+Route::get('/news', [web\NewsController::class, 'index'])->name('news.index');
+Route::get('/news/create', [web\NewsController::class, 'create'])->name('news.create');
+Route::post('/news/store', [web\NewsController::class, 'store'])->name('news.store');
+Route::get('/news/edit/{id}', [web\NewsController::class, 'edit'])->name('news.edit');
+Route::post('/news/update/{id}', [web\NewsController::class, 'update'])->name('news.update');
+Route::get('/news/delete/{id}', [web\NewsController::class, 'destroy'])->name('news.delete');
 
