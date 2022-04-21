@@ -69,13 +69,13 @@
                                         <div class="form-group">
                                             <label>User phone</label>
                                             <div class="input-group">
-                                            <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                                </div>
+                                                    <input type="text" name="contact" value="{{ $user->contact }}" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" inputmode="text">
                                             </div>
-                                            <input type="text" name="contact" value="{{ $user->contact }}" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" inputmode="text">
-                                            </div>
+                                        </div>
 
-                                            </div>
                                         <div class="form-group">
                                             <label for="inputDescription">User Address</label>
                                             <input type="text" id="inputName" value="{{ $user->address }}" name="address" class="form-control">

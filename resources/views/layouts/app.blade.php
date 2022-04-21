@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -40,12 +40,12 @@
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Daterange picker -->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/daterangepicker/daterangepicker.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/plugins/daterangepicker/daterangepicker.css') }}"> --}}
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/summernote/summernote-bs4.min.css') }}">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
     <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
@@ -75,13 +75,13 @@
     <!-- Sparkline -->
     <script src="{{ asset('assets/plugins/sparklines/sparkline.js') }}"></script>
     <!-- JQVMap -->
-    <script src="{{ asset('assets/plugins/jqvmap/jquery.vmap.min.js') }}"></script>
-    <script src="/assets/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    {{-- <script src="{{ asset('assets/plugins/jqvmap/jquery.vmap.min.js') }}"></script>
+    <script src="/assets/plugins/jqvmap/maps/jquery.vmap.usa.js"></script> --}}
     <!-- jQuery Knob Chart -->
     <script src="{{ asset('assets/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
     <!-- daterangepicker -->
     <script src="{{ asset('assets/plugins/moment/moment.min.js') }}"></script>
-    <script src="{{ asset('') }} assets/plugins/daterangepicker/daterangepicker.js"></script>
+    {{-- <script src="{{ asset('') }} assets/plugins/daterangepicker/daterangepicker.js"></script> --}}
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="{{ asset('assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }} "></script>
     <!-- Summernote -->

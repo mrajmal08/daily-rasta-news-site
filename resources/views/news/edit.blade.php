@@ -159,7 +159,7 @@
             </div>
             <!-- /.content-wrapper -->
 
-            {{-- @include('layouts.footer'); --}}
+            @include('layouts.footer');
 
             <!-- Control Sidebar -->
             <aside class="control-sidebar control-sidebar-dark">

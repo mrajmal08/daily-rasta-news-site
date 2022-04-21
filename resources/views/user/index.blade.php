@@ -3,6 +3,8 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endpush
 
 @section('content')
@@ -57,7 +59,6 @@
                                         <table id="example1" class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th>#</th>
                                                     <th>Name</th>
                                                     <th>Email</th>
                                                     <th>Image</th>
@@ -70,7 +71,6 @@
 
                                                 @foreach ($users as $item)
                                                     <tr>
-                                                        <td>{{ $item->id }}</td>
                                                         <td>{{ $item->name }}</td>
                                                         <td>{{ $item->email }}</td>
                                                         <td>
@@ -95,6 +95,10 @@
 
                                                         </td>
                                                         <td>
+
+                                                            @if($item->super_admin == 'yes')
+                                                            @else
+
                                                             <a href="{{ route('users.edit', [$item->id]) }}"
                                                                 class="btn btn-warning btn-sm">
                                                                 <i class="fas fa-edit"></i>
@@ -103,6 +107,7 @@
                                                                 class="btn btn-danger btn-sm delete-btn">
                                                                 <i class="fas fa-trash"></i>
                                                             </a>
+                                                            @endif
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -111,7 +116,6 @@
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <th>#</th>
                                                     <th>Name</th>
                                                     <th>Email</th>
                                                     <th>Image</th>
@@ -211,26 +215,43 @@
         </script>
 
         <script>
-             $('.delete-btn').on('click', function(event) {
-                    event.preventDefault();
+            $('.delete-btn').on('click', function(event) {
+                event.preventDefault();
 
-                   confirm("Are you sure?");
+                swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover this imaginary file!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            swal("Poof! Your imaginary file has been deleted!", {
+                                icon: "success",
+                            });
 
-                    var url = $(this).attr('href');
+                            var url = $(this).attr('href');
+                            $.ajax({
+                                url: url,
+                                type: 'GET',
+                                data: {
+                                    _token: '{{ csrf_token() }}'
+                                },
+                                success: function(result) {
+                                    swal("Poof! Your imaginary file has been deleted!", {
+                                        icon: "success",
+                                    });
+                                    window.location.reload();
+                                }
+                            });
 
-                    $.ajax({
-                        url: url,
-                        type: 'GET',
-                        data: {
-                            _token: '{{ csrf_token() }}'
-                        },
-                        success: function(result) {
-                            window.location.reload();
+                        } else {
+
+                            swal("Your imaginary file is safe!");
                         }
                     });
 
-
-                });
-
-            </script>
+            });
+        </script>
     @endpush

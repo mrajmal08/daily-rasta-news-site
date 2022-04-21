@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
             'email' => 'dailyrasta@gmail.com',
             'password' => Hash::make('dailyrasta786'),
             'role_id' => '1',
+            'super_admin' => 'yes',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Carbon\Carbon;
 use Validator;
+use Redirect;
 use Exception;
 
 class UserController extends Controller
@@ -16,6 +18,8 @@ class UserController extends Controller
      *
      * @return void
      */
+
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -28,6 +32,11 @@ class UserController extends Controller
      */
     public function index()
     {
+
+        if(Auth::user()->role_id == 2){
+            return redirect()->route('news.index')->with('error','Sorry you are not admin');
+        }
+
         $users = User::all();
         return view('user.index', compact('users'));
     }
@@ -88,7 +97,13 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+
+
         $user = User::findOrFail($id);
+
+        if($user->super_admin == 'yes'){
+            return redirect()->route('users.index')->with('error','Sorry Super Admin can not be edited');
+        }
         return view('user.edit', compact('user'));
     }
 
@@ -143,6 +158,10 @@ class UserController extends Controller
         if ($request->contact) {
             $user->contact = $request->contact;
         }
+        if ($request->address) {
+            $user->address = $request->address;
+        }
+
         if ($request->role_id) {
             $user->role_id = $request->role_id;
         }
@@ -163,8 +182,11 @@ class UserController extends Controller
     public function destroy($id)
     {
 
-
         $user = User::find($id);
+
+        if($user->super_admin == 'yes'){
+            return redirect()->route('users.index')->with('error','Sorry Super Admin can not be edited');
+        }
 
         if (!$user) {
             return redirect()->route('users.index')->with('error','Id not found');

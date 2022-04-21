@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers as web;
 
 /*
@@ -21,13 +22,18 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [web\HomeController::class, 'index'])->name('home');
+Route::get('/profile', [web\HomeController::class, 'profile'])->name('profile');
+Route::post('/profile/update', [web\HomeController::class, 'profileUpdate'])->name('profile.update');
+Route::post('/profile/update/password', [web\HomeController::class, 'profilePassword'])->name('profile.password');
+
+
 Route::get('/logout', [web\Auth\LoginController::class, 'logout']);
 
 //users Routs
 Route::get('/users', [web\UserController::class, 'index'])->name('users.index');
-Route::get('/users/create', [web\UserController::class, 'create'])->name('users.create');
-Route::post('/users/store', [web\UserController::class, 'store'])->name('users.store');
-Route::get('/edit/{id}', [web\UserController::class, 'edit'])->name('users.edit');
+Route::get('/user/create', [web\UserController::class, 'create'])->name('users.create');
+Route::post('/user/store', [web\UserController::class, 'store'])->name('users.store');
+Route::get('/user/edit/{id}', [web\UserController::class, 'edit'])->name('users.edit');
 Route::post('/user/update/{id}', [web\UserController::class, 'update'])->name('users.update');
 Route::get('/user/delete/{id}', [web\UserController::class, 'destroy'])->name('users.delete');
 

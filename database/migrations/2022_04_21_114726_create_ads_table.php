@@ -13,19 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('news', function (Blueprint $table) {
+        Schema::create('ads', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
-            $table->longText('description')->nullable();
-            $table->string('type')->nullable();
-            $table->string('breaking_news')->nullable();
-            $table->string('feature_image')->nullable();
+            $table->string('title')->nullable();
+            $table->string('description')->nullable();
+            $table->string('url')->nullable();
+            $table->string('image')->nullable();
+            $table->longText('video')->nullable();
+            $table->dateTime('date_upto')->nullable();
+            $table->string('status')->nullable();
             $table->string('clicks')->nullable();
 
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('cat_id')->nullable();
 
-
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -37,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('ads');
     }
 };

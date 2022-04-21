@@ -14,10 +14,10 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-       with font-awesome or any other icon font library -->
+                @if(auth()->user()->role_id == '1')
+
                 <li class="nav-item menu-open">
-                    <a href="{{ route('home') }}" class="nav-link active">
+                    <a href="{{ route('home') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -62,6 +62,35 @@
                     </a>
                 </li>
 
+                <li class="nav-item ">
+                    <a href="{{ route('categories.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-ad "></i>
+                        <p>
+                            Ads
+                        </p>
+                    </a>
+                </li>
+
+            @else
+            <li class="nav-item menu-open">
+                <a href="{{ route('home') }}" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                        Dashboard
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('news.index') }}" class="nav-link">
+                    <i class="nav-icon fas fa-book"></i>
+                    <p>
+                        News
+                    </p>
+                </a>
+            </li>
+
+
+            @endif
                 <div class="dropdown-divider"></div>
 
             </ul>

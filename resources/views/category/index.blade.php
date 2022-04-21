@@ -3,7 +3,10 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
-@endpush
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    @endpush
 
 @section('content')
 
@@ -200,27 +203,45 @@
         </script>
 <script>
     $('.delete-btn').on('click', function(event) {
-           event.preventDefault();
+                event.preventDefault();
 
-          confirm("Are you sure? if you delete category , all the related newses will be deleted");
+                swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover this imaginary file!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            swal("Poof! Your imaginary file has been deleted!", {
+                                icon: "success",
+                            });
 
-           var url = $(this).attr('href');
+                            var url = $(this).attr('href');
+                            $.ajax({
+                                url: url,
+                                type: 'GET',
+                                data: {
+                                    _token: '{{ csrf_token() }}'
+                                },
+                                success: function(result) {
+                                    swal("Poof! Your imaginary file has been deleted!", {
+                                        icon: "success",
+                                    });
+                                    window.location.reload();
+                                }
+                            });
 
-           $.ajax({
-               url: url,
-               type: 'GET',
-               data: {
-                   _token: '{{ csrf_token() }}'
-               },
-               success: function(result) {
-                window.location.reload();
 
-               }
-           });
+                        } else {
+
+                            swal("Your imaginary file is safe!");
+                        }
+                    });
 
 
-       });
-
+            });
 
 
    </script>

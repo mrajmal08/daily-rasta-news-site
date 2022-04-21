@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('photo')->nullable();
 
             $table->unsignedBigInteger('role_id')->nullable();
+            $table->string('super_admin')->nullable();
 
             $table->rememberToken();
             $table->timestamps();

@@ -48,7 +48,7 @@
                                         <p>Total Users</p>
                                     </div>
                                     <div class="icon">
-                                        <i class="ion ion-card"></i>
+                                        <i class="ion ion-person-add"></i>
                                     </div>
                                     <a href="{{ route('users.index') }}" class="small-box-footer">More info <i
                                             class="fas fa-arrow-circle-right"></i></a>
