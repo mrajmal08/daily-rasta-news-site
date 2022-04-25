@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('videos', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('video')->nullable();
+            $table->string('name');
+            $table->string('email');
+            $table->string('comment')->nullable();
 
             $table->unsignedBigInteger('user_id')->nullable();
+
 
             $table->timestamps();
         });
@@ -30,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('videos');
+        Schema::dropIfExists('reviews');
     }
 };

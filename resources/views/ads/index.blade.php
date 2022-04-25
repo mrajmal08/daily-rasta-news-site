@@ -30,12 +30,12 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1>Users</h1>
+                                <h1>Ads</h1>
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
-                                    <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Home</a></li>
-                                    <li class="breadcrumb-item active">Users</li>
+                                    <li class="breadcrumb-item"><a href="{{ route('ads.index') }}">Home</a></li>
+                                    <li class="breadcrumb-item active">Ads</li>
                                 </ol>
                             </div>
                         </div>
@@ -51,35 +51,40 @@
 
                                 <div class="card">
                                     <div class="card-header">
-                                        <a href="{{ route('users.create') }}" class="btn btn-success">Add New
-                                            User</a>
+                                        <a href="{{ route('ads.create') }}" class="btn btn-success">Post New
+                                            Ad</a>
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body">
                                         <table id="example1" class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th>Name</th>
-                                                    <th>Email</th>
+                                                    <th>Title</th>
+                                                    <th>Description</th>
                                                     <th>Image</th>
-                                                    <th>Role</th>
+                                                    <th>Video</th>
+                                                    <th>Date Upto</th>
+                                                    <th>Status</th>
+                                                    <th>Total Clicks</th>
                                                     <th>Action</th>
+
                                                 </tr>
                                             </thead>
                                             <tbody>
 
 
-                                                @foreach ($users as $item)
+                                                @foreach ($ads as $item)
                                                     <tr>
-                                                        <td>{{ $item->name }}</td>
-                                                        <td>{{ $item->email }}</td>
+                                                        <td>{{ $item->title }}</td>
+                                                        <td>{{ $item->description }}</td>
+
                                                         <td>
                                                             <div class="">
-                                                                <a href="{{ asset('assets/userImages') . '/' . $item->photo }}?text=1"
+                                                                <a href="{{ asset('assets/adsFiles') . '/' . $item->image }}?text=1"
                                                                     data-toggle="lightbox"
                                                                     data-title="{{ $item->title }}"
                                                                     data-gallery="gallery">
-                                                                    <img src="{{ asset('assets/userImages') . '/' . $item->photo }}?text=1"
+                                                                    <img src="{{ asset('assets/adsFiles') . '/' . $item->image }}?text=1"
                                                                         class="img-fluid" alt="{{ $item->title }}"
                                                                         style="width:40px" />
                                                                 </a>
@@ -87,27 +92,41 @@
 
                                                         </td>
                                                         <td>
-                                                            <?php if($item->role_id == 1){ ?>
-                                                            <span class="badge bg-success">Admin</span>
-                                                            <?php }else{ ?>
-                                                            <span class="badge bg-primary">Author</span>
-                                                            <?php } ?>
+                                                            <iframe style="height: 90px;width: 150px;" class="embed-responsive-item " src="{{ asset('assets/adsFiles') . '/' .$item->video }}"></iframe>
+                                                        </td>
+
+
+                                                        <td>{{date('Y-m-d',  strtotime($item->date_upto)) }}</td>
+
+
+                                                        <td>
+                                                            <?php
+                                                                if($item->status == 'active'){ ?>
+                                                                <span class="badge bg-success">Active</span>
+                                                                <?php }else{ ?>
+                                                                <span class="badge bg-danger">In Active</span>
+
+                                                            <?php }
+                                                            ?>
+
+
 
                                                         </td>
                                                         <td>
+                                                            <span class='fa fa-eye' style='color: green'>123</span>
+                                                            {{ $item->total_clicks }}
+                                                         </td>
 
-                                                            @if($item->super_admin == 'yes')
-                                                            @else
-
-                                                            <a href="{{ route('users.edit', [$item->id]) }}"
+                                                        <td>
+                                                            <a href="{{ route('ads.edit', [$item->id]) }}"
                                                                 class="btn btn-warning btn-sm">
                                                                 <i class="fas fa-edit"></i>
                                                             </a>
-                                                            <a href="{{ url('/user/delete') . '/' . $item->id }}"
+                                                            <a href="{{ route('ads.delete', [$item->id]) }}"
                                                                 class="btn btn-danger btn-sm delete-btn">
                                                                 <i class="fas fa-trash"></i>
                                                             </a>
-                                                            @endif
+
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -116,10 +135,13 @@
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <th>Name</th>
-                                                    <th>Email</th>
+                                                    <th>Title</th>
+                                                    <th>Description</th>
                                                     <th>Image</th>
-                                                    <th>Role</th>
+                                                    <th>Video</th>
+                                                    <th>Date Upto</th>
+                                                    <th>Status</th>
+                                                    <th>Total Clicks</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </tfoot>

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @push('css')
+
+
 @endpush
 
 @section('content')
@@ -17,13 +19,13 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1>News Post</h1>
+                                <h1>News Ad</h1>
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
-                                    <li class="breadcrumb-item"><a href="{{ route('news.index') }}">All
-                                            News</a></li>
-                                    <li class="breadcrumb-item active">News Post</li>
+                                    <li class="breadcrumb-item"><a href="{{ route('ads.index') }}">All
+                                            Ads</a></li>
+                                    <li class="breadcrumb-item active">News Ad</li>
                                 </ol>
                             </div>
                         </div>
@@ -44,13 +46,13 @@
                         @endforeach
                     @endif
 
-                    <form method="POST" action="{{ route('news.store') }}" enctype="multipart/form-data" id="quickForm">
+                    <form method="POST" action="{{ route('ads.store') }}" enctype="multipart/form-data" id="quickForm">
                         @CSRF
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card card-primary">
                                     <div class="card-header">
-                                        <h3 class="card-title">News</h3>
+                                        <h3 class="card-title">Ads</h3>
 
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse"
@@ -60,58 +62,62 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
+
                                         <div class="form-group">
-                                            <label>News Category</label>
-                                            <select class="form-control" name="cat_id" style="width: 100%;">
-                                                @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
-                                                @endforeach
-                                            </select>
+                                            <label for="title">Ads Title</label>
+                                            <input type="text" id="title" name="title" class="form-control">
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="inputTitle">News Title</label>
-                                            <input type="text" id="inputTitle" name="title" class="form-control">
+                                            <label for="inputDescription">Ads Description</label>
+                                            <textarea name="description" class="form-control" rows="4" placeholder="Write ..."></textarea>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="inputName">News Description</label>
-                                                <textarea id="summernote" name="description">
-                                                  Place <em>some</em> <u>text</u> <strong>here</strong>
-                                                </textarea>
+                                            <label for="inputClientCompany">Ads image</label>
+                                            <div class="custom-file">
+                                                <input type="file" name="image" class="custom-file-input" id="image">
+                                                <label class="custom-file-label" for="image">Choose Image</label>
+                                            </div>
                                         </div>
 
-                                        <div class="form-group ">
-                                            <label>News Type</label>
-                                            <select class="form-control" name="type" style="width: 100%;">
-                                                <option value="">--select type --</option>
-                                                <option value="trending">Trending</option>
-                                                <option value="popular">Popular</option>
-                                            </select>
+                                        <div class="form-group">
+                                            <label for="inputClientCompany">Ads Video</label>
+                                            <div class="custom-file">
+                                                <input type="file" name="video" class="custom-file-input" id="video">
+                                                <label class="custom-file-label" for="video">Choose File</label>
+                                            </div>
+                                            <p style="color:red">video must be less than 3mb</p>
+
                                         </div>
+
+
+                                        <div class="form-group">
+                                            <label for="inputUrl">Ads Url</label>
+                                            <input type="text" id="inputUrl" name="url" class="form-control">
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="date_upto">Ads Date Upto</label>
+                                            <input type="date" id="date_upto" name="date_upto" class="form-control">
+                                        </div>
+
 
                                         <div class="form-group clearfix my-4">
                                             <div class="icheck-success d-inline">
-                                                <input type="radio" name="breaking_news" value="1" id="radioSuccess1">
-                                                <label for="radioSuccess1"> Breaking News</label>
+                                                <input type="radio" name="status" value="active" id="radioSuccess1">
+                                                <label for="radioSuccess1">Active</label>
                                                 </label>
                                             </div>
                                             <div class="icheck-danger d-inline">
-                                                <input type="radio" name="breaking_news" value="0" checked id="radioSuccess2">
-                                                <label for="radioSuccess2"> Normal News</label>
+                                                <input type="radio" name="status" value="inactive" checked
+                                                    id="radioSuccess2">
+                                                <label for="radioSuccess2">In Active</label>
                                                 </label>
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="inputClientCompany">Feature image</label>
-                                            <div class="custom-file">
-                                                <input type="file" name="feature_image" class="custom-file-input"
-                                                    id="customFile">
-                                                <label class="custom-file-label" for="customFile">Choose Image</label>
-                                            </div>
-
-                                        </div>
                                     </div>
                                     <!-- /.card-body -->
                                 </div>
@@ -122,7 +128,7 @@
                         <div class="row mb-4">
                             <div class="col-12">
 
-                                <input type="submit" value="Publish News" class="btn btn-success float-right">
+                                <input type="submit" value="Publish Ad" class="btn btn-success float-right">
                             </div>
                         </div>
                     </form>
@@ -149,13 +155,6 @@
         <script src="{{ asset('assets/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
         <script src="{{ asset('assets/plugins/jquery-validation/additional-methods.min.js') }}"></script>
 
-        <script src="{{ asset('assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
-        <!-- CodeMirror -->
-        <script src="{{ asset('assets/plugins/codemirror/codemirror.js') }}"></script>
-        <script src="{{ asset('assets/plugins/codemirror/mode/css/css.js') }}"></script>
-        <script src="{{ asset('assets/plugins/codemirror/mode/xml/xml.js') }}"></script>
-        <script src="{{ asset('assets/plugins/codemirror/mode/htmlmixed/htmlmixed.js') }}"></script>
-
 
         <script>
             $(function() {
@@ -163,18 +162,7 @@
             });
         </script>
 
-        <script>
-            $(function() {
-                // Summernote
-                $('#summernote').summernote()
 
-                // CodeMirror
-                CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
-                    mode: "htmlmixed",
-                    theme: "monokai"
-                });
-            })
-        </script>
 
 
     @endpush

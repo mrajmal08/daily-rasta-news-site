@@ -19,6 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// post review route
+Route::post('/review/store', [web\Frontend\ReviewController::class, 'store'])->name('review.store');
+
+Route::get('/guest', [web\Frontend\ReviewController::class, 'guest'])->name('guest');
+
+
 Auth::routes();
 
 Route::get('/home', [web\HomeController::class, 'index'])->name('home');
@@ -47,11 +53,24 @@ Route::get('/categories/edit/{id}  ', [web\CategoryController::class, 'edit'])->
 Route::post('/categories/update/{id}', [web\CategoryController::class, 'update'])->name('categories.update');
 Route::get('/category/delete/{id}', [web\CategoryController::class, 'destroy'])->name('categories.destroy');
 
-// News Route
+// News Routes
 Route::get('/news', [web\NewsController::class, 'index'])->name('news.index');
 Route::get('/news/create', [web\NewsController::class, 'create'])->name('news.create');
 Route::post('/news/store', [web\NewsController::class, 'store'])->name('news.store');
 Route::get('/news/edit/{id}', [web\NewsController::class, 'edit'])->name('news.edit');
 Route::post('/news/update/{id}', [web\NewsController::class, 'update'])->name('news.update');
 Route::get('/news/delete/{id}', [web\NewsController::class, 'destroy'])->name('news.delete');
+
+
+// Ads Routes
+Route::get('/ads', [web\AdsController::class, 'index'])->name('ads.index');
+Route::get('/ads/create', [web\AdsController::class, 'create'])->name('ads.create');
+Route::post('/ads/store', [web\AdsController::class, 'store'])->name('ads.store');
+Route::get('/ads/edit/{id}', [web\AdsController::class, 'edit'])->name('ads.edit');
+Route::post('/ads/update/{id}', [web\AdsController::class, 'update'])->name('ads.update');
+Route::get('/ads/delete/{id}', [web\AdsController::class, 'destroy'])->name('ads.delete');
+
+
+
+
 

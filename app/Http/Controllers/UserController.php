@@ -72,15 +72,13 @@ class UserController extends Controller
             return Redirect::back()->withErrors($validator);
         }
 
+        $data = $request->all();
         if ($request->has('photo')) {
             $imageName = time() . '.' . $request->photo->extension();
             $request->photo->move(public_path('assets/userImages'), $imageName);
-            $data = $request->all();
-            $data['password'] = Hash::make($request->password);
             $data['photo'] = $imageName;
-        }else{
-            $data = $request->all();
         }
+
         $data['password'] = Hash::make($request->password);
         User::create($data);
 

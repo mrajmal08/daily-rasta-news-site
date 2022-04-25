@@ -59,7 +59,6 @@ class NewsController extends Controller
 
             $imageName = time() . '.' . $request->feature_image->extension();
             $request->feature_image->move(public_path('assets/postImages'), $imageName);
-
             $data['feature_image'] = $imageName;
         }
 

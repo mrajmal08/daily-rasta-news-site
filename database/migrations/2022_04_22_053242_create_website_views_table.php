@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('videos', function (Blueprint $table) {
+        Schema::create('website_views', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('video')->nullable();
-
-            $table->unsignedBigInteger('user_id')->nullable();
-
+            $table->string('total_views')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('videos');
+        Schema::dropIfExists('website_views');
     }
 };
