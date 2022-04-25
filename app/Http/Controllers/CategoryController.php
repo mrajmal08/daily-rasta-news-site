@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\News;
@@ -30,6 +31,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        if (Auth::user()->role_id == 2) {
+            return redirect()->route('news.index')->with('error', 'Sorry you are not admin');
+        }
+
         $categories = Category::all();
         return view('category.index', compact('categories'));
     }

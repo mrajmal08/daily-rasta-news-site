@@ -13,9 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('website_views', function (Blueprint $table) {
+        Schema::create('blogs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('total_views')->nullable();
+            $table->string('title')->nullable();
+            $table->longText('description')->nullable();
+            $table->string('feature_image')->nullable();
+            $table->string('total_clicks')->nullable();
+
+            $table->unsignedBigInteger('user_id')->nullable();
+
             $table->softDeletes();
             $table->timestamps();
         });
@@ -28,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('website_views');
+        Schema::dropIfExists('blogs');
     }
 };

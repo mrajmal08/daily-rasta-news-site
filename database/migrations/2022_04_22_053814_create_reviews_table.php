@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('comment')->nullable();
+            $table->string('type')->nullable();
 
             $table->unsignedBigInteger('user_id')->nullable();
-
-
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -36,6 +36,15 @@
                 </li>
 
                 <li class="nav-item ">
+                    <a href="{{ route('blogs.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-blog "></i>
+                        <p>
+                            Blogs
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item ">
                     <a href="{{ route('categories.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-table "></i>
                         <p>
@@ -54,7 +63,7 @@
                 </li>
 
                 <li class="nav-item ">
-                    <a href="{{ route('categories.index') }}" class="nav-link">
+                    <a href="{{ route('videos.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-video "></i>
                         <p>
                             Videos
@@ -89,6 +98,14 @@
                 </a>
             </li>
 
+            <li class="nav-item ">
+                <a href="{{ route('blogs.index') }}" class="nav-link">
+                    <i class="nav-icon fas fa-blog "></i>
+                    <p>
+                        Blogs
+                    </p>
+                </a>
+            </li>
 
             @endif
                 <div class="dropdown-divider"></div>

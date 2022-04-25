@@ -15,10 +15,9 @@ return new class extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('video')->nullable();
-
+            $table->string('video_link')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
-
+            $table->softDeletes();
             $table->timestamps();
         });
     }

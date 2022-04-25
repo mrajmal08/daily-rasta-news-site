@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('super_admin')->nullable();
 
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
 

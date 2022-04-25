@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\News;
@@ -20,8 +21,6 @@ class NewsController extends Controller
      */
     public function index()
     {
-
-
         return view('news.index', [
             'news' => News::all()
         ]);
@@ -34,6 +33,8 @@ class NewsController extends Controller
      */
     public function create()
     {
+
+
         $categories = Category::all();
         return view('news.create', compact('categories'));
     }

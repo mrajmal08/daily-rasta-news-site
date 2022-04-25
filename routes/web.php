@@ -70,6 +70,22 @@ Route::get('/ads/edit/{id}', [web\AdsController::class, 'edit'])->name('ads.edit
 Route::post('/ads/update/{id}', [web\AdsController::class, 'update'])->name('ads.update');
 Route::get('/ads/delete/{id}', [web\AdsController::class, 'destroy'])->name('ads.delete');
 
+// Video Route
+Route::get('/videos', [web\VideoController::class, 'index'])->name('videos.index');
+Route::get('/videos/create', [web\VideoController::class, 'create'])->name('videos.create');
+Route::post('/videos/store', [web\VideoController::class, 'store'])->name('videos.store');
+Route::get('/videos/edit/{id}', [web\VideoController::class, 'edit'])->name('videos.edit');
+Route::post('/videos/update/{id}', [web\VideoController::class, 'update'])->name('videos.update');
+Route::get('/videos/delete/{id}', [web\VideoController::class, 'destroy'])->name('videos.delete');
+
+//Blogs Route
+Route::get('/blogs', [web\BlogController::class, 'index'])->name('blogs.index');
+Route::get('/blogs/create', [web\BlogController::class, 'create'])->name('blogs.create');
+Route::post('/blogs/store', [web\BlogController::class, 'store'])->name('blogs.store');
+Route::get('/blogs/edit/{id}', [web\BlogController::class, 'edit'])->name('blogs.edit');
+Route::post('/blogs/update/{id}', [web\BlogController::class, 'update'])->name('blogs.update');
+Route::get('/blogs/delete/{id}', [web\BlogController::class, 'destroy'])->name('blogs.delete');
+
 
 
 
