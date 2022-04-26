@@ -10,6 +10,7 @@ use App\Models\Video;
 use App\Models\News;
 use App\Models\User;
 use Carbon\Carbon;
+use App\Models\Blog;
 use Validator;
 use Redirect;
 
@@ -35,9 +36,9 @@ class HomeController extends Controller
         $totalUSers = User::all()->count();
         $totalCategories = Category::all()->count();
         $totalPosts = News::all()->count();
-        $totalVideos = Video::all()->count();
+        $totalBlogs = Blog::all()->count();
 
-        return view('home', compact('totalUSers', 'totalCategories', 'totalPosts', 'totalVideos'));
+        return view('home', compact('totalUSers', 'totalCategories', 'totalPosts', 'totalBlogs'));
     }
 
     public function profile()

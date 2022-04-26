@@ -77,12 +77,12 @@
                                     <div class="inner">
                                         <h3>{{ $totalPosts }}</h3>
 
-                                        <p>Total Posts</p>
+                                        <p>Total News</p>
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-bag"></i>
                                     </div>
-                                    <a href="#" class="small-box-footer">More info <i
+                                    <a href="{{ route('news.index') }}" class="small-box-footer">More info <i
                                             class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
@@ -91,14 +91,14 @@
                                 <!-- small box -->
                                 <div class="small-box bg-danger">
                                     <div class="inner">
-                                        <h3>{{ $totalVideos }}</h3>
+                                        <h3>{{ $totalBlogs }}</h3>
 
-                                        <p>Total Videos</p>
+                                        <p>Total Blogs</p>
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-videocamera"></i>
                                     </div>
-                                    <a href="#" class="small-box-footer">More info <i
+                                    <a href="{{ route('blogs.index') }}" class="small-box-footer">More info <i
                                             class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
