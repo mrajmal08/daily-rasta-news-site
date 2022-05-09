@@ -2,7 +2,6 @@
 
 @section('content')
 
-
     <body class="hold-transition sidebar-mini layout-fixed">
         <div class="wrapper">
 
@@ -114,7 +113,6 @@
             <!-- /.content-wrapper -->
 
             @include('layouts.footer');
-
 
             <!-- Control Sidebar -->
             <aside class="control-sidebar control-sidebar-dark">
