@@ -127,6 +127,11 @@ class BlogController extends Controller
             try {
 
                 unlink('assets/blogFiles' . '/' . $blog->feature_image);
+                $imageName = Carbon::now()->timestamp . '.' . $request->feature_image->extension();
+                $request->feature_image->move(public_path('assets/blogFiles'), $imageName);
+
+                $data['feature_image'] = $imageName;
+                $blog->feature_image = $data['feature_image'];
 
             } catch (\Exception $e) {
 

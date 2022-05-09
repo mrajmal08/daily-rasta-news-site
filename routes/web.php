@@ -15,9 +15,17 @@ use App\Http\Controllers as web;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+//front end routes
+Route::get('/', [web\FrontendController::class, 'index']);
+Route::get('ہمارے-بارے-میں', [web\FrontendController::class, 'about'])->name('about.us');
+Route::get('/ہم-سے-رابطہ-کریں', [web\FrontendController::class, 'contact'])->name('contact.us');
+Route::get('/خبروں-کے-زمرے', [web\FrontendController::class, 'categories'])->name('categories.frontend');
+Route::get('/خبر-کی-تفصیل/{id}', [web\FrontendController::class, 'newsDetail'])->name('news.detail');
+Route::post('/post-review', [web\FrontendController::class, 'postReview'])->name('post.review');
+
+
+
 
 // post review route
 Route::post('/review/store', [web\Frontend\ReviewController::class, 'store'])->name('review.store');

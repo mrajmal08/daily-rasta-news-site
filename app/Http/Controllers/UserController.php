@@ -128,18 +128,18 @@ class UserController extends Controller
             try {
 
                 unlink('assets/userImages' . '/' . $user->photo);
+                $imageName = Carbon::now()->timestamp . '.' . $request->photo->extension();
+                $request->photo->move(public_path('assets/userImages'), $imageName);
+                $data['photo'] = $imageName;
+                $user->photo = $data['photo'];
 
             } catch (\Exception $e) {
 
-                // return redirect()->route('categories.index')->with('error', 'Image not found');
 
                 $imageName = Carbon::now()->timestamp . '.' . $request->photo->extension();
                 $request->photo->move(public_path('assets/userImages'), $imageName);
-
                 $data['photo'] = $imageName;
-
                 $user->photo = $data['photo'];
-                // $user->save();
             }
         }
 

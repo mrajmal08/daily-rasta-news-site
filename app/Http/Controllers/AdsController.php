@@ -100,6 +100,18 @@ class AdsController extends Controller
 
                 unlink('assets/adsFiles' . '/' . $ads->image);
 
+                $validator = Validator::make($request->all(), [
+                    'image' => 'required|max:500',
+                ]);
+                if ($validator->fails()) {
+                    return redirect()->route('ads.index')->with('error', 'Image size can not be greter than 500kb');
+                }
+
+                $imageName = time() . '.' . $request->image->extension();
+                $request->image->move(public_path('assets/adsFiles'), $imageName);
+                $data['image'] = $imageName;
+                $ads->image = $data['image'];
+
             } catch (\Exception$e) {
                 $validator = Validator::make($request->all(), [
                     'image' => 'required|max:500',

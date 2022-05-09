@@ -31,6 +31,18 @@
 
                 <!-- Main content -->
                 <section class="content">
+
+                    @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert"
+                                aria-hidden="true">&times;</button>
+                            <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                            {{ $error }}
+                        </div>
+                    @endforeach
+                @endif
+
                     <form method="POST" action="{{ route('categories.update', [$category->id]) }}" enctype="multipart/form-data">
                         @CSRF
                         <div class="row">
@@ -60,6 +72,8 @@
                                             <div class="custom-file">
                                                 <input type="file" name="image" class="custom-file-input" id="customFile">
                                                 <label class="custom-file-label" for="customFile">Choose file</label>
+                                                <p style="color:red" >upload image with max_width 120px & max_height 100px</p>
+
                                                 <div class="">
                                                     <a href="{{ asset('assets/categoryImages') . '/' . $category->image }}?text=1"
                                                         data-toggle="lightbox"

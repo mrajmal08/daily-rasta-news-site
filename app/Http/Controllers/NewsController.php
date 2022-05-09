@@ -132,6 +132,12 @@ class NewsController extends Controller
 
                 unlink('assets/postImages' . '/' . $news->feature_image);
 
+                $imageName = Carbon::now()->timestamp . '.' . $request->feature_image->extension();
+                $request->feature_image->move(public_path('assets/postImages'), $imageName);
+
+                $data['feature_image'] = $imageName;
+                $news->feature_image = $data['feature_image'];
+
             } catch (\Exception $e) {
 
                 $imageName = Carbon::now()->timestamp . '.' . $request->feature_image->extension();

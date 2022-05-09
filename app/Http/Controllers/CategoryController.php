@@ -61,7 +61,7 @@ class CategoryController extends Controller
 
         $validator = Validator::make($request->all(), [
             'title' => 'required',
-            'image' => 'required',
+            'image' => 'required|dimensions:max_width=120,max_height=100',
         ]);
 
         if($validator->fails()) {
@@ -113,11 +113,27 @@ class CategoryController extends Controller
 
         $data = $request->all();
 
+        $validator = Validator::make($request->all(), [
+            'image' => 'required|dimensions:max_width=120,max_height=100',
+        ]);
+
+        if($validator->fails()) {
+            return Redirect::back()->withErrors($validator);
+        }
+
         if ($request->file('image')) {
 
             try {
 
                 unlink('assets/categoryImages' . '/' . $category->image);
+
+                $imageName = Carbon::now()->timestamp . '.' . $request->image->extension();
+                $request->image->move(public_path('assets/categoryImages'), $imageName);
+
+                $data['image'] = $imageName;
+
+                $category->image = $data['image'];
+                $category->save();
 
             } catch (\Exception$e) {
 
@@ -128,16 +144,18 @@ class CategoryController extends Controller
 
                 $category->image = $data['image'];
                 $category->save();
+
             }
         }
 
-        if ($request->name) {
-            $category->name = $request->name;
+        if ($request->title) {
+            $category->title = $request->title;
         }
 
         if ($request->description) {
             $category->description = $request->description;
         }
+
 
         $category->save();
 

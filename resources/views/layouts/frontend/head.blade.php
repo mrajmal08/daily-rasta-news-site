@@ -24,7 +24,13 @@
             <link rel="stylesheet" href="{{ asset('frontend/assets/css/nice-select.css')}}">
             <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css')}}">
             <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css" integrity="sha384-JvExCACAZcHNJEc7156QaHXTnQL3hQBixvj5RV5buE7vgnNEzzskDtx9NQ4p6BJe" crossorigin="anonymous">
-   </head>
+
+            <link rel="stylesheet" href="{{ asset('frontend/assets/css/custom.css')}}">
+            <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+
+        </head>
 
    <body>
        @include('layouts.frontend.inc.header')
@@ -69,6 +75,47 @@
 		<!-- Jquery Plugins, main Jquery -->
         <script src="{{ asset('frontend/assets/js/plugins.js')}}"></script>
         <script src="{{ asset('frontend/assets/js/main.js')}}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+
+        <script>
+            @if(Session::has('message'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+                    toastr.success("{{ session('message') }}");
+            @endif
+
+            @if(Session::has('error'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+                    toastr.error("{{ session('error') }}");
+            @endif
+
+            @if(Session::has('info'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+                    toastr.info("{{ session('info') }}");
+            @endif
+
+            @if(Session::has('warning'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+                    toastr.warning("{{ session('warning') }}");
+            @endif
+          </script>
+
 
     </body>
 </html>

@@ -8,7 +8,7 @@
             <!-- /.login-logo -->
             <div class="card card-outline card-primary">
                 <div class="card-header text-center">
-                    <a href="https://www.dailyrasta.com" class="h1"><b>Daily</b>Rasta</a>
+                    <a href="/" class="h1"><b>Daily</b>Rasta</a>
                 </div>
                 <div class="card-body">
                     <p class="login-box-msg">Sign in to start your session</p>
