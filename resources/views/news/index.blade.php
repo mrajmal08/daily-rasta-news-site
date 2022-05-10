@@ -91,9 +91,9 @@
                                                         <td>
                                                             <?php
                                                             if($item->type == 'trending'){
-                                                                echo '<span class="badge badge-success">Trending</span>';
+                                                                echo '<span class="badge badge-info">Trending</span>';
                                                             }else{
-                                                                echo '<span class="badge badge-warning">Popular</span>';
+                                                                echo '<span class="badge badge-secondary">Popular</span>';
 
                                                             }
                                                             ?>

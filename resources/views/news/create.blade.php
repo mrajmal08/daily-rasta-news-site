@@ -76,8 +76,8 @@
 
                                         <div class="form-group">
                                             <label for="inputName">News Description</label>
-                                                <textarea id="summernote" name="description">
-                                                  Place <em>some</em> <u>text</u> <strong>here</strong>
+                                                <textarea id="summernote" name="description" rows="4">
+
                                                 </textarea>
                                         </div>
 
@@ -104,14 +104,25 @@
                                         </div>
 
                                         <div class="form-group">
+                                            <label for="inputClientCompany">Top image</label>
+                                            <div class="custom-file">
+                                                <input type="file" name="top_image" class="custom-file-input"
+                                                    id="customFile">
+                                                <label class="custom-file-label" for="customFile">Choose Image</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label for="inputClientCompany">Feature image</label>
                                             <div class="custom-file">
                                                 <input type="file" name="feature_image" class="custom-file-input"
                                                     id="customFile">
                                                 <label class="custom-file-label" for="customFile">Choose Image</label>
-                                            </div>
+                                                <p style="color:red" >upload image with max_width 120px & max_height 100px</p>
 
+                                            </div>
                                         </div>
+
                                     </div>
                                     <!-- /.card-body -->
                                 </div>

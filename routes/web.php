@@ -22,6 +22,9 @@ Route::get('ہمارے-بارے-میں', [web\FrontendController::class, 'about'
 Route::get('/ہم-سے-رابطہ-کریں', [web\FrontendController::class, 'contact'])->name('contact.us');
 Route::get('/خبروں-کے-زمرے', [web\FrontendController::class, 'categories'])->name('categories.frontend');
 Route::get('/خبر-کی-تفصیل/{id}', [web\FrontendController::class, 'newsDetail'])->name('news.detail');
+Route::get('/بلاگ', [web\FrontendController::class, 'blog'])->name('blog');
+
+
 Route::post('/post-review', [web\FrontendController::class, 'postReview'])->name('post.review');
 
 

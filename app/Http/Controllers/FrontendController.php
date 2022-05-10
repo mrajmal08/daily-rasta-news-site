@@ -15,32 +15,36 @@ class FrontendController extends Controller
     public function index()
     {
         $breaking_news = News::where('breaking_news', 1)->take(5)->get();
-        $recent_news = News::take(5)->orderBy('id', 'DESC')->get();
+        $recent_news = News::take(4)->orderBy('id', 'DESC')->get();
         $latest_news = News::take(1)->orderBy('id', 'DESC')->first();
         $trending_news = News::take(10)->where('type', 'trending')->get();
+        $popular_news = News::take(10)->where('type', 'popular')->get();
+
+
 
         //categoreis
         $latest_categories = Category::take(3)->orderBy('id', 'DESC')->get();
 
-        return view('welcome', compact('breaking_news', 'recent_news', 'latest_news', 'latest_categories', 'trending_news'));
+        return view('welcome', compact('breaking_news', 'recent_news', 'latest_news', 'popular_news', 'latest_categories', 'trending_news'));
     }
 
     public function about()
     {
-
         return view('frontend.aboutus');
     }
 
     public function contact()
     {
-
         return view('frontend.contactus');
     }
 
     public function categories()
     {
-
         return view('frontend.categories');
+    }
+
+    public function blog(){
+        return view('frontend.blog');
     }
 
     public function newsDetail($id)

@@ -29,6 +29,8 @@
             <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
+    @stack('frontCss')
+
 
         </head>
 
@@ -76,6 +78,8 @@
         <script src="{{ asset('frontend/assets/js/plugins.js')}}"></script>
         <script src="{{ asset('frontend/assets/js/main.js')}}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    @stack('frontJs')
 
 
         <script>

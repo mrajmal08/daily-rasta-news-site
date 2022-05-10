@@ -8,13 +8,14 @@
             <div class="col-lg-8 posts-list">
                <div class="single-post">
                   <div class="feature-img">
-                     <img class="img-fluid" src="{{ asset('assets/postImages')."/".$news->feature_image }}" alt="">
+                    {{-- <img class="img-fluid" src="{{ asset('frontend/assets/img/blog/single_blog_1.png') }}}" alt=""> --}}
+                     <img class="img-fluid" src="{{ asset('assets/postImages')."/".$news->top_image }}" alt="">
                   </div>
                   <div class="blog_details">
                      <h2>{{ $news->title }}</h2>
                      </h2>
                      <ul class="blog-info-link mt-3 mb-4">
-                        <li><a href="#"><i class="fa fa-user"></i>{{ $category->title }}</a></li>
+                        <li><i class="fa fa-user"></i><a href="" >{{ $category->title }}</a></li>
                      </ul>
                      <p class="excert">
                         {!! $news->description !!}
@@ -37,8 +38,7 @@
 
                </div>
 
-               <div class="comments-area">
-                  <h4>05 Comments</h4>
+               <div class="">
 
                   @foreach($reviews as $review)
                   <div class="comment-list">

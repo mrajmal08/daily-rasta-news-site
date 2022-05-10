@@ -14,6 +14,19 @@ use Redirect;
 
 class NewsController extends Controller
 {
+
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -57,10 +70,24 @@ class NewsController extends Controller
         }
 
         if ($request->has('feature_image')) {
+            $validator = Validator::make($request->all(), [
+                'feature_image' => 'required|dimensions:max_width=120,max_height=100',
+            ]);
+
+            if($validator->fails()) {
+                return Redirect::back()->withErrors($validator);
+            }
 
             $imageName = time() . '.' . $request->feature_image->extension();
             $request->feature_image->move(public_path('assets/postImages'), $imageName);
             $data['feature_image'] = $imageName;
+        }
+
+        if ($request->has('top_image')) {
+
+            $top_image = Carbon::now()->timestamp .'top'. '.' . $request->top_image->extension();
+            $request->top_image->move(public_path('assets/postImages'), $top_image);
+            $data['top_image'] = $top_image;
         }
 
             $data['title'] = $request->title;
@@ -73,7 +100,8 @@ class NewsController extends Controller
 
          News::create($data);
 
-        return redirect()->route('news.index');
+        return redirect()->route('news.index')->with('message', 'News added Successfully');
+
     }
 
     /**
@@ -128,8 +156,15 @@ class NewsController extends Controller
 
         if ($request->file('feature_image')) {
 
-            try {
+            $validator = Validator::make($request->all(), [
+                'feature_image' => 'required|dimensions:max_width=120,max_height=100',
+            ]);
 
+            if($validator->fails()) {
+                return Redirect::back()->withErrors($validator);
+            }
+
+            try {
                 unlink('assets/postImages' . '/' . $news->feature_image);
 
                 $imageName = Carbon::now()->timestamp . '.' . $request->feature_image->extension();
@@ -145,6 +180,27 @@ class NewsController extends Controller
 
                 $data['feature_image'] = $imageName;
                 $news->feature_image = $data['feature_image'];
+            }
+        }
+
+
+        if ($request->file('top_image')) {
+            try {
+                unlink('assets/postImages' . '/' . $news->top_image);
+
+                $top_image = Carbon::now()->timestamp .'top'. '.' . $request->top_image->extension();
+                $request->top_image->move(public_path('assets/postImages'), $top_image);
+
+                $data['top_image'] = $top_image;
+                $news->top_image = $data['top_image'];
+
+            } catch (\Exception $e) {
+
+                $top_image = Carbon::now()->timestamp . '.' . $request->top_image->extension();
+                $request->top_image->move(public_path('assets/postImages'), $top_image);
+
+                $data['top_image'] = $top_image;
+                $news->top_image = $data['top_image'];
             }
         }
 

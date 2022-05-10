@@ -12,7 +12,7 @@
                                     <ul>
                                         <li>
                                             <a style="color: white" href="{{ route('login') }}">
-                                                login
+                                                لاگ ان کریں
                                                 </a>
                                              </li>
                                     </ul>
@@ -64,7 +64,7 @@
                                             <li><a href="#">Pages</a>
                                                 <ul class="submenu">
                                                     <li><a href="elements.html">Element</a></li>
-                                                    <li><a href="blog.html">Blog</a></li>
+                                                    <li><a href="{{ route('blog') }}">Blog</a></li>
                                                     <li><a href="single-blog.html">Blog Details</a></li>
                                                     <li><a href="details.html">Categori Details</a></li>
                                                 </ul>
