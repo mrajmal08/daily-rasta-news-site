@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Models\Category;
 use App\Models\News;
 use Carbon\Carbon;
@@ -68,13 +69,19 @@ class CategoryController extends Controller
             return Redirect::back()->withErrors($validator);
         }
 
+        $result =  explode(" ", $request->title);
+        $slug = implode('-', $result);
+
         if ($request->has('image')) {
 
             $imageName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('assets/categoryImages'), $imageName);
             $data = $request->all();
+
+            $data['slug'] = $slug;
             $data['image'] = $imageName;
         } else {
+            $data['slug'] = $slug;
             $data = $request->all();
         }
 
@@ -113,15 +120,16 @@ class CategoryController extends Controller
 
         $data = $request->all();
 
-        $validator = Validator::make($request->all(), [
-            'image' => 'required|dimensions:max_width=120,max_height=100',
-        ]);
-
-        if($validator->fails()) {
-            return Redirect::back()->withErrors($validator);
-        }
-
         if ($request->file('image')) {
+
+            $validator = Validator::make($request->all(), [
+                'image' => 'required|dimensions:max_width=120,max_height=100',
+            ]);
+
+            if($validator->fails()) {
+                return Redirect::back()->withErrors($validator);
+            }
+
 
             try {
 
@@ -150,6 +158,11 @@ class CategoryController extends Controller
 
         if ($request->title) {
             $category->title = $request->title;
+
+            $result =  explode(" ", $request->title);
+            $slug = implode('-', $result);
+            $category->slug = $slug;
+
         }
 
         if ($request->description) {

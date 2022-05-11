@@ -65,6 +65,11 @@
                                     <div class="card-body">
 
                                         <div class="form-group">
+                                            <label for="inputTitle">Blog Type</label>
+                                            <input type="text" id="inputTitle" name="type" value="{{ $blog->type }}" class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
                                             <label for="inputTitle">Blog Title</label>
                                             <input type="text" id="inputTitle" name="title" value="{{ $blog->title }}" class="form-control">
                                         </div>

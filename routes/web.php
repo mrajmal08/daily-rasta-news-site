@@ -23,18 +23,13 @@ Route::get('/ہم-سے-رابطہ-کریں', [web\FrontendController::class, 'co
 Route::get('/خبروں-کے-زمرے', [web\FrontendController::class, 'categories'])->name('categories.frontend');
 Route::get('/خبر-کی-تفصیل/{id}', [web\FrontendController::class, 'newsDetail'])->name('news.detail');
 Route::get('/بلاگ', [web\FrontendController::class, 'blog'])->name('blog');
-
+Route::get('/بلاگ-کی-تفصیل/{id}', [web\FrontendController::class, 'blogDetail'])->name('blog.detail');
 
 Route::post('/post-review', [web\FrontendController::class, 'postReview'])->name('post.review');
 
-
-
-
 // post review route
 Route::post('/review/store', [web\Frontend\ReviewController::class, 'store'])->name('review.store');
-
 Route::get('/guest', [web\Frontend\ReviewController::class, 'guest'])->name('guest');
-
 
 Auth::routes();
 
@@ -53,8 +48,6 @@ Route::post('/user/store', [web\UserController::class, 'store'])->name('users.st
 Route::get('/user/edit/{id}', [web\UserController::class, 'edit'])->name('users.edit');
 Route::post('/user/update/{id}', [web\UserController::class, 'update'])->name('users.update');
 Route::get('/user/delete/{id}', [web\UserController::class, 'destroy'])->name('users.delete');
-
-
 
 // Categoires Routes
 Route::get('/categories', [web\CategoryController::class, 'index'])->name('categories.index');
@@ -96,8 +89,4 @@ Route::post('/blogs/store', [web\BlogController::class, 'store'])->name('blogs.s
 Route::get('/blogs/edit/{id}', [web\BlogController::class, 'edit'])->name('blogs.edit');
 Route::post('/blogs/update/{id}', [web\BlogController::class, 'update'])->name('blogs.update');
 Route::get('/blogs/delete/{id}', [web\BlogController::class, 'destroy'])->name('blogs.delete');
-
-
-
-
 

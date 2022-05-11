@@ -62,6 +62,11 @@
                                     <div class="card-body">
 
                                         <div class="form-group">
+                                            <label for="inputTitle">Blog Type</label>
+                                            <input type="text" id="inputTitle" name="type" class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
                                             <label for="inputTitle">Blog Title</label>
                                             <input type="text" id="inputTitle" name="title" class="form-control">
                                         </div>
@@ -69,7 +74,7 @@
                                         <div class="form-group">
                                             <label for="inputName">Blog Description</label>
                                                 <textarea id="summernote" name="description" row="4">
-                                                  Place <em>some</em> <u>text</u> <strong>here</strong>
+
                                                 </textarea>
                                         </div>
 

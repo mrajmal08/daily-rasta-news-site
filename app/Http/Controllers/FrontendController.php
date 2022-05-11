@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\Review;
@@ -20,12 +21,12 @@ class FrontendController extends Controller
         $trending_news = News::take(10)->where('type', 'trending')->get();
         $popular_news = News::take(10)->where('type', 'popular')->get();
 
-
+        $blogs = Blog::take(10)->get();
 
         //categoreis
         $latest_categories = Category::take(3)->orderBy('id', 'DESC')->get();
 
-        return view('welcome', compact('breaking_news', 'recent_news', 'latest_news', 'popular_news', 'latest_categories', 'trending_news'));
+        return view('welcome', compact('breaking_news', 'recent_news', 'latest_news', 'popular_news', 'latest_categories', 'trending_news', 'blogs'));
     }
 
     public function about()
@@ -40,7 +41,9 @@ class FrontendController extends Controller
 
     public function categories()
     {
-        return view('frontend.categories');
+        $categories = Category::paginate(4);
+
+        return view('frontend.categories', compact('categories'));
     }
 
     public function blog(){
@@ -61,10 +64,26 @@ class FrontendController extends Controller
         $categories = Category::all();
 
         //get reviews
-        $reviews = Review::where('news_id', '=', $id)->get();
+        $reviews = Review::where('post_id', '=', $id)->where('type', 'news')->get();
 
         return view('frontend.news_detail', compact('recent_news', 'news', 'category', 'categories', 'reviews'));
 
+    }
+
+    public function blogDetail($id){
+
+        $previous_clicks = Blog::where('id', '=', $id)->pluck('total_clicks')->first();
+        $new_clicks = $previous_clicks + 1;
+        Blog::where('id', '=', $id)->update(['total_clicks' => $new_clicks]);
+
+        $blog = Blog::find($id);
+        $categories = Category::all();
+        $recent_blog = Blog::take(5)->orderBy('id', 'DESC')->get();
+        $reviews = Review::where('post_id', '=', $id)->where('type', 'blog')->get();
+
+
+
+        return view('frontend.blog_detail', compact('blog', 'categories', 'recent_blog', 'reviews'));
     }
 
     public function postReview(Request $request)
@@ -85,12 +104,22 @@ class FrontendController extends Controller
             $user_id = '0';
         }
 
+
         $review = new Review();
+
+        if($request->type == 'news'){
+            $review['post_id'] = $request->news_id;
+            $review['type'] = 'news';
+        }else{
+            $review['post_id'] = $request->blog_id;
+            $review['type'] = 'blog';
+        }
+
         $review['name'] = $request->name;
         $review['email'] = $request->email;
         $review['comment'] = $request->comment;
-        $review['type'] = 'news';
-        $review['news_id'] = $request->news_id;
+
+
 
         $review['user_id'] = $user_id;
 

@@ -9,6 +9,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
 		<link rel="shortcut icon" type="image/x-icon" href="frontend/assets/img/favicon.ico">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/nafees-nastaleeq" type="text/css"/>
+
 
 		<!-- CSS here -->
             <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
@@ -30,6 +32,15 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     @stack('frontCss')
+
+   <style>
+        p, a, h1, h2, h3, h4, span {
+        font-family: 'NafeesRegular';
+        font-weight: normal;
+        font-style: normal;
+      }
+
+    </style>
 
 
         </head>

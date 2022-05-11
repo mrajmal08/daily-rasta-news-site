@@ -75,7 +75,7 @@
                             @if(!empty($latest_news->id))
                                 <div class="trending-top mb-30">
                                     <div class="trend-top-img">
-                                        <img src=" {{ asset("assets/postImages/"."$latest_news->top_image") }} ">
+                                        <img src=" {{ asset("assets/postImages/"."$latest_news->top_image") }} " style="height: 487px;width: 730px;">
                                         <div class="trend-top-cap">
                                             <span>{{ App\Models\Category::where('id', $latest_news->cat_id)->pluck('title')->first(); }}</span>
                                             <h2><a href="{{ route('news.detail', [$latest_news->id]) }}">{{ $latest_news->title }}<br> </a></h2>
@@ -105,7 +105,7 @@
                                                 <div class="trend-bottom-img mb-30">
                                                     {{-- <img src="{{asset('frontend/assets/img/trending/trending_bottom2.jpg')}}" alt=""> --}}
                                                     <img src="{{ asset('assets/categoryImages') . '/' . $item->image }}"
-                                                        alt="{{ $item->title }}">
+                                                        alt="{{ $item->title }}" style="height: 186px;width: 223px;">
 
 
                                                 </div>
@@ -133,10 +133,9 @@
                                 ?>
 
                                 <div class="media post_item">
-                                    <img src="{{ asset('frontend/assets/img/trending/right2.jpg') }}" alt=""
-                                        class="">
+                                    {{-- <img src="{{ asset('frontend/assets/img/trending/right2.jpg') }}" alt="" class=""> --}}
 
-                                    {{-- <img src="{{ asset('assets/postImages')."/".$item->feature_image }}" alt="post" class="w-25 round"> --}}
+                                    <img src="{{ asset('assets/postImages')."/".$item->feature_image }}" alt="{{ $item->title }}" style="height: 100px;width: 120px;">
                                     &nbsp;
                                     <div class="media-body">
                                         <a href="{{ route('news.detail', [$item->id]) }}">
@@ -166,12 +165,11 @@
             </div>
         </div>
         <!-- Trending Area End -->
-        <!--   Weekly-News start -->
-        <div class="weekly-news-area pt-50">
+        <div class="recent-articles">
             <div class="container">
-                <div class="weekly-wrapper">
+                <div class="recent-wrapper">
                     <!-- section Tittle -->
-                    <div class="row">
+                    <div class="row mt-5">
                         <div class="col-lg-12">
                             <div class="section-tittle mb-30">
                                 <h3>ٹرینڈ نگ خبریں</h3>
@@ -180,32 +178,25 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-
-                            <div class="site-section bg-left-half mb-5">
-                                <div class="container owl-2-style">
-                                  <div class="owl-carousel owl-2">
-
-                                    @foreach($trending_news as $item)
-                                    <div class="media-29101">
-                                      <a href="#"><img src="{{asset('assets/postImages')."/".$item->feature_image }}" alt="{{ $item->title }}" class="img-fluid"></a>
-                                      <span  class="color1 ">{{ App\Models\Category::where('id', $item->cat_id)->pluck('title')->first() }}</span>
-                                      <h3><a href="{{ route('news.detail', [$item->id]) }}">{{ $item->title }}</a></h3>
+                            <div class="recent-active dot-style d-flex dot-style">
+                                @foreach($trending_news as $item)
+                                    <div class="single-recent mb-100">
+                                        <div class="what-img">
+                                            <img src="{{ asset('assets/postImages')."/".$item->feature_image }}" alt="{{ $item->title }}" style="height: 326px;width: 350px;">
+                                        </div>
+                                        <div class="what-cap">
+                                            <span class="color1">{{ App\Models\Category::where('id', $item->cat_id)->pluck('title')->first() }}</span>
+                                            <h4><a href="{{ route('news.detail', [$item->id]) }}">{{ $item->title }}</a></h4>
+                                        </div>
                                     </div>
-
-                                    @endforeach
-
-                                  </div>
-                                </div>
-                              </div>
-
-
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- End Weekly-News -->
-        <!-- Whats New Start -->
         <section class="whats-news-area pt-50 pb-20">
             <div class="container">
                 <div dir="rtl" class="row">
@@ -218,33 +209,13 @@
                             </div>
                             <div class="col-lg-9 col-md-9">
                                 <div class="properties__button">
-                                    <!--Nav Button  -->
-                                    {{-- <nav>
-                                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab"
-                                                href="#nav-home" role="tab" aria-controls="nav-home"
-                                                aria-selected="true">تمام</a>
 
-                                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab"
-                                                href="#nav-contact" role="tab" aria-controls="nav-contact"
-                                                aria-selected="false">شوبز</a>
-                                            <a class="nav-item nav-link" id="nav-last-tab" data-toggle="tab"
-                                                href="#nav-last" role="tab" aria-controls="nav-contact"
-                                                aria-selected="false">سیاست</a>
-                                            <a class="nav-item nav-link" id="nav-Sports" data-toggle="tab"
-                                                href="#nav-nav-Sport" role="tab" aria-controls="nav-contact"
-                                                aria-selected="false">کاروبار</a>
-                                            <a class="nav-item nav-link" id="nav-technology" data-toggle="tab"
-                                                href="#nav-techno" role="tab" aria-controls="nav-contact"
-                                                aria-selected="false">کھیل</a>
-                                        </div>
-                                    </nav> --}}
-                                    <!--End Nav Button  -->
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
+
                                 <!-- Nav Card -->
                                 <div class="tab-content" id="nav-tabContent">
                                     <!-- card one -->
@@ -252,14 +223,12 @@
                                         aria-labelledby="nav-home-tab">
                                         <div class="whats-news-caption">
                                             <div class="row">
-
-
                                                 @foreach($recent_news as $item)
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
                                                             <img src="{{ asset('assets/postImages')."/".$item->feature_image }} "
-                                                                alt="">
+                                                                alt="" style="height: 300px;width: 360px;">
                                                         </div>
                                                         <div class="what-cap">
                                                             <span class="color1">{{ App\Models\Category::where('id', $item->cat_id)->pluck('title')->first() }}</span>
@@ -268,9 +237,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 @endforeach
-
                                             </div>
                                         </div>
                                     </div>
@@ -338,11 +305,9 @@
                 </div>
             </div>
         </section>
-        <!-- Whats New End -->
-        <!--   Weekly2-News start -->
-        <div class="weekly2-news-area  weekly2-pading gray-bg">
-            <div class="container">
-                <div class="weekly2-wrapper">
+            <div class="recent-articles">
+                <div class="container">
+                    <div class="recent-wrapper">
                     <!-- section Tittle -->
                     <div class="row">
                         <div class="col-lg-12">
@@ -353,62 +318,54 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-
-
-                            <div class="site-section bg-left-half mb-5">
-                                <div class="container owl-2-style">
-                                  <div class="owl-carousel owl-2">
-
-                                    @foreach($popular_news as $item)
-                                    <div class="media-29101">
-                                      <a href="#"><img src="{{asset('assets/postImages')."/".$item->feature_image }}" alt="{{ $item->title }}" class="img-fluid"></a>
-                                      <span  class="color1 ">{{ App\Models\Category::where('id', $item->cat_id)->pluck('title')->first() }}</span>
-                                      <h3><a href="{{ route('news.detail', [$item->id]) }}">{{ $item->title }}</a></h3>
+                            <div class="recent-active dot-style d-flex dot-style">
+                                @foreach($popular_news as $item)
+                                    <div class="single-recent mb-100">
+                                        <div class="what-img">
+                                            <img src="{{ asset('assets/postImages')."/".$item->feature_image }}" alt="{{ $item->title }}" style="height: 326px;width: 350px;">
+                                        </div>
+                                        <div class="what-cap">
+                                            <span class="color1">{{ App\Models\Category::where('id', $item->cat_id)->pluck('title')->first() }}</span>
+                                            <h4><a href="{{ route('news.detail', [$item->id]) }}">{{ $item->title }}</a></h4>
+                                        </div>
                                     </div>
-
                                     @endforeach
-
-                                  </div>
                                 </div>
-                              </div>
-
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- End Weekly-News -->
-        <!-- Start Youtube -->
         <div class="youtube-area video-padding">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <div class="video-items-active">
                             <div class="video-items text-center">
-                                <iframe src="https://www.youtube.com/embed/CicQIuG8hBo" frameborder="0"
+                                <iframe src="https://www.youtube.com/embed/iXzfJWAwcOg" frameborder="0"
                                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen></iframe>
                             </div>
                             <div class="video-items text-center">
-                                <iframe src="https://www.youtube.com/embed/rIz00N40bag" frameborder="0"
+                                <iframe src="https://www.youtube.com/embed/lrplo5t-sZg" frameborder="0"
                                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen></iframe>
                             </div>
                             <div class="video-items text-center">
-                                <iframe src="https://www.youtube.com/embed/CONfhrASy44" frameborder="0"
-                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-
-                            </div>
-                            <div class="video-items text-center">
-                                <iframe src="https://www.youtube.com/embed/lq6fL2ROWf8" frameborder="0"
+                                <iframe src="https://www.youtube.com/embed/iczw6QJJ10I" frameborder="0"
                                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen></iframe>
 
                             </div>
                             <div class="video-items text-center">
-                                <iframe src="https://www.youtube.com/embed/0VxlQlacWV4" frameborder="0"
+                                <iframe src="https://www.youtube.com/embed/J3b51_ScXMw" frameborder="0"
+                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+
+                            </div>
+                            <div class="video-items text-center">
+                                <iframe src="https://www.youtube.com/embed/MjUy9DjbfEc" frameborder="0"
                                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen></iframe>
                             </div>
@@ -420,10 +377,10 @@
                         <div class="col-lg-6">
                             <div class="video-caption">
                                 <div class="top-caption">
-                                    <span class="color1">Politics</span>
+                                    {{-- <span class="color1">Politics</span> --}}
                                 </div>
-                                <div class="bottom-caption">
-                                    <h2>Welcome To The Best Model Winner Contest At Look of the year</h2>
+                                <div class="bottom-caption mt-2">
+                                    <h2>پاکستان کی سب سے بڑی ڈیجیٹل نیوز ایجنسی میں خوش آمدید</h2>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod ipsum dolor
                                         sit. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod ipsum
                                         dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod
@@ -479,8 +436,6 @@
                 </div>
             </div>
         </div>
-        <!-- End Start youtube -->
-        <!--  Recent Articles start -->
         <div class="recent-articles">
             <div class="container">
                 <div class="recent-wrapper">
@@ -488,49 +443,24 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="section-tittle mb-30">
-                                <h3>Recent Articles</h3>
+                                <h3>بلاگ</h3>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
                             <div class="recent-active dot-style d-flex dot-style">
+                            @foreach($blogs as $item)
                                 <div class="single-recent mb-100">
                                     <div class="what-img">
-                                        <img src="{{ asset('frontend/assets/img/news/recent1.jpg') }}" alt="">
+                                        <img src="{{ asset('assets/blogFiles')."/".$item->feature_image }}" alt="" style="height: 326px;width: 350px;">
                                     </div>
                                     <div class="what-cap">
-                                        <span class="color1">Night party</span>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
+                                        <span class="color1">{{ $item->type }}</span>
+                                        <h4><a href="{{ route('blog.detail', [$item->id]) }}" target="_blank">{{ $item->title }}</a></h4>
                                     </div>
                                 </div>
-                                <div class="single-recent mb-100">
-                                    <div class="what-img">
-                                        <img src="{{ asset('frontend/assets/img/news/recent2.jpg') }}" alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <span class="color1">Night party</span>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                    </div>
-                                </div>
-                                <div class="single-recent mb-100">
-                                    <div class="what-img">
-                                        <img src="{{ asset('frontend/assets/img/news/recent3.jpg') }}" alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <span class="color1">Night party</span>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                    </div>
-                                </div>
-                                <div class="single-recent mb-100">
-                                    <div class="what-img">
-                                        <img src="{{ asset('frontend/assets/img/news/recent2.jpg') }}" alt="">
-                                    </div>
-                                    <div class="what-cap">
-                                        <span class="color1">Night party</span>
-                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                    </div>
-                                </div>
+                            @endforeach
                             </div>
                         </div>
                     </div>

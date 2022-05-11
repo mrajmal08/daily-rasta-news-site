@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('comment')->nullable();
             $table->string('type')->nullable();
-            $table->unsignedBigInteger('news_id')->nullable();
+            $table->unsignedBigInteger('post_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->softDeletes();
             $table->timestamps();

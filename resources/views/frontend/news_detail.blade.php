@@ -9,7 +9,7 @@
                <div class="single-post">
                   <div class="feature-img">
                     {{-- <img class="img-fluid" src="{{ asset('frontend/assets/img/blog/single_blog_1.png') }}}" alt=""> --}}
-                     <img class="img-fluid" src="{{ asset('assets/postImages')."/".$news->top_image }}" alt="">
+                     <img class="img-fluid" src="{{ asset('assets/postImages')."/".$news->top_image }}" alt="{{ $news->title }}"  style="height: 487px;width: 730px;">
                   </div>
                   <div class="blog_details">
                      <h2>{{ $news->title }}</h2>
@@ -35,7 +35,6 @@
                         <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                      </ul>
                   </div>
-
                </div>
 
                <div class="">
@@ -65,12 +64,12 @@
                      </div>
                   </div>
 
-@endforeach
+            @endforeach
 
 
                </div>
                <div class="comment-form">
-                  <h4>Leave a Reply</h4>
+                  <h4>ایک جائزہ چھوڑیں۔</h4>
 
                 @if ($errors->any())
                   @foreach ($errors->all() as $error)
@@ -88,6 +87,7 @@
                     <div class="row">
                         <div class="col-12">
                             <input type="hidden" name="news_id" value="{{ $news->id }}">
+                            <input type="hidden" name="type" value="news">
                            <div class="form-group">
                               <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
                                  placeholder="Write Comment"></textarea>
@@ -106,38 +106,22 @@
 
                      </div>
                      <div class="form-group">
-                        <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send Message</button>
+                        <button type="submit" class="button button-contactForm btn_1 boxed-btn">پیغام بھیجیں</button>
                      </div>
                   </form>
                </div>
             </div>
             <div class="col-lg-4">
                <div class="blog_right_sidebar">
-                  <aside class="single_sidebar_widget search_widget">
-                     <form action="#">
-                        <div class="form-group">
-                           <div class="input-group mb-3">
-                              <input type="text" class="form-control" placeholder='Search Keyword'
-                                 onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
-                              <div class="input-group-append">
-                                 <button class="btns" type="button"><i class="ti-search"></i></button>
-                              </div>
-                           </div>
-                        </div>
-                        <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                           type="submit">Search</button>
-                     </form>
-                  </aside>
+
                   <aside class="single_sidebar_widget post_category_widget">
-                     <h4 class="widget_title">Category</h4>
+                     <h4 class="widget_title">اقسام</h4>
                      <ul class="list cat-list">
 
                         @foreach ($categories as $category)
-
                         <?php
                          $count = App\Models\News::where('cat_id', $category->id)->count();
                         ?>
-
                         <li>
                            <a href="#" class="d-flex">
                               <p>{{ $category->title }}</p>
@@ -145,7 +129,6 @@
                            </a>
                         </li>
                        @endforeach
-
 
                      </ul>
                   </aside>

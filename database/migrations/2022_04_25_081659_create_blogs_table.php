@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->longText('description')->nullable();
             $table->string('feature_image')->nullable();
+            $table->string('type')->nullable();
+
             $table->string('total_clicks')->nullable();
 
             $table->unsignedBigInteger('user_id')->nullable();

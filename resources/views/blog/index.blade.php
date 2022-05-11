@@ -59,7 +59,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Title</th>
-                                                    {{-- <th>Description</th> --}}
+                                                    <th>Type</th>
                                                     <th>Image</th>
                                                     <th>Clicks</th>
                                                     <th>Action</th>
@@ -72,7 +72,7 @@
                                                 @foreach ($blogs as $item)
                                                     <tr>
                                                         <td>{{ $item->title }}</td>
-                                                        {{-- <td>{!! $item->description !!}</td> --}}
+                                                        <td>{{ $item->type }}</td>
 
                                                         <td>
                                                             <div class="">
@@ -88,8 +88,8 @@
                                                         </td>
 
                                                         <td>
-                                                            <span class='fa fa-eye' style='color: green'>123</span>
-                                                            {{ $item->total_clicks }}
+                                                            <span class='fa fa-eye' style='color: green'> {{ $item->totle_clicks?$item->totle_clicks:'0' }}</span>
+
                                                          </td>
 
                                                         <td>
@@ -111,7 +111,7 @@
                                             <tfoot>
                                                 <tr>
                                                     <th>Title</th>
-                                                    {{-- <th>Description</th> --}}
+                                                    <th>Type</th>
                                                     <th>Image</th>
                                                     <th>Clicks</th>
                                                     <th>Action</th>

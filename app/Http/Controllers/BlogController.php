@@ -76,11 +76,12 @@ class BlogController extends Controller
             $data['feature_image'] = $imageName;
         }
         $data['title'] = $request->title;
+        $data['type'] = $request->type;
         $data['description'] = $request->description;
         $data['user_id'] = Auth::user()->id;
         Blog::create($data);
 
-        return redirect()->route('blogs.index')->with('success', 'Blog created successfully');
+        return redirect()->route('blogs.index')->with('message','Blog created Successfully');
     }
 
     /**
@@ -147,6 +148,11 @@ class BlogController extends Controller
             $blog->title = $request->title;
         }
 
+        if ($request->type) {
+            $blog->type = $request->type;
+        }
+
+
         if ($request->description) {
             $blog->description = $request->description;
         }
@@ -155,7 +161,7 @@ class BlogController extends Controller
         $blog->save();
 
 
-        return redirect()->route('blogs.index')->with('message','News updated Successfully');
+        return redirect()->route('blogs.index')->with('message','Blog updated Successfully');
     }
 
     /**

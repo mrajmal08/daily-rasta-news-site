@@ -34,7 +34,8 @@
                             <!-- Logo -->
                             <div class="col-xl-3 col-lg-3 col-md-3">
                                 <div class="logo">
-                                    <a href="index.html"><img src="{{ asset('frontend/assets/img/logo/logo.png') }}" alt=""></a>
+                                    {{-- <a href="index.html"><img src="{{ asset('frontend/assets/img/logo/logo.png') }}" alt=""></a> --}}
+                                    <a href="/"><img src="http://dailyrasta.com/wp-content/uploads/2021/08/logo-gif-1.gif" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-xl-9 col-lg-9 col-md-9">
@@ -51,7 +52,8 @@
                             <div class="col-xl-10 col-lg-10 col-md-12 header-flex">
                                 <!-- sticky -->
                                     <div class="sticky-logo">
-                                        <a href="/"><img src="{{ asset('frontend/assets/img/logo/logo.png') }}" alt=""></a>
+                                        <a href="/"><img src="http://dailyrasta.com/wp-content/uploads/2021/08/logo-gif-1.gif" alt=""></a>
+
                                     </div>
                                 <!-- Main-menu -->
                                 <div  class="main-menu d-none d-md-block">
@@ -61,14 +63,16 @@
                                             <li><a href="{{ route('categories.frontend') }}">اقسام</a></li>
                                             <li><a href="{{ route('about.us') }}">ہمارے بارے میں</a></li>
                                             <li><a href="{{ route('contact.us') }}">ہم سے رابطہ کریں</a></li>
-                                            <li><a href="#">Pages</a>
+                                            <li><a href="{{ route('blog') }}">بلاگ</a></li>
+
+                                            {{-- <li><a href="#">Pages</a>
                                                 <ul class="submenu">
                                                     <li><a href="elements.html">Element</a></li>
                                                     <li><a href="{{ route('blog') }}">Blog</a></li>
                                                     <li><a href="single-blog.html">Blog Details</a></li>
                                                     <li><a href="details.html">Categori Details</a></li>
                                                 </ul>
-                                            </li>
+                                            </li> --}}
                                         </ul>
                                     </nav>
                                 </div>
