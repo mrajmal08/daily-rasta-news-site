@@ -56,7 +56,7 @@
                                         scrollamount="12" direction="right" onmouseover="this.stop();"
                                         onmouseout="this.start();">
                                         @foreach ($breaking_news as $item)
-                                            <a href="{{ route('news.detail', [$item->id]) }}">{{ $item->title }}</a>
+                                            <a href="{{ route('news.detail', [$item->slug]) }}">{{ $item->title }}</a>
                                             <span class="dot"></span>
                                         @endforeach
 
@@ -78,7 +78,7 @@
                                         <img src=" {{ asset("assets/postImages/"."$latest_news->top_image") }} " style="height: 487px;width: 730px;">
                                         <div class="trend-top-cap">
                                             <span>{{ App\Models\Category::where('id', $latest_news->cat_id)->pluck('title')->first(); }}</span>
-                                            <h2><a href="{{ route('news.detail', [$latest_news->id]) }}">{{ $latest_news->title }}<br> </a></h2>
+                                            <h2><a href="{{ route('news.detail', [$latest_news->slug]) }}">{{ $latest_news->title }}<br> </a></h2>
                                         </div>
                                     </div>
                                 </div>
@@ -110,9 +110,9 @@
 
                                                 </div>
                                                 <div class="trend-bottom-cap">
-                                                    <span class="color1">{{ $item->title }}</span>
+                                                    <span class="color1"><a href="{{ route('categories.detail', [$item->slug]) }}">{{ $item->title }}</a></span>
                                                     <h4>
-                                                        <h4><a href="details.html">{{ $item->description }}</a></h4>
+                                                        <h4><a href="{{ route('categories.detail', [$item->slug]) }}">{{ $item->description }}</a></h4>
                                                     </h4>
                                                 </div>
                                             </div>
@@ -133,30 +133,18 @@
                                 ?>
 
                                 <div class="media post_item">
-                                    {{-- <img src="{{ asset('frontend/assets/img/trending/right2.jpg') }}" alt="" class=""> --}}
 
                                     <img src="{{ asset('assets/postImages')."/".$item->feature_image }}" alt="{{ $item->title }}" style="height: 100px;width: 120px;">
                                     &nbsp;
                                     <div class="media-body">
-                                        <a href="{{ route('news.detail', [$item->id]) }}">
-                                            <p>{{ $item->title }}</p>
+                                        <a href="{{ route('news.detail', [$item->slug]) }}">
+                                            {{ $item->title }}
                                         </a>
 
                                         <p>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</p>
                                     </div>
                                 </div>
 
-                                {{-- <div class="trand-right-single d-flex">
-                            <div class="trand-right-img media post_item" >
-                                <img src="{{ asset('frontend/assets/img/trending/right2.jpg') }}" alt="" class="" >
-
-                                <img src="{{ asset('assets/postImages')."/".$item->feature_image }}" alt="{{ $item->title }}" class="w-25">
-                            </div>&nbsp;
-                            <div class="trand-right-cap">
-                                <span class="color1">{{ $category_name }}</span>
-                                <h4><a href="{{ route('news.detail', [$item->id]) }}">{{ $item->title }}</a></h4>
-                            </div>
-                        </div> --}}
                             @endforeach
 
                         </div>
@@ -180,13 +168,17 @@
                         <div class="col-12">
                             <div class="recent-active dot-style d-flex dot-style">
                                 @foreach($trending_news as $item)
+                                <?php
+                               $cat_detail =  App\Models\Category::where('id', $item->cat_id)->first();
+                                ?>
+
                                     <div class="single-recent mb-100">
                                         <div class="what-img">
                                             <img src="{{ asset('assets/postImages')."/".$item->feature_image }}" alt="{{ $item->title }}" style="height: 326px;width: 350px;">
                                         </div>
                                         <div class="what-cap">
-                                            <span class="color1">{{ App\Models\Category::where('id', $item->cat_id)->pluck('title')->first() }}</span>
-                                            <h4><a href="{{ route('news.detail', [$item->id]) }}">{{ $item->title }}</a></h4>
+                                            <span class="color1"><a href="{{ route('categories.detail', [$cat_detail->slug]) }}">{{ $cat_detail->title }}</a></span>
+                                            <h4><a href="{{ route('news.detail', [$item->slug]) }}">{{ $item->title }}</a></h4>
                                         </div>
                                     </div>
                                 @endforeach
@@ -224,6 +216,9 @@
                                         <div class="whats-news-caption">
                                             <div class="row">
                                                 @foreach($recent_news as $item)
+                                                <?php
+                                                $cat_detail = App\Models\Category::where('id', $item->cat_id)->first();
+                                                ?>
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
                                                         <div class="what-img">
@@ -231,8 +226,8 @@
                                                                 alt="" style="height: 300px;width: 360px;">
                                                         </div>
                                                         <div class="what-cap">
-                                                            <span class="color1">{{ App\Models\Category::where('id', $item->cat_id)->pluck('title')->first() }}</span>
-                                                            <h4><a href="{{ route('news.detail', [$item->id]) }}">{{ $item->title }}</a>
+                                                            <span class="color1"><a href="{{ route('categories.detail', [$cat_detail->slug]) }}">{{ $cat_detail->title }}</a></span>
+                                                            <h4><a href="{{ route('news.detail', [$item->slug]) }}">{{ $item->title }}</a>
                                                             </h4>
                                                         </div>
                                                     </div>
@@ -250,19 +245,18 @@
                     <div class="col-lg-4">
                         <!-- Section Tittle -->
                         <div class="section-tittle mb-40">
-                            <h3>Follow Us</h3>
+                            <h3>ہمیں فالو کریں</h3>
                         </div>
                         <!-- Flow Socail -->
                         <div class="single-follow mb-45">
                             <div class="single-box">
                                 <div class="follow-us d-flex align-items-center">
                                     <div class="follow-social">
-                                        <a href="#"><img src="{{ asset('frontend/assets/img/news/icon-fb.png') }}"
+                                        <a href="https://web.facebook.com/dailyrastalahore/"><img src="{{ asset('frontend/assets/img/news/icon-fb.png') }}"
                                                 alt=""></a>
                                     </div>
                                     <div class="follow-count">
-                                        <span>8,045</span>
-                                        <p>Fans</p>
+
                                     </div>
                                 </div>
                                 <div class="follow-us d-flex align-items-center">
@@ -271,8 +265,7 @@
                                                 alt=""></a>
                                     </div>
                                     <div class="follow-count">
-                                        <span>3,167</span>
-                                        <p>Fans</p>
+
                                     </div>
                                 </div>
                                 <div class="follow-us d-flex align-items-center">
@@ -281,18 +274,16 @@
                                                 alt=""></a>
                                     </div>
                                     <div class="follow-count">
-                                        <span>9,089</span>
-                                        <p>Fans</p>
+
                                     </div>
                                 </div>
                                 <div class="follow-us d-flex align-items-center">
                                     <div class="follow-social">
-                                        <a href="#"><img src="{{ asset('frontend/assets/img/news/icon-yo.png') }}"
+                                        <a href="https://www.youtube.com/channel/UCty_T-nB2sTu8lTHg6ZwztA"><img src="{{ asset('frontend/assets/img/news/icon-yo.png') }}"
                                                 alt=""></a>
                                     </div>
                                     <div class="follow-count">
-                                        <span>6,974</span>
-                                        <p>Fans</p>
+
                                     </div>
                                 </div>
                             </div>
@@ -320,13 +311,16 @@
                         <div class="col-12">
                             <div class="recent-active dot-style d-flex dot-style">
                                 @foreach($popular_news as $item)
+                                <?php
+                                    $cat_detail = App\Models\Category::where('id', $item->cat_id)->first();
+                                ?>
                                     <div class="single-recent mb-100">
                                         <div class="what-img">
                                             <img src="{{ asset('assets/postImages')."/".$item->feature_image }}" alt="{{ $item->title }}" style="height: 326px;width: 350px;">
                                         </div>
                                         <div class="what-cap">
-                                            <span class="color1">{{ App\Models\Category::where('id', $item->cat_id)->pluck('title')->first() }}</span>
-                                            <h4><a href="{{ route('news.detail', [$item->id]) }}">{{ $item->title }}</a></h4>
+                                            <span class="color1"><a href="{{ route('categories.detail', [$cat_detail->slug]) }}">{{ $cat_detail->title }}</a></span>
+                                            <h4><a href="{{ route('news.detail', [$item->slug]) }}">{{ $item->title }}</a></h4>
                                         </div>
                                     </div>
                                     @endforeach
@@ -342,33 +336,21 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="video-items-active">
+                            @foreach($videos as $item)
                             <div class="video-items text-center">
-                                <iframe src="https://www.youtube.com/embed/iXzfJWAwcOg" frameborder="0"
-                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                            </div>
-                            <div class="video-items text-center">
-                                <iframe src="https://www.youtube.com/embed/lrplo5t-sZg" frameborder="0"
-                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                            </div>
-                            <div class="video-items text-center">
-                                <iframe src="https://www.youtube.com/embed/iczw6QJJ10I" frameborder="0"
-                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
 
-                            </div>
-                            <div class="video-items text-center">
-                                <iframe src="https://www.youtube.com/embed/J3b51_ScXMw" frameborder="0"
-                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
+                                {!! preg_replace(
+                                    "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+                                    "<iframe class='embed-responsive-item' src=\"//www.youtube.com/embed/$2\" allowfullscreen></iframe>",
+                                    $item->video_link
+                                ); !!}
 
-                            </div>
-                            <div class="video-items text-center">
-                                <iframe src="https://www.youtube.com/embed/MjUy9DjbfEc" frameborder="0"
+                                {{-- <iframe src="https://www.youtube.com/embed/iXzfJWAwcOg" frameborder="0"
                                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
+                                    allowfullscreen></iframe> --}}
                             </div>
+                            @endforeach
+
                         </div>
                     </div>
                 </div>
@@ -390,46 +372,19 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="testmonial-nav text-center">
+                                @foreach($videos as $item)
                                 <div class="single-video">
-                                    <iframe src="https://www.youtube.com/embed/CicQIuG8hBo" frameborder="0"
-                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe>
+                                    {!! preg_replace(
+                                        "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+                                        "<iframe class='embed-responsive-item' src=\"//www.youtube.com/embed/$2\" allowfullscreen></iframe>",
+                                        $item->video_link
+                                    ); !!}
+
                                     <div class="video-intro">
-                                        <h4>Welcotme To The Best Model Winner Contest</h4>
+                                        {{-- <h4>Welcotme To The Best Model Winner Contest</h4> --}}
                                     </div>
                                 </div>
-                                <div class="single-video">
-                                    <iframe src="https://www.youtube.com/embed/rIz00N40bag" frameborder="0"
-                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe>
-                                    <div class="video-intro">
-                                        <h4>Welcotme To The Best Model Winner Contest</h4>
-                                    </div>
-                                </div>
-                                <div class="single-video">
-                                    <iframe src="https://www.youtube.com/embed/CONfhrASy44" frameborder="0"
-                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe>
-                                    <div class="video-intro">
-                                        <h4>Welcotme To The Best Model Winner Contest</h4>
-                                    </div>
-                                </div>
-                                <div class="single-video">
-                                    <iframe src="https://www.youtube.com/embed/lq6fL2ROWf8" frameborder="0"
-                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe>
-                                    <div class="video-intro">
-                                        <h4>Welcotme To The Best Model Winner Contest</h4>
-                                    </div>
-                                </div>
-                                <div class="single-video">
-                                    <iframe src="https://www.youtube.com/embed/0VxlQlacWV4" frameborder="0"
-                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe>
-                                    <div class="video-intro">
-                                        <h4>Welcotme To The Best Model Winner Contest</h4>
-                                    </div>
-                                </div>
+                               @endforeach
                             </div>
                         </div>
                     </div>
@@ -457,7 +412,7 @@
                                     </div>
                                     <div class="what-cap">
                                         <span class="color1">{{ $item->type }}</span>
-                                        <h4><a href="{{ route('blog.detail', [$item->id]) }}" target="_blank">{{ $item->title }}</a></h4>
+                                        <h4><a href="{{ route('blog.detail', [$item->slug]) }}" target="_blank">{{ $item->title }}</a></h4>
                                     </div>
                                 </div>
                             @endforeach

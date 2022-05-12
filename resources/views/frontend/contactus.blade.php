@@ -1,20 +1,6 @@
 @extends('layouts.frontend.head')
 
 @section('content')
-    <!-- Preloader Start -->
-    <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    <img src="frontend/assets/img/logo/loder.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Preloader Start -->
-
-
 
     <!-- ================ contact section start ================= -->
     <section class="contact-section">
@@ -466,43 +452,55 @@
 
             <div dir="rtl" class="row">
                 <div class="col-12">
-                    <h2 class="contact-title">Get in Touch</h2>
+                    <h2 class="contact-title">رابطے میں رہیں</h2>
                 </div>
+
+                @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert"
+                            aria-hidden="true">&times;</button>
+                        <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                        {{ $error }}
+                    </div>
+                @endforeach
+              @endif
+
                 <div class="col-lg-8">
-                    <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm"
-                        novalidate="novalidate">
+                    <form class="form-contact contact_form" action="{{ route('contact.store') }}" method="post">
+                        @csrf
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''"
+                                    <textarea class="form-control w-100" name="comment" id="message" cols="30" rows="9" onfocus="this.placeholder = ''"
                                         onblur="this.placeholder = 'Enter Message'"
-                                        placeholder=" Enter Message"></textarea>
+                                        placeholder="پیغام درج کریں"></textarea>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <input class="form-control valid" name="name" id="name" type="text"
                                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'"
-                                        placeholder="Enter your name">
+                                        placeholder="اپنا نام درج کریں">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <input class="form-control valid" name="email" id="email" type="email"
                                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'"
-                                        placeholder="Email">
+                                        placeholder="ای میل">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
                                     <input class="form-control" name="subject" id="subject" type="text"
                                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'"
-                                        placeholder="Enter Subject">
+                                        placeholder="سبجیکٹ درج کریں۔ ">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group mt-3">
-                            <button type="submit" class="button button-contactForm boxed-btn">Send</button>
+                            <button type="submit" class="button button-contactForm boxed-btn">پیغام بھیجیں</button>
                         </div>
                     </form>
                 </div>

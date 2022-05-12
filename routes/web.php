@@ -20,10 +20,18 @@ use App\Http\Controllers as web;
 Route::get('/', [web\FrontendController::class, 'index']);
 Route::get('ہمارے-بارے-میں', [web\FrontendController::class, 'about'])->name('about.us');
 Route::get('/ہم-سے-رابطہ-کریں', [web\FrontendController::class, 'contact'])->name('contact.us');
-Route::get('/خبروں-کے-زمرے', [web\FrontendController::class, 'categories'])->name('categories.frontend');
-Route::get('/خبر-کی-تفصیل/{id}', [web\FrontendController::class, 'newsDetail'])->name('news.detail');
+Route::post('/message-send', [web\FrontendController::class, 'contactStore'])->name('contact.store');
+
+Route::get('/اقسام', [web\FrontendController::class, 'categories'])->name('categories.frontend');
+Route::get('/{slug}/خبریں', [web\FrontendController::class, 'categoryDetail'])->name('categories.detail');
+Route::get('/{slug}/خبر', [web\FrontendController::class, 'newsDetail'])->name('news.detail');
 Route::get('/بلاگ', [web\FrontendController::class, 'blog'])->name('blog');
-Route::get('/بلاگ-کی-تفصیل/{id}', [web\FrontendController::class, 'blogDetail'])->name('blog.detail');
+Route::get('/{slug}/بلاگ', [web\FrontendController::class, 'blogDetail'])->name('blog.detail');
+Route::get('/قوائد-و-ضوابط', [web\FrontendController::class, 'terms'])->name('terms');
+Route::get('/پرائیویسی-پالیسی', [web\FrontendController::class, 'privacyPolicy'])->name('privacy.policy');
+Route::get('/سٹاف', [web\FrontendController::class, 'staff'])->name('staff');
+
+
 
 Route::post('/post-review', [web\FrontendController::class, 'postReview'])->name('post.review');
 

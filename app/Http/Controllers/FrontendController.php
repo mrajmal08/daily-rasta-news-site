@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Blog;
-use App\Models\Category;
-use App\Models\News;
-use App\Models\Review;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Redirect;
+use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\Contact;
+use App\Models\Review;
+use App\Models\Video;
+use App\Models\Blog;
+use App\Models\News;
 use Validator;
+use Redirect;
 
 class FrontendController extends Controller
 {
@@ -23,10 +25,11 @@ class FrontendController extends Controller
 
         $blogs = Blog::take(10)->get();
 
+        $videos = Video::take(10)->get();
         //categoreis
         $latest_categories = Category::take(3)->orderBy('id', 'DESC')->get();
 
-        return view('welcome', compact('breaking_news', 'recent_news', 'latest_news', 'popular_news', 'latest_categories', 'trending_news', 'blogs'));
+        return view('welcome', compact('breaking_news', 'recent_news', 'latest_news', 'popular_news', 'latest_categories', 'trending_news', 'blogs' ,'videos'));
     }
 
     public function about()
@@ -39,49 +42,89 @@ class FrontendController extends Controller
         return view('frontend.contactus');
     }
 
+    public function contactStore(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+        ]);
+
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator);
+        }
+
+        $contact = new Contact();
+        $contact['name'] = $request->name;
+        $contact['email'] = $request->email;
+        $contact['comment'] = $request->comment;
+        $contact['subject'] = $request->subject;
+        $contact['user_id'] = auth()->user()->id;
+        $contact->save();
+        return redirect()->back()->with('message', 'پیغام کامیابی کے ساتھ جمع ہو گیا۔');
+
+    }
+
     public function categories()
     {
         $categories = Category::paginate(4);
+        $recent_categories = Category::take(8)->orderBy('id', 'DESC')->get();
 
-        return view('frontend.categories', compact('categories'));
+        return view('frontend.categories', compact('categories', 'recent_categories'));
     }
 
-    public function blog(){
-        return view('frontend.blog');
-    }
-
-    public function newsDetail($id)
+    public function categoryDetail($slug)
     {
 
-        $previous_clicks = News::where('id', '=', $id)->pluck('clicks')->first();
+        $category = Category::where('slug', $slug)->first();
+        $news = News::where('cat_id', $category->id)->paginate(6);
+
+        return view('frontend.category_detail', compact('news', 'category'));
+    }
+
+    public function newsDetail($slug)
+    {
+
+        $news = News::where('slug', $slug)->first();
+
+        $previous_clicks = News::where('id', '=', $news->id)->pluck('clicks')->first();
         $new_clicks = $previous_clicks + 1;
-        News::where('id', '=', $id)->update(['clicks' => $new_clicks]);
+        News::where('id', '=', $news->id)->update(['clicks' => $new_clicks]);
 
         $recent_news = News::take(5)->orderBy('id', 'DESC')->get();
-        $news = News::find($id);
+        $news = News::find($news->id);
 
         $category = Category::find($news->cat_id);
-        $categories = Category::all();
+        $categories = Category::take(8)->orderBy('id', 'DESC')->get();
 
         //get reviews
-        $reviews = Review::where('post_id', '=', $id)->where('type', 'news')->get();
+        $reviews = Review::where('post_id', '=', $news->id)->where('type', 'news')->get();
 
         return view('frontend.news_detail', compact('recent_news', 'news', 'category', 'categories', 'reviews'));
 
     }
 
-    public function blogDetail($id){
+    public function blog()
+    {
 
-        $previous_clicks = Blog::where('id', '=', $id)->pluck('total_clicks')->first();
-        $new_clicks = $previous_clicks + 1;
-        Blog::where('id', '=', $id)->update(['total_clicks' => $new_clicks]);
-
-        $blog = Blog::find($id);
-        $categories = Category::all();
+        $blog = Blog::paginate(5);
+        $recent_categories = Category::take(8)->orderBy('id', 'DESC')->get();
         $recent_blog = Blog::take(5)->orderBy('id', 'DESC')->get();
-        $reviews = Review::where('post_id', '=', $id)->where('type', 'blog')->get();
+        return view('frontend.blog', compact('blog', 'recent_categories', 'recent_blog'));
+    }
 
+    public function blogDetail($slug)
+    {
 
+        $blog_detail = Blog::where('slug', $slug)->first();
+
+        $previous_clicks = Blog::where('id', '=', $blog_detail->id)->pluck('total_clicks')->first();
+        $new_clicks = $previous_clicks + 1;
+        Blog::where('id', '=', $blog_detail->id)->update(['total_clicks' => $new_clicks]);
+
+        $blog = Blog::find($blog_detail->id);
+        $categories = Category::take(8)->orderBy('id', 'DESC')->get();
+        $recent_blog = Blog::take(5)->orderBy('id', 'DESC')->get();
+        $reviews = Review::where('post_id', '=', $blog_detail->id)->where('type', 'blog')->get();
 
         return view('frontend.blog_detail', compact('blog', 'categories', 'recent_blog', 'reviews'));
     }
@@ -104,13 +147,12 @@ class FrontendController extends Controller
             $user_id = '0';
         }
 
-
         $review = new Review();
 
-        if($request->type == 'news'){
+        if ($request->type == 'news') {
             $review['post_id'] = $request->news_id;
             $review['type'] = 'news';
-        }else{
+        } else {
             $review['post_id'] = $request->blog_id;
             $review['type'] = 'blog';
         }
@@ -118,15 +160,30 @@ class FrontendController extends Controller
         $review['name'] = $request->name;
         $review['email'] = $request->email;
         $review['comment'] = $request->comment;
-
-
-
         $review['user_id'] = $user_id;
-
         $review->save();
 
-        return redirect()->back()->with('message', 'Review submited Successfully');
+        return redirect()->back()->with('message', 'ریویو کامیابی کے ساتھ جمع کر دیا گیا۔');
 
+    }
+
+    public function terms()
+    {
+        $recent_news = News::take(5)->orderBy('id', 'DESC')->get();
+        return view('frontend.terms', compact('recent_news'));
+    }
+
+    public function privacyPolicy()
+    {
+        $recent_news = News::take(5)->orderBy('id', 'DESC')->get();
+        return view('frontend.privacy_policy', compact('recent_news'));
+
+    }
+
+    public function staff()
+    {
+
+        return view('frontend.staff');
     }
 
 }

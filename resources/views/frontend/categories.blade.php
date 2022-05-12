@@ -1,16 +1,7 @@
 @extends('layouts.frontend.head')
 @section('content')
  <!-- Preloader Start -->
- <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    <img src="{{ asset('frontend/assets/img/logo/logo.png') }}" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- Preloader Start -->
     <main>
    <!-- Whats New Start -->
@@ -50,25 +41,48 @@
                                                     <img src="{{ asset('assets/categoryImages')."/".$category->image }}" alt="" style="height: 300px;width: 360px;>
                                                 </div>
                                                 <div class="what-cap">
-                                                    <span class="color1">{{ $category->title }}</span>
-                                                    <h4><a href="#">{{ $category->description }}</a></h4>
+                                                    <span class="color1"><a href="{{ route('categories.detail', [$category->slug]) }}">{{ $category->title }}</a></span>
+                                                    <h4><a href="{{ route('categories.detail', [$category->slug]) }}">{{ $category->description }}</a></h4>
                                                 </div>
                                             </div>
                                         </div>
-
                                         @endforeach
 
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
                     <!-- End Nav Card -->
                     </div>
                 </div>
             </div>
             <div class="col-lg-4">
+
+                <div class="blog_right_sidebar">
+
+                    <aside class="single_sidebar_widget post_category_widget">
+                       <h4 class="widget_title">اقسام</h4>
+                       <ul class="list cat-list">
+
+                          @foreach ($recent_categories as $category)
+                          <?php
+                           $count = App\Models\News::where('cat_id', $category->id)->count();
+                          ?>
+                          <li>
+                             <a href="{{ route('categories.detail', [$category->slug]) }}" class="d-flex">
+                                <p>{{ $category->title }}</p>
+                                <p>({{ $count }})</p>
+                             </a>
+                          </li>
+                         @endforeach
+
+                       </ul>
+                    </aside>
+
+
+                 </div>
+
+
                 <!-- Section Tittle -->
                 <div class="section-tittle mb-40">
                     <h3>Follow Us</h3>
@@ -135,8 +149,6 @@
                             <ul class="pagination justify-content-start">
                               {{-- <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow roted"></span></a></li> --}}
                                 <li class="page-item"><a class="page-link" href="#">{{$categories->links('pagination::bootstrap-4')}}</a></li>
-                                {{-- <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                <li class="page-item"><a class="page-link" href="#">03</a></li> --}}
                               {{-- <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow right-arrow"></span></a></li> --}}
                             </ul>
                           </nav>

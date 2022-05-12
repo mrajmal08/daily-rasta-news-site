@@ -75,6 +75,11 @@ class BlogController extends Controller
             $request->feature_image->move(public_path('assets/blogFiles'), $imageName);
             $data['feature_image'] = $imageName;
         }
+
+        $result =  explode(" ", $request->title);
+        $slug = implode('-', $result);
+        $data['slug'] = $slug;
+
         $data['title'] = $request->title;
         $data['type'] = $request->type;
         $data['description'] = $request->description;
@@ -146,6 +151,11 @@ class BlogController extends Controller
 
         if ($request->title) {
             $blog->title = $request->title;
+
+            $result =  explode(" ", $request->title);
+            $slug = implode('-', $result);
+            $blog->slug = $slug;
+
         }
 
         if ($request->type) {

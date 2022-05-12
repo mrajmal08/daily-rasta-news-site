@@ -81,8 +81,8 @@ class CategoryController extends Controller
             $data['slug'] = $slug;
             $data['image'] = $imageName;
         } else {
-            $data['slug'] = $slug;
             $data = $request->all();
+            $data['slug'] = $slug;
         }
 
         Category::create($data);
@@ -149,7 +149,6 @@ class CategoryController extends Controller
                 $request->image->move(public_path('assets/categoryImages'), $imageName);
 
                 $data['image'] = $imageName;
-
                 $category->image = $data['image'];
                 $category->save();
 

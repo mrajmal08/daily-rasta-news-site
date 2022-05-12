@@ -13,18 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('blogs', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title')->nullable();
-            $table->longText('description')->nullable();
-            $table->string('feature_image')->nullable();
-            $table->string('type')->nullable();
-            $table->string('slug')->nullable();
-            $table->string('total_clicks')->nullable();
-
+            $table->string('name')->nullable();
+            $table->string('email');
+            $table->string('comment')->nullable();
+            $table->string('subject')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
-
             $table->softDeletes();
+            $table->timestamps();
             $table->timestamps();
         });
     }
@@ -36,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blogs');
+        Schema::dropIfExists('contacts');
     }
 };

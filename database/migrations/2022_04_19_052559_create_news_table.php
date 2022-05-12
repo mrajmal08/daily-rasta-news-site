@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('breaking_news')->nullable();
             $table->string('feature_image')->nullable();
             $table->string('top_image')->nullable();
+            $table->string('slug')->nullable();
+
             $table->string('clicks')->nullable();
 
             $table->unsignedBigInteger('user_id')->nullable();

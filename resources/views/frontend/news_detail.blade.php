@@ -15,7 +15,7 @@
                      <h2>{{ $news->title }}</h2>
                      </h2>
                      <ul class="blog-info-link mt-3 mb-4">
-                        <li><i class="fa fa-user"></i><a href="" >{{ $category->title }}</a></li>
+                        <li><i class="fa fa-user"></i><a href="{{ route('categories.detail', [$category->slug]) }}" >{{ $category->title }}</a></li>
                      </ul>
                      <p class="excert">
                         {!! $news->description !!}
@@ -123,7 +123,7 @@
                          $count = App\Models\News::where('cat_id', $category->id)->count();
                         ?>
                         <li>
-                           <a href="#" class="d-flex">
+                           <a href="{{ route('categories.detail', [$category->slug]) }}" class="d-flex">
                               <p>{{ $category->title }}</p>
                               <p>({{ $count }})</p>
                            </a>
@@ -141,7 +141,7 @@
                         <img src="{{ asset('assets/postImages')."/".$news->feature_image }}" alt="post" class="w-25 round">
                         &nbsp;
                         <div class="media-body">
-                           <a href="{{ route('news.detail', [$news->id]) }}">
+                           <a href="{{ route('news.detail', [$news->slug]) }}">
                               <h3>{{ $news->title }}</h3>
                            </a>
 

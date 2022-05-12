@@ -111,19 +111,21 @@
                         <aside class="single_sidebar_widget post_category_widget">
                             <h4 class="widget_title">اقسام</h4>
                             <ul class="list cat-list">
-                                @foreach ($categories as $category)
-                                    <?php
-                                    $count = App\Models\News::where('cat_id', $category->id)->count();
-                                    ?>
-                                    <li>
-                                        <a href="#" class="d-flex">
-                                            <p>{{ $category->title }}</p>
-                                            <p>({{ $count }})</p>
-                                        </a>
-                                    </li>
-                                @endforeach
+
+                               @foreach ($categories as $category)
+                               <?php
+                                $count = App\Models\News::where('cat_id', $category->id)->count();
+                               ?>
+                               <li>
+                                  <a href="{{ route('categories.detail', [$category->slug]) }}" class="d-flex">
+                                     <p>{{ $category->title }}</p>
+                                     <p>({{ $count }})</p>
+                                  </a>
+                               </li>
+                              @endforeach
+
                             </ul>
-                        </aside>
+                         </aside>
                         <aside class="single_sidebar_widget popular_post_widget">
                             <h3 class="widget_title">حالیہ بلاگ</h3>
                             @foreach ($recent_blog as $blog)
@@ -132,7 +134,7 @@
                                         alt="{{ $blog->title }}" class="w-25 round">
                                     &nbsp;
                                     <div class="media-body">
-                                        <a href="{{ route('blog.detail', [$blog->id]) }}">
+                                        <a href="{{ route('blog.detail', [$blog->slug]) }}">
                                             <h3>{{ $blog->title }}</h3>
                                         </a>
                                         <p>{{ \Carbon\Carbon::parse($blog->created_at)->format('d/m/Y') }}</p>

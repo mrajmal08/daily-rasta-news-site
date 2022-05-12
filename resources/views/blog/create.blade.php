@@ -84,6 +84,7 @@
                                                 <input type="file" name="feature_image" class="custom-file-input"
                                                     id="customFile">
                                                 <label class="custom-file-label" for="customFile">Choose Image</label>
+                                                <p>Upload image with size width=750 & height=375</p>
                                             </div>
 
                                         </div>

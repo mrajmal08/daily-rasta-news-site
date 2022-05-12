@@ -34,7 +34,7 @@
     @stack('frontCss')
 
    <style>
-        p, a, h1, h2, h3, h4, span {
+        p, a, h1, h2, h3, h4, h5, h6, span, button, input, label, select, textarea {
         font-family: 'NafeesRegular';
         font-weight: normal;
         font-style: normal;

@@ -64,6 +64,7 @@
                                             <li><a href="{{ route('about.us') }}">ہمارے بارے میں</a></li>
                                             <li><a href="{{ route('contact.us') }}">ہم سے رابطہ کریں</a></li>
                                             <li><a href="{{ route('blog') }}">بلاگ</a></li>
+                                            <li><a href="{{ route('staff') }}">سٹاف</a></li
 
                                             {{-- <li><a href="#">Pages</a>
                                                 <ul class="submenu">

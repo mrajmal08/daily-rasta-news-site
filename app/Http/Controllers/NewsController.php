@@ -90,6 +90,11 @@ class NewsController extends Controller
             $data['top_image'] = $top_image;
         }
 
+            $result =  explode(" ", $request->title);
+            $slug = implode('-', $result);
+            $data['slug'] = $slug;
+
+
             $data['title'] = $request->title;
             $data['description'] = $request->description;
             $data['type'] = $request->type;
@@ -206,6 +211,10 @@ class NewsController extends Controller
 
         if ($request->title) {
             $news->title = $request->title;
+
+            $result =  explode(" ", $request->title);
+            $slug = implode('-', $result);
+            $news->slug = $slug;
         }
 
         if ($request->description) {

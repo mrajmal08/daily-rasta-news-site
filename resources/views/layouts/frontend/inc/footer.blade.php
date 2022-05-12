@@ -8,11 +8,11 @@
                             <div class="single-footer-caption">
                                 <!-- logo -->
                                 <div class="footer-logo">
-                                    <a href="index.html"><img src="{{ asset('frontend/assets/img/logo/logo2_footer.png') }}" alt=""></a>
+                                    <a href="index.html"><img src="http://dailyrasta.com/wp-content/uploads/2021/08/logo-gif-1.gif" alt=""></a>
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
-                                        <p>Suscipit mauris pede for con sectetuer sodales adipisci for cursus fames lectus tempor da blandit gravida sodales  Suscipit mauris pede for con sectetuer sodales adipisci for cursus fames lectus tempor da blandit gravida sodales  Suscipit mauris pede for sectetuer.</p>
+                                        <p>روزنامہ راست لاہور، پاکستان کا ایک مقبول اخبار ہے۔ اپنے قارئین کو اپ ڈیٹ رکھنے کے لیے یہ اس نیوز پیپر کی آفیشل اور ورسٹائل ایپ ہے۔</p>
                                     </div>
                                 </div>
                                 <!-- social -->
@@ -27,40 +27,30 @@
                     <div class="col-xl-3 col-lg-3 col-md-4  col-sm-6">
                         <div class="single-footer-caption mt-60">
                             <div class="footer-tittle">
-                                <h4>Newsletter</h4>
-                                <p>Heaven fruitful doesn't over les idays appear creeping</p>
-                                <!-- Form -->
-                                <div class="footer-form" >
-                                    <div id="mc_embed_signup">
-                                        <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                        method="get" class="subscribe_form relative mail_part">
-                                            <input dir="rtl" type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
-                                            class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
-                                            onblur="this.placeholder = ' Email Address '">
-                                            <div class="form-icon">
-                                            <button  type="submit" name="submit" id="newsletter-submit"
-                                            class="email_icon newsletter-submit button-contactForm"><img src="{{ asset('frontend/assets/img/logo/form-iocn.png') }}" alt=""></button>
-                                            </div>
-                                            <div class="mt-10 info"></div>
-                                        </form>
-                                    </div>
-                                </div>
+                                <h4>ہمارا نیٹ ورک</h4>
                             </div>
+
+                                <div class="">
+                                    <ul class="">
+                                        <li><a href="{{ route('privacy.policy') }}">پرائیویسی پالیسی</a></li>
+                                        <li><a href="{{ route('terms') }}">قوائد و ضوابط</a></li>
+                                        <li><a href="{{ route('staff') }}">سٹاف</a></li>
+                                        <li><a href="{{ route('contact.us') }}">ہم سے رابطہ</a></li>
+                                    </ul>
+                                </div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
                         <div class="single-footer-caption mb-50 mt-60">
                             <div class="footer-tittle">
-                                <h4>Instagram Feed</h4>
+                                <h4>ہم سے رابطہ کے ذرائعے</h4>
                             </div>
-                            <div class="instagram-gellay">
-                                <ul class="insta-feed">
-                                    <li><a href="#"><img src="{{ asset('frontend/assets/img/post/instra1.jpg') }}" alt=""></a></li>
-                                    <li><a href="#"><img src="{{ asset('frontend/assets/img/post/instra2.jpg') }}" alt=""></a></li>
-                                    <li><a href="#"><img src="{{ asset('frontend/assets/img/post/instra3.jpg') }}" alt=""></a></li>
-                                    <li><a href="#"><img src="{{ asset('frontend/assets/img/post/instra4.jpg') }}" alt=""></a></li>
-                                    <li><a href="#"><img src="{{ asset('frontend/assets/img/post/instra5.jpg') }}" alt=""></a></li>
-                                    <li><a href="#"><img src="{{ asset('frontend/assets/img/post/instra6.jpg') }}" alt=""></a></li>
+                            <div class="">
+                                <ul class="">
+                                    <li><a href="https://www.youtube.com/channel/UCty_T-nB2sTu8lTHg6ZwztA">ہمارا یوٹیوب چینل</a></li>
+                                    <li><a href="https://web.facebook.com/dailyrastalahore/">ہمارا فیس بک پیج</a></li>
+                                    <li><a href="#">گوگل پس پر ہم سےرابطہ</a></li>
+                                    <li><a href="#">ہمارا ٹکٹ سپورٹ سیکشن</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -74,19 +64,19 @@
                <div class="footer-border">
                     <div class="row d-flex align-items-center justify-content-between">
                         <div class="col-lg-6">
-                            <div class="footer-copy-right">
+                            {{-- <div class="footer-copy-right">
                                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Developed By <i class="ti-heart" aria-hidden="true"></i> <a href="https://mssolutions.com" target="_blank">MS Solution</a>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> جملہ حقوق محفوظ ہیں | ڈیلی راستہ کے ذریعہ تیار کردہ
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="col-lg-6">
                             <div class="footer-menu f-right">
-                                <ul>
-                                    <li><a href="#">Terms of use</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Contact</a></li>
-                                </ul>
+                                <div class="footer-copy-right">
+                                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+       &copy;<script>document.write(new Date().getFullYear());</script> جملہ حقوق محفوظ ہیں | <a href="https://www.dailyrasta.com">ڈیلی راستہ</a> کے ذریعہ تیار کردہ
+      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                                </div>
                             </div>
                         </div>
                     </div>
