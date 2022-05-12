@@ -21,7 +21,8 @@
                                     <ul class="header-social">
                                         <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                         <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                       <li> <a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                                       <li> <a href="https://web.facebook.com/dailyrastalahore/"><i class="fab fa-facebook-f"></i></a></li>
+                                       <li> <a href="https://www.youtube.com/channel/UCty_T-nB2sTu8lTHg6ZwztA"><i class="fab fa-youtube"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -64,29 +65,27 @@
                                             <li><a href="{{ route('about.us') }}">ہمارے بارے میں</a></li>
                                             <li><a href="{{ route('contact.us') }}">ہم سے رابطہ کریں</a></li>
                                             <li><a href="{{ route('blog') }}">بلاگ</a></li>
-                                            <li><a href="{{ route('staff') }}">سٹاف</a></li
+                                            <li><a href="{{ route('staff') }}">سٹاف</a></li>
 
-                                            {{-- <li><a href="#">Pages</a>
-                                                <ul class="submenu">
-                                                    <li><a href="elements.html">Element</a></li>
-                                                    <li><a href="{{ route('blog') }}">Blog</a></li>
-                                                    <li><a href="single-blog.html">Blog Details</a></li>
-                                                    <li><a href="details.html">Categori Details</a></li>
-                                                </ul>
-                                            </li> --}}
+
                                         </ul>
                                     </nav>
                                 </div>
                             </div>
                             <div class="col-xl-2 col-lg-2 col-md-4">
                                 <div class="header-right-btn f-right d-none d-lg-block">
-                                    <i class="fas fa-search special-tag"></i>
-                                    <div class="search-box">
-                                        <form action="#">
-                                            <input type="text" placeholder="Search">
 
+                                    <div class="">
+                                        <form >
+                                            <input type="text" name="search" id="search" placeholder="Search">
                                         </form>
                                     </div>
+
+                                    <div>
+                                        <ul class="list cat-list" id="sarach_data">
+                                        </ul>
+                                    </div>
+
                                 </div>
                             </div>
                             <!-- Mobile Menu -->

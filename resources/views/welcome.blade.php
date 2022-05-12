@@ -10,41 +10,13 @@
 
 @section('content')
     <!-- Preloader Start -->
-    {{-- <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    <img src="{{ asset('frontend/assets/img/logo/logo.png') }}" alt="">
-                </div>
-            </div>
-        </div>
-    </div> --}}
+
     <!-- Preloader Start -->
     <main>
         <!-- Trending Area Start -->
         <div class="trending-area fix">
             <div class="container">
                 <div class="trending-main">
-                    <!-- Trending Tittle -->
-                    {{-- <div class="row">
-                    <div class="col-lg-12">
-                        <div dir="rtl" class="trending-tittle">
-                            <strong>Trending now</strong>
-                            <!-- <p>Rem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                            <div class="trending-animated">
-                                <ul id="js-news" class="js-hidden">
-                                    <li class="news-item">Bangladesh dolor sit amet, consectetur adipisicing elit.</li>
-                                    <li class="news-item">Spondon IT sit amet, consectetur.......</li>
-                                    <li class="news-item">Rem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-                                </ul>
-                            </div>
-
-                        </div>
-                    </div>
-                </div> --}}
-
-
                     <div class="container mt-5">
                         <div class="row">
                             <div class="col-md-12">
@@ -66,12 +38,8 @@
                         </div>
                     </div>
 
-
-
                     <div dir="rtl" class="row">
                         <div class="col-lg-8">
-                            <!-- Trending Top -->
-
                             @if(!empty($latest_news->id))
                                 <div class="trending-top mb-30">
                                     <div class="trend-top-img">
@@ -93,7 +61,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             @endif
 
                             <!-- Trending Bottom -->

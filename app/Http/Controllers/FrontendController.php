@@ -182,8 +182,27 @@ class FrontendController extends Controller
 
     public function staff()
     {
-
         return view('frontend.staff');
     }
+
+    public function search(Request $request)
+    {
+        $data= News::where('title','LIKE','%'.$request->search."%")->get();
+
+        // foreach ($data as $item){
+        //     $output = "<ul class='list cat-list'>";
+        //     $output = "<li>";
+        //     $output = "<a href='{{ route('news.detail', [$item->slug]) }}' class='d-flex'>";
+        //     $output = "<p>{{ $item->title }}</p>";
+        //     $output = "</a>";
+        //     $output = "</li>";
+        //     $output = "</ul>";
+        // }
+        // dd($output);
+
+
+        return Response($data);
+    }
+
 
 }
