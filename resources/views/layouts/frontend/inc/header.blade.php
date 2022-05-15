@@ -75,18 +75,21 @@
                             <div class="col-xl-2 col-lg-2 col-md-4">
                                 <div class="header-right-btn f-right d-none d-lg-block">
 
-                                    <div class="">
+
+
+                                    <div class="form-group">
                                         <form >
-                                            <input type="text" name="search" id="search" placeholder="Search">
+                                            <input type="text" class="form-control" name="search" id="search" placeholder="Search">
                                         </form>
+                                        <button class="main-search-button" id="searchBtn">Search</button>
+
                                     </div>
 
-                                    <div>
-                                        <ul class="list cat-list" id="sarach_data">
+                                    <div class="">
+                                        <ul class="list-group" id="sarach_data">
                                         </ul>
                                     </div>
 
-                                </div>
                             </div>
                             <!-- Mobile Menu -->
                             <div class="col-12">

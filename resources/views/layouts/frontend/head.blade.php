@@ -30,8 +30,8 @@
         integrity="sha384-JvExCACAZcHNJEc7156QaHXTnQL3hQBixvj5RV5buE7vgnNEzzskDtx9NQ4p6BJe" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/custom.css') }}">
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    {{-- <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> --}}
 
     @stack('frontCss')
 
@@ -59,7 +59,27 @@
             position: absolute;
             background-color: #ffe7e6;
             color: black;
+            top: 38px;
         }
+
+        .main-search-button {
+            position: absolute;
+            right: -70px;
+            height: 38px;
+            width: 70px;
+            color: #ffffff;
+            top: 5;
+            border: none;
+            top: 0px;
+            border-radius: 5px;
+            background-color: #f14c38;
+}
+    .main-search-button:hover{
+        background-color: #109cde;
+        color: #ffffff;
+
+    }
+
 
     </style>
 
@@ -69,7 +89,7 @@
 <body>
     @include('layouts.frontend.inc.header')
 
-    <div id="preloader-active">
+    {{-- <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
@@ -78,7 +98,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     @yield('content')
     @include('layouts.frontend.inc.footer')
@@ -160,13 +180,10 @@
     </script>
 
     <script type="text/javascript">
-        $('#search').on('keyup', function(e) {
+        $('#searchBtn').on('click', function(e) {
             e.preventDefault();
+            var search = $("#search").val();
 
-            var search = $(this).val();
-            var count = search.length;
-
-            if(count > 2) {
             $.ajax({
 
                 type: 'get',
@@ -177,14 +194,16 @@
                 success: function(data) {
 
                     $.each(data, function(indx, stock) {
-                        $('#sarach_data').append('<li><a href="'+ stock.slug +'/خبر" target="_blank">' + stock.title + ' </a></li>');
+                        $('#sarach_data').append('<li  class="list-group-item list-group-item-info" style="position:fixed" ><a href="'+ stock.slug +'/خبر" target="_blank">' + stock.title + ' </a></li>');
                     });
                 }
 
             });
-           }
         })
     </script>
+
+
+
 
 
 </body>

@@ -57,13 +57,10 @@
                 </div>
             </div>
             <div class="col-lg-4">
-
                 <div class="blog_right_sidebar">
-
                     <aside class="single_sidebar_widget post_category_widget">
                        <h4 class="widget_title">اقسام</h4>
                        <ul class="list cat-list">
-
                           @foreach ($recent_categories as $category)
                           <?php
                            $count = App\Models\News::where('cat_id', $category->id)->count();
@@ -75,11 +72,8 @@
                              </a>
                           </li>
                          @endforeach
-
                        </ul>
                     </aside>
-
-
                  </div>
 
 

@@ -33,10 +33,6 @@ Route::get('/سٹاف', [web\FrontendController::class, 'staff'])->name('staff')
 
 Route::get('/search', [web\FrontendController::class, 'search'])->name('search');
 
-
-
-
-
 Route::post('/post-review', [web\FrontendController::class, 'postReview'])->name('post.review');
 
 // post review route

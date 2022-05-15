@@ -21,6 +21,7 @@
                         {!! $news->description !!}
                      </p>
 
+
                   </div>
                </div>
                <div class="navigation-top">
@@ -29,14 +30,23 @@
                      <div class="col-sm-4 text-center my-2 my-sm-0">
                         <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
                      </div>
-                     <ul class="social-icons">
-                         <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+
+                     {{-- <ul class="social-icons"> --}}
+
+                        
+                        <iframe src="https://www.facebook.com/plugins/share_button.php?href= {{ route('news.detail', [$news->slug]) }}"
+                        width="77" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                        allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+
+
+                         {{-- <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                     </ul>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li> --}}
+                     {{-- </ul> --}}
+
+
                   </div>
                </div>
-
                <div class="">
 
                   @foreach($reviews as $review)
