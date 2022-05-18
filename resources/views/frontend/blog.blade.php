@@ -3,8 +3,29 @@
 @section('content')
 
     <!--================Blog Area =================-->
-    <section class="blog_area section-padding">
+    <section class="blog_area pb-5">
         <div  class="container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="d-flex justify-content-between align-items-center breaking-news bg-white">
+                            <div
+                                class="d-flex flex-row m-3 flex-grow-1 flex-fill justify-content-center py-2 text-white px-1 news rounded" style="background-color: #f14c38">
+                                <span class="d-flex align-items-center">&nbsp;اہم خبریں</span></div>
+                            <marquee class="news-scroll" behavior="scroll" loop="100" scrolldelay="1"
+                                scrollamount="12" direction="right" onmouseover="this.stop();"
+                                onmouseout="this.start();">
+                                @foreach ($breaking_news as $item)
+                                    <a href="{{ route('news.detail', [$item->slug]) }}">{{ $item->title }}</a>
+                                    <span class="dot"></span>
+                                @endforeach
+
+                            </marquee>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div dir="rtl" class="row">
                 <div class="col-lg-8 mb-5 mb-lg-0">
                     <div class="blog_left_sidebar">
@@ -30,29 +51,9 @@
                                 </ul>
                             </div>
                         </article>
-
                         @endforeach
-
-                        {{-- <div class="pagination-area pb-45 text-center mt-5">
-                            <div class="container">
-                                <div  class="row">
-                                    <div class="col-xl-12">
-                                        <div class="single-wrap d-flex justify-content-center">
-                                            <nav aria-label="Page navigation example">
-                                                <ul class="pagination justify-content-start">
-                                                    <li class="page-item"><a class="page-link" href="#">{{$blog->links('pagination::bootstrap-4')}}</a></li>
-                                                </ul>
-                                              </nav>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
-
                     </div>
                 </div>
-
-
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget post_category_widget">
@@ -76,7 +77,6 @@
 
                         <aside class="single_sidebar_widget popular_post_widget">
                             <h3 class="widget_title">Recent Blogs</h3>
-
                             @foreach ($recent_blog as $item)
                             <div class="media post_item">
                                 <img src="{{ asset('assets/blogFiles')."/".$item->feature_image }}" alt="{{ $item->title }}" style="width:75px; height:60px">

@@ -49,13 +49,15 @@ class FrontendController extends Controller
 
     public function about()
     {
-        $total_views = self::get_views();
-        return view('frontend.aboutus', compact('total_views'));
+        $breaking_news = News::where('breaking_news', 1)->orderBy('id', 'DESC')->take(5)->get();
+        $total_views = DB::table('website_views')->pluck('total_views')->first();
+        return view('frontend.aboutus', compact('total_views', 'breaking_news'));
     }
 
     public function contact()
     {
-        $total_views = self::get_views();
+
+        $total_views = DB::table('website_views')->pluck('total_views')->first();
         return view('frontend.contactus', compact('total_views'));
     }
 
@@ -83,16 +85,18 @@ class FrontendController extends Controller
 
     public function categories()
     {
-        $total_views = self::get_views();
+        $breaking_news = News::where('breaking_news', 1)->orderBy('id', 'DESC')->take(5)->get();
+
+        $total_views = DB::table('website_views')->pluck('total_views')->first();
         $categories = Category::paginate(4);
         $recent_categories = Category::take(8)->orderBy('id', 'DESC')->get();
 
-        return view('frontend.categories', compact('categories', 'recent_categories', 'total_views'));
+        return view('frontend.categories', compact('categories', 'recent_categories', 'total_views', 'breaking_news'));
     }
 
     public function categoryDetail($slug)
     {
-        $total_views = self::get_views();
+        $total_views = DB::table('website_views')->pluck('total_views')->first();
 
         $category = Category::where('slug', $slug)->first();
         $news = News::where('cat_id', $category->id)->paginate(6);
@@ -103,8 +107,9 @@ class FrontendController extends Controller
     public function newsDetail($slug)
     {
 
-        $total_views = self::get_views();
+        $breaking_news = News::where('breaking_news', 1)->orderBy('id', 'DESC')->take(5)->get();
 
+        $total_views = DB::table('website_views')->pluck('total_views')->first();
         $news = News::where('slug', $slug)->first();
 
         $previous_clicks = News::where('id', '=', $news->id)->pluck('clicks')->first();
@@ -116,27 +121,28 @@ class FrontendController extends Controller
 
         $category = Category::find($news->cat_id);
         $categories = Category::take(8)->orderBy('id', 'DESC')->get();
-
         //get reviews
         $reviews = Review::where('post_id', '=', $news->id)->where('type', 'news')->get();
 
-        return view('frontend.news_detail', compact('recent_news', 'news', 'category', 'categories', 'reviews', 'total_views'));
+        return view('frontend.news_detail', compact( 'breaking_news', 'recent_news', 'news', 'category', 'categories', 'reviews', 'total_views'));
 
     }
 
     public function blog()
     {
-        $total_views = self::get_views();
+        $total_views = DB::table('website_views')->pluck('total_views')->first();
+        $breaking_news = News::where('breaking_news', 1)->orderBy('id', 'DESC')->take(5)->get();
 
         $blog = Blog::paginate(5);
         $recent_categories = Category::take(8)->orderBy('id', 'DESC')->get();
         $recent_blog = Blog::take(5)->orderBy('id', 'DESC')->get();
-        return view('frontend.blog', compact('blog', 'recent_categories', 'recent_blog', 'total_views'));
+        return view('frontend.blog', compact('blog', 'recent_categories', 'recent_blog', 'total_views', 'breaking_news'));
     }
 
     public function blogDetail($slug)
     {
-        $total_views = self::get_views();
+        $total_views = DB::table('website_views')->pluck('total_views')->first();
+        $breaking_news = News::where('breaking_news', 1)->orderBy('id', 'DESC')->take(5)->get();
 
         $blog_detail = Blog::where('slug', $slug)->first();
 
@@ -149,7 +155,7 @@ class FrontendController extends Controller
         $recent_blog = Blog::take(5)->orderBy('id', 'DESC')->get();
         $reviews = Review::where('post_id', '=', $blog_detail->id)->where('type', 'blog')->get();
 
-        return view('frontend.blog_detail', compact('blog', 'categories', 'recent_blog', 'reviews', 'total_views'));
+        return view('frontend.blog_detail', compact('blog', 'categories', 'recent_blog', 'reviews', 'total_views', 'breaking_news'));
     }
 
     public function postReview(Request $request)
@@ -192,7 +198,7 @@ class FrontendController extends Controller
 
     public function terms()
     {
-        $total_views = self::get_views();
+        $total_views = DB::table('website_views')->pluck('total_views')->first();
 
         $recent_news = News::take(5)->orderBy('id', 'DESC')->get();
         return view('frontend.terms', compact('recent_news', 'total_views'));
@@ -200,7 +206,7 @@ class FrontendController extends Controller
 
     public function privacyPolicy()
     {
-        $total_views = self::get_views();
+        $total_views = DB::table('website_views')->pluck('total_views')->first();
 
         $recent_news = News::take(5)->orderBy('id', 'DESC')->get();
         return view('frontend.privacy_policy', compact('recent_news', 'total_views'));
@@ -209,7 +215,7 @@ class FrontendController extends Controller
 
     public function staff()
     {
-        $total_views = self::get_views();
+        $total_views = DB::table('website_views')->pluck('total_views')->first();
 
         return view('frontend.staff', compact('total_views'));
     }

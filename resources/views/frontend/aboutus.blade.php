@@ -6,23 +6,29 @@
         <!-- About US Start -->
         <div class="about-area">
             <div class="container">
-                    <!-- Hot Aimated News Tittle-->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="trending-tittle">
-                                <strong>Trending now</strong>
-                                <!-- <p>Rem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                                <div class="trending-animated">
-                                    <ul id="js-news" class="js-hidden">
-                                        <li class="news-item">Bangladesh dolor sit amet, consectetur adipisicing elit.</li>
-                                        <li class="news-item">Spondon IT sit amet, consectetur.......</li>
-                                        <li class="news-item">Rem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-                                    </ul>
-                                </div>
 
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="d-flex justify-content-between align-items-center breaking-news bg-white">
+                                <div
+                                    class="d-flex flex-row m-3 flex-grow-1 flex-fill justify-content-center py-2 text-white px-1 news rounded" style="background-color: #f14c38">
+                                    <span class="d-flex align-items-center">&nbsp;اہم خبریں</span></div>
+                                <marquee class="news-scroll" behavior="scroll" loop="100" scrolldelay="1"
+                                    scrollamount="12" direction="right" onmouseover="this.stop();"
+                                    onmouseout="this.start();">
+                                    @foreach ($breaking_news as $item)
+                                        <a href="{{ route('news.detail', [$item->slug]) }}">{{ $item->title }}</a>
+                                        <span class="dot"></span>
+                                    @endforeach
+
+                                </marquee>
                             </div>
                         </div>
                     </div>
+                </div>
+
+
                    <div dir="rtl" class="row">
                         <div  class="col-lg-8">
                             <!-- Trending Tittle -->
