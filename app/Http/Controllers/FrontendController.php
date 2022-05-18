@@ -12,34 +12,51 @@ use App\Models\Blog;
 use App\Models\News;
 use Validator;
 use Redirect;
+use DB;
 
 class FrontendController extends Controller
 {
+    static function get_views(){
+
+        $views = DB::table('website_views')->pluck('total_views')->first();
+        $new_views = $views + 1;
+        DB::table('website_views')->update(['total_views' => $new_views]);
+
+        return $new_views;
+
+    }
+
     public function index()
     {
-        $breaking_news = News::where('breaking_news', 1)->take(5)->get();
+        $total_views = self::get_views();
+
+        $breaking_news = News::where('breaking_news', 1)->orderBy('id', 'DESC')->take(5)->get();
         $recent_news = News::take(4)->orderBy('id', 'DESC')->get();
         $latest_news = News::take(1)->orderBy('id', 'DESC')->first();
-        $trending_news = News::take(10)->where('type', 'trending')->get();
-        $popular_news = News::take(10)->where('type', 'popular')->get();
+        $trending_news = News::take(8)->where('type', 'trending')->get();
+        $popular_news = News::take(8)->where('type', 'popular')->get();
 
-        $blogs = Blog::take(10)->get();
+        $blogs = Blog::take(8)->get();
 
         $videos = Video::take(10)->get();
         //categoreis
         $latest_categories = Category::take(3)->orderBy('id', 'DESC')->get();
 
-        return view('welcome', compact('breaking_news', 'recent_news', 'latest_news', 'popular_news', 'latest_categories', 'trending_news', 'blogs' ,'videos'));
+
+
+        return view('welcome', compact('breaking_news', 'recent_news', 'latest_news', 'popular_news', 'latest_categories', 'trending_news', 'blogs' ,'videos', 'total_views'));
     }
 
     public function about()
     {
-        return view('frontend.aboutus');
+        $total_views = self::get_views();
+        return view('frontend.aboutus', compact('total_views'));
     }
 
     public function contact()
     {
-        return view('frontend.contactus');
+        $total_views = self::get_views();
+        return view('frontend.contactus', compact('total_views'));
     }
 
     public function contactStore(Request $request)
@@ -66,23 +83,27 @@ class FrontendController extends Controller
 
     public function categories()
     {
+        $total_views = self::get_views();
         $categories = Category::paginate(4);
         $recent_categories = Category::take(8)->orderBy('id', 'DESC')->get();
 
-        return view('frontend.categories', compact('categories', 'recent_categories'));
+        return view('frontend.categories', compact('categories', 'recent_categories', 'total_views'));
     }
 
     public function categoryDetail($slug)
     {
+        $total_views = self::get_views();
 
         $category = Category::where('slug', $slug)->first();
         $news = News::where('cat_id', $category->id)->paginate(6);
 
-        return view('frontend.category_detail', compact('news', 'category'));
+        return view('frontend.category_detail', compact('news', 'category', 'total_views'));
     }
 
     public function newsDetail($slug)
     {
+
+        $total_views = self::get_views();
 
         $news = News::where('slug', $slug)->first();
 
@@ -99,21 +120,23 @@ class FrontendController extends Controller
         //get reviews
         $reviews = Review::where('post_id', '=', $news->id)->where('type', 'news')->get();
 
-        return view('frontend.news_detail', compact('recent_news', 'news', 'category', 'categories', 'reviews'));
+        return view('frontend.news_detail', compact('recent_news', 'news', 'category', 'categories', 'reviews', 'total_views'));
 
     }
 
     public function blog()
     {
+        $total_views = self::get_views();
 
         $blog = Blog::paginate(5);
         $recent_categories = Category::take(8)->orderBy('id', 'DESC')->get();
         $recent_blog = Blog::take(5)->orderBy('id', 'DESC')->get();
-        return view('frontend.blog', compact('blog', 'recent_categories', 'recent_blog'));
+        return view('frontend.blog', compact('blog', 'recent_categories', 'recent_blog', 'total_views'));
     }
 
     public function blogDetail($slug)
     {
+        $total_views = self::get_views();
 
         $blog_detail = Blog::where('slug', $slug)->first();
 
@@ -126,7 +149,7 @@ class FrontendController extends Controller
         $recent_blog = Blog::take(5)->orderBy('id', 'DESC')->get();
         $reviews = Review::where('post_id', '=', $blog_detail->id)->where('type', 'blog')->get();
 
-        return view('frontend.blog_detail', compact('blog', 'categories', 'recent_blog', 'reviews'));
+        return view('frontend.blog_detail', compact('blog', 'categories', 'recent_blog', 'reviews', 'total_views'));
     }
 
     public function postReview(Request $request)
@@ -169,38 +192,32 @@ class FrontendController extends Controller
 
     public function terms()
     {
+        $total_views = self::get_views();
+
         $recent_news = News::take(5)->orderBy('id', 'DESC')->get();
-        return view('frontend.terms', compact('recent_news'));
+        return view('frontend.terms', compact('recent_news', 'total_views'));
     }
 
     public function privacyPolicy()
     {
+        $total_views = self::get_views();
+
         $recent_news = News::take(5)->orderBy('id', 'DESC')->get();
-        return view('frontend.privacy_policy', compact('recent_news'));
+        return view('frontend.privacy_policy', compact('recent_news', 'total_views'));
 
     }
 
     public function staff()
     {
-        return view('frontend.staff');
+        $total_views = self::get_views();
+
+        return view('frontend.staff', compact('total_views'));
     }
 
     public function search(Request $request)
     {
+
         $data= News::where('title','LIKE','%'.$request->search."%")->get();
-
-        // foreach ($data as $item){
-        //     $output = "<ul class='list cat-list'>";
-        //     $output = "<li>";
-        //     $output = "<a href='{{ route('news.detail', [$item->slug]) }}' class='d-flex'>";
-        //     $output = "<p>{{ $item->title }}</p>";
-        //     $output = "</a>";
-        //     $output = "</li>";
-        //     $output = "</ul>";
-        // }
-        // dd($output);
-
-
         return Response($data);
     }
 

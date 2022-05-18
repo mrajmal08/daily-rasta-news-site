@@ -66,8 +66,6 @@
                                             <li><a href="{{ route('contact.us') }}">ہم سے رابطہ کریں</a></li>
                                             <li><a href="{{ route('blog') }}">بلاگ</a></li>
                                             <li><a href="{{ route('staff') }}">سٹاف</a></li>
-
-
                                         </ul>
                                     </nav>
                                 </div>
@@ -75,15 +73,10 @@
                             <div class="col-xl-2 col-lg-2 col-md-4">
                                 <div class="header-right-btn f-right d-none d-lg-block">
 
-
-
-                                    <div class="form-group">
-                                        <form >
+                                        <form class="form-group" style="width:150%">
                                             <input type="text" class="form-control" name="search" id="search" placeholder="Search">
                                         </form>
                                         <button class="main-search-button" id="searchBtn">Search</button>
-
-                                    </div>
 
                                     <div class="">
                                         <ul class="list-group" id="sarach_data">

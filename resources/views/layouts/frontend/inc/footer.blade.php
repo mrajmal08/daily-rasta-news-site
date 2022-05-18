@@ -64,18 +64,16 @@
                <div class="footer-border">
                     <div class="row d-flex align-items-center justify-content-between">
                         <div class="col-lg-6">
-                            {{-- <div class="footer-copy-right">
+                            <div class="footer-copy-right">
                                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
   Copyright &copy;<script>document.write(new Date().getFullYear());</script> جملہ حقوق محفوظ ہیں | ڈیلی راستہ کے ذریعہ تیار کردہ
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                            </div> --}}
+                            </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="footer-menu f-right">
                                 <div class="footer-copy-right">
-                                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-       &copy;<script>document.write(new Date().getFullYear());</script> جملہ حقوق محفوظ ہیں | <a href="https://www.dailyrasta.com">ڈیلی راستہ</a> کے ذریعہ تیار کردہ
-      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                                    <p>ویب سائٹ ویوز &nbsp;<a>{{ isset($total_views)?$total_views:'' }}</a></p>
                                 </div>
                             </div>
                         </div>

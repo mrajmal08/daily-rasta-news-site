@@ -32,9 +32,12 @@
                      </div>
 
                      {{-- <ul class="social-icons"> --}}
+{{--
+                    <a onClick="window.open('http://www.facebook.com/sharer.php?s=100&amp;p[title]={{ route('news.detail', [$news->title]) }}&amp;p[url]={{ route('news.detail', [$news->slug]) }}&amp;&p[images][0]={{ asset('assets/postImages')."/".$news->top_image }}', 'sharer', 'toolbar=0,status=0,width=548,height=325');" target="_parent" href="javascript: void(0)">
+                        Share our Facebook page!
+                    </a> --}}
 
-                        
-                        <iframe src="https://www.facebook.com/plugins/share_button.php?href= {{ route('news.detail', [$news->slug]) }}"
+                        <iframe src="https://www.facebook.com/plugins/share_button.php?href={{ route('news.detail', [$news->slug]) }}"
                         width="77" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
                         allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
 

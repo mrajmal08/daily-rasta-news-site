@@ -73,7 +73,7 @@
             top: 0px;
             border-radius: 5px;
             background-color: #f14c38;
-}
+        }
     .main-search-button:hover{
         background-color: #109cde;
         color: #ffffff;
@@ -135,7 +135,6 @@
     <script src="{{ asset('frontend/assets/js/jquery.form.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/mail-script.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/jquery.ajaxchimp.min.js') }}"></script>
 
     <!-- Jquery Plugins, main Jquery -->
     <script src="{{ asset('frontend/assets/js/plugins.js') }}"></script>
@@ -182,10 +181,10 @@
     <script type="text/javascript">
         $('#searchBtn').on('click', function(e) {
             e.preventDefault();
-            var search = $("#search").val();
+
+            var search = $('#search').val();
 
             $.ajax({
-
                 type: 'get',
                 url: '{{ URL::to('search') }}',
                 data: {
@@ -193,16 +192,25 @@
                 },
                 success: function(data) {
 
-                    $.each(data, function(indx, stock) {
-                        $('#sarach_data').append('<li  class="list-group-item list-group-item-info" style="position:fixed" ><a href="'+ stock.slug +'/خبر" target="_blank">' + stock.title + ' </a></li>');
+                    if(data.length > 0) {
+
+                        $.each(data, function(indx, stock) {
+
+                        $('#sarach_data').html(' ');
+
+                        $('#sarach_data').append('<li  class="list-group-item list-group-item-info"><a href="'+ stock.slug +'/خبر" target="_blank">' + stock.title + ' </a></li>');
                     });
+
+                    } else {
+                        $('#sarach_data').html(' ');
+                        $('#sarach_data').append('<li  class="list-group-item list-group-item-info">کوئی ڈیٹا نہیں ملا</li>');
+
+                    }
                 }
 
             });
         })
     </script>
-
-
 
 
 
