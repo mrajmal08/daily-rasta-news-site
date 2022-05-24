@@ -11,10 +11,20 @@
                                 <div class="header-info-left">
                                     <ul>
                                         <li>
+                                            @if(Auth::check())
+                                                <a href="{{route('home')}}">
+                                                   ڈیش بورڈ
+                                                </a>&nbsp;&nbsp;
+                                                <a href="{{route('logout')}}">
+                                                    لاگ آوٹ
+                                                 </a>
+                                            @else
                                             <a style="color: white" href="{{ route('login') }}">
                                                 لاگ ان کریں
-                                                </a>
-                                             </li>
+                                            </a>
+
+                                            @endif
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="header-info-right">
@@ -60,12 +70,21 @@
                                 <div  class="main-menu d-none d-md-block">
                                     <nav dir="rtl">
                                         <ul id="navigation">
-                                            <li><a href="/">گھر</a></li>
-                                            <li><a href="{{ route('categories.frontend') }}">اقسام</a></li>
-                                            <li><a href="{{ route('about.us') }}">ہمارے بارے میں</a></li>
-                                            <li><a href="{{ route('contact.us') }}">ہم سے رابطہ کریں</a></li>
-                                            <li><a href="{{ route('blog') }}">بلاگ</a></li>
-                                            <li><a href="{{ route('staff') }}">سٹاف</a></li>
+                                            <li><a href="/"><b>صفحہ اوّل</b></a></li>
+                                            <li><a href="/"><b>آج کا اخبار</b></a></li>
+                                            <li><a href="{{ route('blog') }}"><b>کالمز</b></a></li>
+                                            <li><a href="{{ route('categories.frontend') }}"><b>اقسام</b></a></li>
+
+                                            <li><a href="/"><b>پاکستان</b></a></li>
+                                            <li><a href="/"><b>کاروبار</b></a></li>
+                                            <li><a href="/"><b>صحت</b></a></li>
+                                            <li><a href="/"><b>کھیل</b></a></li>
+                                            <li><a href="/"><b>گیلری</b></a></li>
+
+
+                                            {{-- <li><a href="{{ route('about.us') }}"><b>ہمارے بارے میں</b></a></li>
+                                            <li><a href="{{ route('contact.us') }}"><b>ہم سے رابطہ کریں</b></a></li> --}}
+                                            <li><a href="{{ route('staff') }}"><b>سٹاف</b></a></li>
                                         </ul>
                                     </nav>
                                 </div>

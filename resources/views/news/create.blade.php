@@ -118,7 +118,6 @@
                                                 <input type="file" name="feature_image" class="custom-file-input"
                                                     id="customFile">
                                                 <label class="custom-file-label" for="customFile">Choose Image</label>
-                                                <p style="color:red" >upload image with max_width 120px & max_height 100px</p>
 
                                             </div>
                                         </div>
@@ -156,8 +155,6 @@
     @push('js')
         <script src="{{ asset('assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
         <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
-
-        <script src="{{ asset('assets/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
         <script src="{{ asset('assets/plugins/jquery-validation/additional-methods.min.js') }}"></script>
 
         <script src="{{ asset('assets/plugins/summernote/summernote-bs4.min.js') }}"></script>

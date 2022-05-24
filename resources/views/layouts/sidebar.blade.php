@@ -14,7 +14,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
-                @if(auth()->user()->role_id == '1')
+                @if( auth()->user()->role_id == '1')
 
                 <li class="nav-item menu-open">
                     <a href="{{ route('home') }}" class="nav-link">
@@ -80,6 +80,24 @@
                     </a>
                 </li>
 
+                <li class="nav-item ">
+                    <a href="{{ route('ads.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-image "></i>
+                        <p>
+                            Gallary Image
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item ">
+                    <a href="{{ route('newspaper.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-newspaper "></i>
+                        <p>
+                            News Paper
+                        </p>
+                    </a>
+                </li>
+
             @else
             <li class="nav-item menu-open">
                 <a href="{{ route('home') }}" class="nav-link">
@@ -103,6 +121,24 @@
                     <i class="nav-icon fas fa-blog "></i>
                     <p>
                         Blogs
+                    </p>
+                </a>
+            </li>
+
+            <li class="nav-item ">
+                <a href="{{ route('ads.index') }}" class="nav-link">
+                    <i class="nav-icon fas fa-image "></i>
+                    <p>
+                        Gallary Image
+                    </p>
+                </a>
+            </li>
+
+            <li class="nav-item ">
+                <a href="{{ route('newspaper.index') }}" class="nav-link">
+                    <i class="nav-icon fas fa-newspaper "></i>
+                    <p>
+                        News Paper
                     </p>
                 </a>
             </li>

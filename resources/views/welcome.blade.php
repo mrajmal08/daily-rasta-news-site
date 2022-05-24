@@ -182,9 +182,11 @@
                                         aria-labelledby="nav-home-tab">
                                         <div class="whats-news-caption">
                                             <div class="row">
+                                                <?php $i = 0; ?>
                                                 @foreach($recent_news as $item)
                                                 <?php
                                                 $cat_detail = App\Models\Category::where('id', $item->cat_id)->first();
+                                                if($i >= 4) {break;}else{
                                                 ?>
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="single-what-news mb-100">
@@ -199,6 +201,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php $i++; } ?>
                                                 @endforeach
                                             </div>
                                         </div>

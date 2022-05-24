@@ -70,13 +70,6 @@ class NewsController extends Controller
         }
 
         if ($request->has('feature_image')) {
-            $validator = Validator::make($request->all(), [
-                'feature_image' => 'required|dimensions:max_width=120,max_height=100',
-            ]);
-
-            if($validator->fails()) {
-                return Redirect::back()->withErrors($validator);
-            }
 
             $imageName = time() . '.' . $request->feature_image->extension();
             $request->feature_image->move(public_path('assets/postImages'), $imageName);
@@ -162,11 +155,10 @@ class NewsController extends Controller
         if ($request->file('feature_image')) {
 
             $validator = Validator::make($request->all(), [
-                'feature_image' => 'required|dimensions:max_width=120,max_height=100',
+                'feature_image' => 'required|max:500',
             ]);
-
-            if($validator->fails()) {
-                return Redirect::back()->withErrors($validator);
+            if ($validator->fails()) {
+                return redirect()->route('blogs.index')->with('error', 'Image size can not be greter than 500kb');
             }
 
             try {
@@ -265,7 +257,6 @@ class NewsController extends Controller
         } catch (\Exception $e) {
 
             $news->delete();
-
             return redirect()->route('users.index')->with('message', 'News deleted Successfully');
         }
     }

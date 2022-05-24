@@ -25,8 +25,8 @@ Route::post('/message-send', [web\FrontendController::class, 'contactStore'])->n
 Route::get('/اقسام', [web\FrontendController::class, 'categories'])->name('categories.frontend');
 Route::get('/{slug}/خبریں', [web\FrontendController::class, 'categoryDetail'])->name('categories.detail');
 Route::get('/{slug}/خبر', [web\FrontendController::class, 'newsDetail'])->name('news.detail');
-Route::get('/بلاگ', [web\FrontendController::class, 'blog'])->name('blog');
-Route::get('/{slug}/بلاگ', [web\FrontendController::class, 'blogDetail'])->name('blog.detail');
+Route::get('/کالمز', [web\FrontendController::class, 'blog'])->name('blog');
+Route::get('/{slug}/کالمز', [web\FrontendController::class, 'blogDetail'])->name('blog.detail');
 Route::get('/قوائد-و-ضوابط', [web\FrontendController::class, 'terms'])->name('terms');
 Route::get('/پرائیویسی-پالیسی', [web\FrontendController::class, 'privacyPolicy'])->name('privacy.policy');
 Route::get('/سٹاف', [web\FrontendController::class, 'staff'])->name('staff');
@@ -97,4 +97,22 @@ Route::post('/blogs/store', [web\BlogController::class, 'store'])->name('blogs.s
 Route::get('/blogs/edit/{id}', [web\BlogController::class, 'edit'])->name('blogs.edit');
 Route::post('/blogs/update/{id}', [web\BlogController::class, 'update'])->name('blogs.update');
 Route::get('/blogs/delete/{id}', [web\BlogController::class, 'destroy'])->name('blogs.delete');
+
+
+// NewsPaper Routes
+Route::get('/newspaper', [web\NewspaperController::class, 'index'])->name('newspaper.index');
+Route::get('/newspaper/create', [web\NewspaperController::class, 'create'])->name('newspaper.create');
+Route::post('/newspaper/store', [web\NewspaperController::class, 'store'])->name('newspaper.store');
+Route::get('/newspaper/edit/{id}', [web\NewspaperController::class, 'edit'])->name('newspaper.edit');
+Route::post('/newspaper/update/{id}', [web\NewspaperController::class, 'update'])->name('newspaper.update');
+Route::get('/newspaper/delete/{id}', [web\NewspaperController::class, 'destroy'])->name('newspaper.delete');
+
+
+// Gallary Images Routes
+Route::get('/gallary', [web\GallaryController::class, 'index'])->name('gallary.index');
+Route::get('/gallary/create', [web\GallaryController::class, 'create'])->name('gallary.create');
+Route::post('/gallary/store', [web\GallaryController::class, 'store'])->name('gallary.store');
+Route::get('/gallary/edit/{id}', [web\GallaryController::class, 'edit'])->name('gallary.edit');
+Route::post('/gallary/update/{id}', [web\GallaryController::class, 'update'])->name('gallary.update');
+Route::get('/gallary/delete/{id}', [web\GallaryController::class, 'destroy'])->name('gallary.delete');
 
