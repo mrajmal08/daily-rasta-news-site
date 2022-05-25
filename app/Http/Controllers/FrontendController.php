@@ -37,7 +37,7 @@ class FrontendController extends Controller
         $total_views = self::get_views();
 
         $breaking_news = News::where('breaking_news', 1)->orderBy('id', 'DESC')->take(5)->get();
-        $recent_news = News::take(7)->orderBy('id', 'DESC')->get();
+        $recent_news = News::take(6)->orderBy('id', 'DESC')->get();
         $latest_news = News::take(1)->orderBy('id', 'DESC')->first();
         $trending_news = News::take(7)->where('type', 'trending')->get();
         $popular_news = News::take(7)->where('type', 'popular')->get();

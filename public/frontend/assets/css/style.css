@@ -31,7 +31,7 @@
     background: #000;
 }
 .theme-bg {
-    background: #fc3f00;
+    background: #109CDE;
 }
 .brand-bg {
     background: #f1f4fa;
@@ -46,19 +46,19 @@
     color: #000;
 }
 .theme-color {
-    color: #fc3f00;
+    color: #109CDE;
 }
 .boxed-btn {
     background: #fff;
-    color: #fc3f00 !important;
+    color: #109CDE !important;
     display: inline-block;
     padding: 18px 44px;
     font-size: 14px;
     font-weight: 400;
     border: 0;
-    border: 1px solid #fc3f00;
+    border: 1px solid #109CDE;
     text-align: center;
-    color: #fc3f00;
+    color: #109CDE;
     text-transform: uppercase;
     cursor: pointer;
 }
@@ -400,11 +400,11 @@ hr {
 .border-btn {
     background: none;
     -moz-user-select: none;
-    border: 2px solid #fc3f00;
+    border: 2px solid #109CDE;
     padding: 18px 38px;
     margin: 10px;
     text-transform: capitalize;
-    color: #fc3f00;
+    color: #109CDE;
     cursor: pointer;
     display: inline-block;
     font-size: 14px;
@@ -1570,7 +1570,7 @@ hr {
     position: relative;
     border-style: solid;
     border-width: 3px;
-    border-top-color: #fc3f00;
+    border-top-color: #109CDE;
     border-bottom-color: transparent;
     border-left-color: transparent;
     border-right-color: transparent;
@@ -1976,7 +1976,7 @@ hr {
     background: #000;
 }
 .theme-bg {
-    background: #fc3f00;
+    background: #109CDE;
 }
 .brand-bg {
     background: #f1f4fa;
@@ -1991,7 +1991,7 @@ hr {
     color: #000;
 }
 .theme-color {
-    color: #fc3f00;
+    color: #109CDE;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .header-area {
@@ -2165,7 +2165,7 @@ hr {
     opacity: 0;
     box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.05);
     padding: 17px 0;
-    border-top: 5px solid #fc3f00;
+    border-top: 5px solid #109CDE;
     -webkit-transition: all 0.3s ease-out 0s;
     -moz-transition: all 0.3s ease-out 0s;
     -ms-transition: all 0.3s ease-out 0s;
@@ -2214,7 +2214,7 @@ hr {
     padding: 10px 19px;
 }
 .header-sticky.sticky-bar.sticky .main-menu ul > li > a {
-    padding: 33px 15px;
+    padding: 50px 10px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .header-sticky.sticky-bar.sticky .main-menu ul > li > a {
@@ -2277,7 +2277,7 @@ hr {
     }
 }
 .sticky-logo.info-open {
-    padding: 12px;
+    /* padding: 12px; */
 }
 .trending-area .trending-main {
     border-bottom: 1px solid #eeeeee;
@@ -2613,7 +2613,7 @@ hr {
     margin-right: -15px;
 }
 .dot-style .slick-active button {
-    background: #fc4902;
+    background: #109CDE;
     height: 9px;
     width: 38px;
     border-radius: 10px;
@@ -2759,7 +2759,7 @@ hr {
 .about-area .nav-tabs .nav-link.active,
 .contact-section .nav-tabs .nav-item.show .nav-link,
 .contact-section .nav-tabs .nav-link.active {
-    color: #fc3f00;
+    color: #109CDE;
     background: none;
 }
 .whats-news-area .nav-tabs .nav-item,
@@ -3121,7 +3121,7 @@ hr {
     width: 100%;
     height: 43px;
     border: 0;
-    color: #fc3f00;
+    color: #109CDE;
     border-bottom: 1px solid #403f3f;
     background: none;
 }
@@ -3136,7 +3136,7 @@ hr {
     line-height: 1;
 }
 .footer-area .info.error {
-    color: #fc3f00;
+    color: #109CDE;
 }
 .footer-area .footer-social a i {
     color: #222222;
@@ -3190,13 +3190,13 @@ hr {
     margin-bottom: 12px;
 }
 .footer-bottom-area .footer-copy-right p i {
-    color: #f27420;
+    color: #109CDE;
 }
 .footer-bottom-area .footer-copy-right p a {
-    color: #f27420;
+    color: #109CDE;
 }
 .footer-bottom-area .footer-copy-right p a:hover {
-    color: #fff;
+    color: #109CDE;
 }
 .footer-menu ul li {
     display: inline-block;
@@ -3267,7 +3267,7 @@ hr {
     content: "";
     width: 38px;
     height: 3px;
-    background: #fc3f00;
+    background: #109CDE;
     top: -50px;
     top: -24px;
     left: 0;
@@ -3299,7 +3299,7 @@ hr {
     content: "";
     width: 75px;
     height: 3px;
-    background: #fc3f00;
+    background: #109CDE;
     left: 0;
     top: 52%;
     transform: translateY(-50%);
@@ -3744,7 +3744,7 @@ hr {
     left: 10px;
     display: block;
     color: #fff;
-    background-color: #fc3f00;
+    background-color: #109CDE;
     padding: 8px 15px;
     border-radius: 5px;
 }
@@ -3813,7 +3813,7 @@ hr {
     box-shadow: none;
 }
 .blog_right_sidebar .search_widget .input-group button {
-    background: #fc3f00;
+    background: #109CDE;
     border-left: 0;
     border: 1px solid #f0e9ff;
     padding: 4px 15px;

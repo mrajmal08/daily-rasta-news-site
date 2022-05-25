@@ -22,7 +22,7 @@ Route::get('ہمارے-بارے-میں', [web\FrontendController::class, 'about'
 Route::get('/ہم-سے-رابطہ-کریں', [web\FrontendController::class, 'contact'])->name('contact.us');
 Route::post('/message-send', [web\FrontendController::class, 'contactStore'])->name('contact.store');
 
-Route::get('/اقسام', [web\FrontendController::class, 'categories'])->name('categories.frontend');
+Route::get('/اہم-خبریں', [web\FrontendController::class, 'categories'])->name('categories.frontend');
 Route::get('/{slug}/خبریں', [web\FrontendController::class, 'categoryDetail'])->name('categories.detail');
 Route::get('/{slug}/خبر', [web\FrontendController::class, 'newsDetail'])->name('news.detail');
 Route::get('/کالمز', [web\FrontendController::class, 'blog'])->name('blog');

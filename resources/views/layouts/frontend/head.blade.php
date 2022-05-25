@@ -55,6 +55,11 @@
             font-style: normal;
         }
 
+        .dl, ol, ul {
+            margin-top: 0;
+            margin-bottom: 0px !important;
+        }
+
         #sarach_data {
             position: absolute;
             background-color: #ffe7e6;
@@ -92,7 +97,8 @@
                 top: 23px;
                 border-radius: 5px;
                 background-color: #109cde;
-        }
+            }
+
         .date-search:hover{
             background-color: #f14c38;
             color: #ffffff;
@@ -118,13 +124,19 @@
     overflow: hidden;
     text-overflow: clip;
   } */
-        .overflo {
+        /* .overflo {
             width: 250px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+        } */
+        .overflo{
+        overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 1; /* number of lines to show */
+   -webkit-box-orient: vertical;
         }
-
     </style>
 
 

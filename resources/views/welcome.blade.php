@@ -16,16 +16,17 @@
             <div class="container">
                 <div class="trending-main">
                     <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
+                        <div class="row m-3 ">
+                            <div class="col-md-12" dir="rtl">
                                 <div class="d-flex justify-content-between align-items-center breaking-news bg-white">
                                     <div class="d-flex flex-row m-3 flex-grow-1 flex-fill justify-content-center py-2 text-white px-1 news rounded"
                                         style="background-color: #109cde">
                                         <span class="d-flex align-items-center">&nbsp;اہم خبریں</span>
                                     </div>
-                                    <marquee class="news-scroll" behavior="scroll" loop="100" scrolldelay="1"
+                                    <marquee class="news-scroll p-5" behavior="scroll" loop="100" scrolldelay="1"
                                         scrollamount="12" direction="right" onmouseover="this.stop();"
                                         onmouseout="this.start();">
+                                        <span class="dot"></span>
                                         @foreach ($breaking_news as $item)
                                             <a href="{{ route('news.detail', [$item->slug]) }}">{{ $item->title }}</a>
                                             <span class="dot"></span>
@@ -46,7 +47,7 @@
                                             style="height: 487px;width: 730px;">
                                         <div class="trend-top-cap">
                                             <span>{{ App\Models\Category::where('id', $latest_news->cat_id)->pluck('title')->first() }}</span>
-                                            <h2><a href="{{ route('news.detail', [$latest_news->slug]) }}">{{ $latest_news->title }}<br>
+                                            <h2 class="overflo text-white" style="line-height:2.5;"><a href="{{ route('news.detail', [$latest_news->slug]) }}">{{ $latest_news->title }}<br>
                                                 </a></h2>
                                         </div>
                                     </div>
@@ -80,7 +81,7 @@
                                                     <span class="color1"><a
                                                             href="{{ route('categories.detail', [$item->slug]) }}">{{ $item->title }}</a></span>
                                                     <h4>
-                                                        <h4><a
+                                                        <h4 class="overflo"><a
                                                                 href="{{ route('categories.detail', [$item->slug]) }}">{{ $item->description }}</a>
                                                         </h4>
                                                     </h4>
@@ -93,7 +94,7 @@
                         </div>
                         <!-- Riht content -->
                         <div class="col-lg-4">
-                            <h3 class="widget_title p-3 rounded text-white"
+                            <h3 class="widget_title p-3 rounded text-white mb-3"
                                 style="background-color: #109cde; width:152px; ">تازہ ترين خبریں</h3>
 
                             @foreach ($recent_news as $item)
@@ -109,13 +110,13 @@
                                         alt="{{ $item->title }}" style="height: 100px;width: 120px;">
                                     &nbsp;
                                     <div class="media-body">
-                                        <a href="{{ route('news.detail', [$item->slug]) }}">
+                                        <a class="overflo pt-3" href="{{ route('news.detail', [$item->slug]) }}">
                                             {{ $item->title }}
                                         </a>
 
                                         <p>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</p>
                                     </div>
-                                </div>
+                                </div> <br>
                             @endforeach
 
                         </div>
@@ -151,7 +152,7 @@
                                         <div class="what-cap">
                                             <span class="color1"><a
                                                     href="{{ route('categories.detail', [$cat_detail->slug]) }}">{{ $cat_detail->title }}</a></span>
-                                            <h4><a
+                                            <h4 class="overflo" dir="rtl"><a
                                                     href="{{ route('news.detail', [$item->slug]) }}">{{ $item->title }}</a>
                                             </h4>
                                         </div>
@@ -205,7 +206,7 @@
                                                             <div class="what-cap">
                                                                 <span class="color1"><a
                                                                         href="{{ route('categories.detail', [$cat_detail->slug]) }}">{{ $cat_detail->title }}</a></span>
-                                                                <h4><a
+                                                                <h4><a class="overflo" dir="rtl"
                                                                         href="{{ route('news.detail', [$item->slug]) }}">{{ $item->title }}</a>
                                                                 </h4>
                                                             </div>
@@ -303,7 +304,7 @@
                                         <div class="what-cap">
                                             <span class="color1"><a
                                                     href="{{ route('categories.detail', [$cat_detail->slug]) }}">{{ $cat_detail->title }}</a></span>
-                                            <h4><a
+                                            <h4><a class="overflo" dir="rtl"
                                                     href="{{ route('news.detail', [$item->slug]) }}">{{ $item->title }}</a>
                                             </h4>
                                         </div>
@@ -342,7 +343,7 @@
                                 <div class="top-caption">
                                     {{-- <span class="color1">Politics</span> --}}
                                 </div>
-                                <div class="bottom-caption mt-2">
+                                <div class="bottom-caption mt-5">
                                     <h2>پاکستان کی سب سے بڑی ڈیجیٹل نیوز ایجنسی میں خوش آمدید</h2>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod ipsum dolor
                                         sit. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod ipsum
@@ -390,7 +391,7 @@
                                         </div>
                                         <div class="what-cap">
                                             <span class="color1">{{ $item->type }}</span>
-                                            <h4><a href="{{ route('blog.detail', [$item->slug]) }}"
+                                            <h4><a class="overflo" dir="rtl" href="{{ route('blog.detail', [$item->slug]) }}"
                                                     target="_blank">{{ $item->title }}</a></h4>
                                         </div>
                                     </div>

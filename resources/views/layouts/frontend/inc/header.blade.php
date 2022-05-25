@@ -2,7 +2,6 @@
         <!-- Header Start -->
 
        <div dir="rtl" class="header-area">
-
             <div class="main-header ">
                 <div class="header-top black-bg d-none d-md-block">
                    <div class="container">
@@ -43,13 +42,13 @@
                    <div class="container">
                         <div class="row d-flex align-items-center">
                             <!-- Logo -->
-                            <div class="col-xl-3 col-lg-3 col-md-3">
+                            <div class="col-xl-4 col-lg-4 col-md-4">
                                 <div class="logo">
                                     {{-- <a href="index.html"><img src="{{ asset('frontend/assets/img/logo/logo.png') }}" alt=""></a> --}}
-                                    <a href="/"><img src="http://dailyrasta.com/wp-content/uploads/2021/08/logo-gif-1.gif" alt=""></a>
+                                    <a href="/"><img src="{{ asset('frontend/assets/img/logo/logo-gif-1.gif') }}" alt=""></a>
                                 </div>
                             </div>
-                            <div class="col-xl-9 col-lg-9 col-md-9">
+                            <div class="col-xl-8 col-lg-8 col-md-8">
                                 <div class="header-banner f-right ">
                                     <img src="{{ asset('frontend/assets/img/hero/header_card.jpg') }}" alt="">
                                 </div>
@@ -57,13 +56,13 @@
                         </div>
                    </div>
                 </div>
-               <div class="header-bottom header-sticky">
+               <div class="header-bottom header-sticky" style="max-height: 105px">
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-xl-10 col-lg-10 col-md-12 header-flex">
                                 <!-- sticky -->
                                     <div class="sticky-logo">
-                                        <a href="/"><img src="http://dailyrasta.com/wp-content/uploads/2021/08/logo-gif-1.gif" alt=""></a>
+                                        <a href="/"><img src="{{ asset('frontend/assets/img/logo/logo-gif-1.gif') }}" alt=""></a>
 
                                     </div>
                                 <!-- Main-menu -->
@@ -74,17 +73,13 @@
                                             <li><a href="{{ route('today.newspaper') }}"><b>آج کا اخبار</b></a></li>
                                             <li><a href="{{ route('categories.frontend') }}"><b>اہم خبریں</b></a></li>
                                             <li><a href="{{ route('blog') }}"><b>کالمز</b></a></li>
-
                                             <li><a href="/پاکستان/خبریں"><b>پاکستان</b></a></li>
-                                            {{-- <li><a href="/کاروبار/خبریں"><b>کاروبار</b></a></li>
-                                            <li><a href="/صحت/خبریں"><b>صحت</b></a></li> --}}
+                                            <li><a href="/کاروبار/خبریں"><b>کاروبار</b></a></li>
+                                            <li><a href="/صحت/خبریں"><b>صحت</b></a></li>
                                             <li><a href="/کھیل/خبریں"><b>کھیل</b></a></li>
                                             <li><a href="{{ route('gallery') }}"><b>گیلری</b></a></li>
-
-
-                                            {{-- <li><a href="{{ route('about.us') }}"><b>ہمارے بارے میں</b></a></li>
-                                            <li><a href="{{ route('contact.us') }}"><b>ہم سے رابطہ کریں</b></a></li> --}}
                                             <li><a href="{{ route('staff') }}"><b>سٹاف</b></a></li>
+
                                         </ul>
                                     </nav>
                                 </div>

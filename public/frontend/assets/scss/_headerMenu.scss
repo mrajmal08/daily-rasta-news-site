@@ -55,7 +55,7 @@
             img{
                 @media #{$lg}{
                     width: 100%;
-                } 
+                }
                 @media #{$md}{
                     width: 100%;
                 }
@@ -131,7 +131,7 @@
             opacity: 1;
             transition: .3s;
             input{
-               
+
                 right: 37px;
             }
         }
@@ -200,7 +200,7 @@
                             // @include transition(.4s);
                         }
                     }
-                } 
+                }
             }
         }
     }
@@ -229,7 +229,7 @@
     opacity: 1;
     top: 100%;
 }
- 
+
 
 // header Sticky Responsive
 .header-sticky ul li a {
@@ -286,7 +286,7 @@
 
     .header-sticky.sticky-bar.sticky .header-right-btn {
         display: none !important;
-    }  
+    }
     .header-sticky.sticky-bar.sticky .sticky-logo {
         display: block !important;
     }
@@ -300,9 +300,9 @@
         }
 
     }
-//   
+//
 
 
 .sticky-logo.info-open {
-	padding: 12px;
+	// padding: 12px;
 }

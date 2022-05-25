@@ -32,10 +32,10 @@
 
                                 <div class="">
                                     <ul class="">
-                                        <li><a href="{{ route('about.us') }}">ہمارے بارے میں</a></li>
-                                        <li><a href="{{ route('privacy.policy') }}">پرائیویسی پالیسی</a></li>
-                                        <li><a href="{{ route('terms') }}">قوائد و ضوابط</a></li>
-                                        <li><a href="{{ route('contact.us') }}">ہم سے رابطہ</a></li>
+                                        <li class="mt-2"><a href="{{ route('about.us') }}">ہمارے بارے میں</a></li>
+                                        <li class="mt-2"><a href="{{ route('privacy.policy') }}">پرائیویسی پالیسی</a></li>
+                                        <li class="mt-2"><a href="{{ route('terms') }}">قوائد و ضوابط</a></li>
+                                        <li class="mt-1"><a href="{{ route('contact.us') }}">ہم سے رابطہ</a></li>
                                     </ul>
                                 </div>
                         </div>
@@ -47,10 +47,10 @@
                             </div>
                             <div class="">
                                 <ul class="">
-                                    <li><a href="https://www.youtube.com/channel/UCty_T-nB2sTu8lTHg6ZwztA">ہمارا یوٹیوب چینل</a></li>
-                                    <li><a href="https://web.facebook.com/dailyrastalahore/">ہمارا فیس بک پیج</a></li>
-                                    <li><a href="#">گوگل پس پر ہم سےرابطہ</a></li>
-                                    <li><a href="#">ہمارا ٹکٹ سپورٹ سیکشن</a></li>
+                                    <li class="mt-2"><a href="https://www.youtube.com/channel/UCty_T-nB2sTu8lTHg6ZwztA">ہمارا یوٹیوب چینل</a></li>
+                                    <li class="mt-2"><a href="https://web.facebook.com/dailyrastalahore/">ہمارا فیس بک پیج</a></li>
+                                    <li class="mt-2"><a href="#">گوگل پس پر ہم سےرابطہ</a></li>
+                                    <li class="mt-2"><a href="#">ہمارا ٹکٹ سپورٹ سیکشن</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -66,14 +66,14 @@
                         <div class="col-lg-6">
                             <div class="footer-copy-right">
                                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> جملہ حقوق محفوظ ہیں | ڈیلی راستہ کے ذریعہ تیار کردہ
+  {{-- Copyright &copy;<script>document.write(new Date().getFullYear());</script> جملہ حقوق محفوظ ہیں | ڈیلی راستہ کے ذریعہ تیار کردہ --}}
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="footer-menu f-right">
                                 <div class="footer-copy-right">
-                                    <p>ویب سائٹ ویوز &nbsp;<a>{{ isset($total_views)?$total_views:'' }}</a></p>
+                                    <p>ویب سائٹ ویوز :&nbsp;<a> &nbsp;{{ isset($total_views)?$total_views:'' }}</a></p>
                                 </div>
                             </div>
                         </div>

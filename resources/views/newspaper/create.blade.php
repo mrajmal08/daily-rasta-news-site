@@ -112,7 +112,6 @@
         <script src="{{ asset('assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
         <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
         <script src="{{ asset('assets/plugins/jquery-validation/additional-methods.min.js') }}"></script>
-
         <script src="{{ asset('assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
         <!-- CodeMirror -->
         <script src="{{ asset('assets/plugins/codemirror/codemirror.js') }}"></script>
