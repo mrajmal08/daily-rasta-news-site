@@ -17,6 +17,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('event_name')->nullable();
             $table->string('feature_image')->nullable();
+            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }

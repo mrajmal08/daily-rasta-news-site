@@ -5,14 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Gallary;
 use App\Models\Contact;
 use App\Models\Review;
 use App\Models\Video;
 use App\Models\Blog;
+use App\Models\GallaryItem;
 use App\Models\News;
 use Validator;
 use Redirect;
 use DB;
+use Hamcrest\Core\IsNot;
+
+use function PHPUnit\Framework\isNull;
 
 class FrontendController extends Controller
 {
@@ -59,6 +64,33 @@ class FrontendController extends Controller
 
         $total_views = DB::table('website_views')->pluck('total_views')->first();
         return view('frontend.contactus', compact('total_views'));
+    }
+    public function gallery()
+    {
+        $galleries = Gallary::orderBy('id', 'DESC')->get();
+        $breaking_news = News::where('breaking_news', 1)->orderBy('id', 'DESC')->take(5)->get();
+        $total_views = DB::table('website_views')->pluck('total_views')->first();
+        return view('frontend.gallery', compact('total_views','breaking_news', 'galleries'));
+    }
+
+    public function galleryEvent($slug){
+
+        $gallary_event = GallaryItem::where('gallary_slug', $slug)->get();
+        $event_name = 'ڈیلی راستہ';
+
+        if (!$gallary_event->isEmpty()) {
+            $event_name = Gallary::where('id', $gallary_event[0]->gallary_id)->pluck('event_name')->first();
+            if ($event_name) {
+                $event_name = $event_name;
+            } else {
+                $event_name = 'ڈیلی راستہ';
+            }
+
+        }
+
+        $breaking_news = News::where('breaking_news', 1)->orderBy('id', 'DESC')->take(5)->get();
+        $total_views = DB::table('website_views')->pluck('total_views')->first();
+        return view('frontend.gallery-event', compact('total_views','breaking_news', 'gallary_event', 'event_name'));
     }
 
     public function contactStore(Request $request)

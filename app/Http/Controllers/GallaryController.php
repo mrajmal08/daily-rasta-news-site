@@ -67,8 +67,14 @@ class GallaryController extends Controller
             $request->feature_image->move(public_path('assets/gallaryFiles'), $feature_image);
             $gallary->feature_image = $feature_image;
         }
+
         $gallary->event_name = $request->event_name;
+
+        $result =  explode(" ", $request->event_name);
+        $slug = implode('-', $result);
+        $gallary->slug = $slug;
         $gallary->save();
+
 
         if ($request->hasfile('image')) {
             foreach ($request->file('image') as $file) {
@@ -80,6 +86,7 @@ class GallaryController extends Controller
                     GallaryItem::create([
                         'image' => $image,
                         'gallary_id' => $gallary->id,
+                        'gallary_slug' => $gallary->slug,
                     ]);
 
                 } catch (\Exception$e) {
@@ -175,7 +182,18 @@ class GallaryController extends Controller
 
             }
         }
+        if($request->event_name){
+
         $gallary->event_name = $request->event_name;
+
+        $result =  explode(" ", $request->event_name);
+        $slug = implode('-', $result);
+        $gallary->slug = $slug;
+
+        GallaryItem::where('gallary_id', $id)->update(['gallary_slug' => $slug]);
+
+        }
+
         $gallary->save();
 
         return redirect()->route('gallary.index')->with('message', 'Gallary Successfully Updated');

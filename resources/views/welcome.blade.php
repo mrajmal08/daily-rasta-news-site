@@ -22,7 +22,7 @@
                             <div class="col-md-12">
                                 <div class="d-flex justify-content-between align-items-center breaking-news bg-white">
                                     <div
-                                        class="d-flex flex-row m-3 flex-grow-1 flex-fill justify-content-center py-2 text-white px-1 news rounded" style="background-color: #f14c38">
+                                        class="d-flex flex-row m-3 flex-grow-1 flex-fill justify-content-center py-2 text-white px-1 news rounded" style="background-color: #109cde">
                                         <span class="d-flex align-items-center">&nbsp;اہم خبریں</span></div>
                                     <marquee class="news-scroll" behavior="scroll" loop="100" scrolldelay="1"
                                         scrollamount="12" direction="right" onmouseover="this.stop();"
@@ -90,7 +90,7 @@
                         </div>
                         <!-- Riht content -->
                         <div class="col-lg-4">
-                            <h3 class="widget_title">تازہ ترين خبریں</h3>
+                            <h3 class="widget_title p-3 rounded text-white" style="background-color: #109cde; width:152px; ">تازہ ترين خبریں</h3>
 
                             @foreach ($recent_news as $item)
                                 <?php

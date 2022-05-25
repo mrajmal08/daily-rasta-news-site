@@ -55,7 +55,7 @@
             font-style: normal;
         }
 
-        #sarach_data{
+        #sarach_data {
             position: absolute;
             background-color: #ffe7e6;
             color: black;
@@ -72,14 +72,41 @@
             border: none;
             top: 0px;
             border-radius: 5px;
-            background-color: #f14c38;
+            background-color: #109cde;
         }
-    .main-search-button:hover{
-        background-color: #109cde;
-        color: #ffffff;
 
-    }
+        .main-search-button:hover {
+            background-color: #f14c38;
+            color: #ffffff;
 
+        }
+
+        @media screen and (max-width: 480px) {
+            .sizing {
+                width: 70%;
+            }
+
+            .rowcenter {
+                text-align: center;
+            }
+
+            .test {
+                text-align: left !important;
+                width: 80px !important;
+                /* display: none !important; */
+            }
+        }
+
+        /* .recent-active{
+    overflow: hidden;
+    text-overflow: clip;
+  } */
+        .overflo {
+            width: 250px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
 
     </style>
 
@@ -191,18 +218,23 @@
                 },
                 success: function(data) {
 
-                    if(data.length > 0) {
+                    if (data.length > 0) {
 
                         $.each(data, function(indx, stock) {
 
-                        $('#sarach_data').html(' ');
+                            $('#sarach_data').html(' ');
 
-                        $('#sarach_data').append('<li  class="list-group-item list-group-item-info"><a href="'+ stock.slug +'/خبر" target="_blank">' + stock.title + ' </a></li>');
-                    });
+                            $('#sarach_data').append(
+                                '<li  class="list-group-item list-group-item-info"><a href="' +
+                                stock.slug + '/خبر" target="_blank">' + stock.title +
+                                ' </a></li>');
+                        });
 
                     } else {
                         $('#sarach_data').html(' ');
-                        $('#sarach_data').append('<li  class="list-group-item list-group-item-info">کوئی ڈیٹا نہیں ملا</li>');
+                        $('#sarach_data').append(
+                            '<li  class="list-group-item list-group-item-info">کوئی ڈیٹا نہیں ملا</li>'
+                            );
 
                     }
                 }

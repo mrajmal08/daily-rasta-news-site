@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('gallary_items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('image')->nullable();
-            $table->unsignedBigInteger('gallary_id')->nullable();
+            $table->bigIncrements('gallary_id')->nullable();
+            $table->string('gallary_slug')->nullable();
             $table->timestamps();
         });
     }

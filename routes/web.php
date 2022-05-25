@@ -30,9 +30,10 @@ Route::get('/{slug}/کالمز', [web\FrontendController::class, 'blogDetail'])-
 Route::get('/قوائد-و-ضوابط', [web\FrontendController::class, 'terms'])->name('terms');
 Route::get('/پرائیویسی-پالیسی', [web\FrontendController::class, 'privacyPolicy'])->name('privacy.policy');
 Route::get('/سٹاف', [web\FrontendController::class, 'staff'])->name('staff');
+Route::get('/گیلری', [web\FrontendController::class, 'gallery'])->name('gallery');
+Route::get('/{slug}/گیلری', [web\FrontendController::class, 'galleryEvent'])->name('gallery.event');
 
 Route::get('/search', [web\FrontendController::class, 'search'])->name('search');
-
 Route::post('/post-review', [web\FrontendController::class, 'postReview'])->name('post.review');
 
 // post review route

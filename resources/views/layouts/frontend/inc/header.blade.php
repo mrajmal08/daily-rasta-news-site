@@ -72,14 +72,14 @@
                                         <ul id="navigation">
                                             <li><a href="/"><b>صفحہ اوّل</b></a></li>
                                             <li><a href="/"><b>آج کا اخبار</b></a></li>
+                                            <li><a href="{{ route('categories.frontend') }}"><b>اہم خبریں</b></a></li>
                                             <li><a href="{{ route('blog') }}"><b>کالمز</b></a></li>
-                                            <li><a href="{{ route('categories.frontend') }}"><b>اقسام</b></a></li>
 
-                                            <li><a href="/"><b>پاکستان</b></a></li>
-                                            <li><a href="/"><b>کاروبار</b></a></li>
-                                            <li><a href="/"><b>صحت</b></a></li>
-                                            <li><a href="/"><b>کھیل</b></a></li>
-                                            <li><a href="/"><b>گیلری</b></a></li>
+                                            <li><a href="/پاکستان/خبریں"><b>پاکستان</b></a></li>
+                                            <li><a href="/کاروبار/خبریں"><b>کاروبار</b></a></li>
+                                            <li><a href="/صحت/خبریں"><b>صحت</b></a></li>
+                                            <li><a href="/کھیل/خبریں"><b>کھیل</b></a></li>
+                                            <li><a href="{{ route('gallery') }}"><b>گیلری</b></a></li>
 
 
                                             {{-- <li><a href="{{ route('about.us') }}"><b>ہمارے بارے میں</b></a></li>

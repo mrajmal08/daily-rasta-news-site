@@ -60,16 +60,12 @@ $large_mobile:'only screen and (min-width: 480px) and (max-width: 767px)';
 .boxed-btn {
 	background: #fff;
     color: $theme-color !important;
-    
 	display: inline-block;
 	padding: 18px 44px;
-	font-family: $font_1;
 	font-size: 14px;
     font-weight: 400;
     border: 0;
     border: 1px solid $theme-color;
-    letter-spacing: 3px;
-
     text-align: center;
     color: $theme-color;
     text-transform: uppercase;
