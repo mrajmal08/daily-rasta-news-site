@@ -71,13 +71,13 @@
                                     <nav dir="rtl">
                                         <ul id="navigation">
                                             <li><a href="/"><b>صفحہ اوّل</b></a></li>
-                                            <li><a href="/"><b>آج کا اخبار</b></a></li>
+                                            <li><a href="{{ route('today.newspaper') }}"><b>آج کا اخبار</b></a></li>
                                             <li><a href="{{ route('categories.frontend') }}"><b>اہم خبریں</b></a></li>
                                             <li><a href="{{ route('blog') }}"><b>کالمز</b></a></li>
 
                                             <li><a href="/پاکستان/خبریں"><b>پاکستان</b></a></li>
-                                            <li><a href="/کاروبار/خبریں"><b>کاروبار</b></a></li>
-                                            <li><a href="/صحت/خبریں"><b>صحت</b></a></li>
+                                            {{-- <li><a href="/کاروبار/خبریں"><b>کاروبار</b></a></li>
+                                            <li><a href="/صحت/خبریں"><b>صحت</b></a></li> --}}
                                             <li><a href="/کھیل/خبریں"><b>کھیل</b></a></li>
                                             <li><a href="{{ route('gallery') }}"><b>گیلری</b></a></li>
 
@@ -93,9 +93,9 @@
                                 <div class="header-right-btn f-right d-none d-lg-block">
 
                                         <form class="form-group" style="width:150%">
-                                            <input type="text" class="form-control" name="search" id="search" placeholder="Search">
+                                            <input type="text" class="form-control" name="search" id="search" placeholder="تلاش کریں...">
                                         </form>
-                                        <button class="main-search-button" id="searchBtn">Search</button>
+                                        <button class="main-search-button" id="searchBtn">تلاش کریں</button>
 
                                     <div class="">
                                         <ul class="list-group" id="sarach_data">

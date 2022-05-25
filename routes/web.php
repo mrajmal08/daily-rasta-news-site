@@ -33,6 +33,9 @@ Route::get('/سٹاف', [web\FrontendController::class, 'staff'])->name('staff')
 Route::get('/گیلری', [web\FrontendController::class, 'gallery'])->name('gallery');
 Route::get('/{slug}/گیلری', [web\FrontendController::class, 'galleryEvent'])->name('gallery.event');
 
+Route::get('/آج-کا-اخبار', [web\FrontendController::class, 'todayNewspaper'])->name('today.newspaper');
+
+
 Route::get('/search', [web\FrontendController::class, 'search'])->name('search');
 Route::post('/post-review', [web\FrontendController::class, 'postReview'])->name('post.review');
 

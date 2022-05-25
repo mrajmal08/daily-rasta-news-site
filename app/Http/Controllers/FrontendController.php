@@ -12,6 +12,7 @@ use App\Models\Video;
 use App\Models\Blog;
 use App\Models\GallaryItem;
 use App\Models\News;
+use App\Models\Newspaper;
 use Validator;
 use Redirect;
 use DB;
@@ -91,6 +92,23 @@ class FrontendController extends Controller
         $breaking_news = News::where('breaking_news', 1)->orderBy('id', 'DESC')->take(5)->get();
         $total_views = DB::table('website_views')->pluck('total_views')->first();
         return view('frontend.gallery-event', compact('total_views','breaking_news', 'gallary_event', 'event_name'));
+    }
+
+
+    public function todayNewspaper(Request $request){
+
+       if($request->search){
+
+              $search = $request->search;
+              $today_news = Newspaper::where('news_date', 'LIKE', '%'.$search.'%')->orderBy('id', 'DESC')->paginate(5);
+            }else{
+           $today_news = Newspaper::orderBy('id', 'DESC')->paginate(5);
+       }
+
+        $breaking_news = News::where('breaking_news', 1)->orderBy('id', 'DESC')->take(5)->get();
+        $total_views = DB::table('website_views')->pluck('total_views')->first();
+
+       return view('frontend.today-newspaper', compact('total_views','breaking_news', 'today_news'));
     }
 
     public function contactStore(Request $request)

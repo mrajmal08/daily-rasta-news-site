@@ -81,6 +81,23 @@
 
         }
 
+        .date-search{
+            position: absolute;
+                right: -31px;
+                height: 39px;
+                width: 70px;
+                color: #ffffff;
+                top: 5;
+                border: none;
+                top: 23px;
+                border-radius: 5px;
+                background-color: #109cde;
+        }
+        .date-search:hover{
+            background-color: #f14c38;
+            color: #ffffff;
+        }
+
         @media screen and (max-width: 480px) {
             .sizing {
                 width: 70%;
