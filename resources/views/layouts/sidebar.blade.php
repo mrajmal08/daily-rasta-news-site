@@ -81,7 +81,7 @@
                 </li>
 
                 <li class="nav-item ">
-                    <a href="{{ route('ads.index') }}" class="nav-link">
+                    <a href="{{ route('gallary.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-image "></i>
                         <p>
                             Gallary Image
@@ -126,7 +126,7 @@
             </li>
 
             <li class="nav-item ">
-                <a href="{{ route('ads.index') }}" class="nav-link">
+                <a href="{{ route('gallary.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-image "></i>
                     <p>
                         Gallary Image

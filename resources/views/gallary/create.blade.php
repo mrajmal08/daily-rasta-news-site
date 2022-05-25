@@ -17,13 +17,13 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1>Newspaper Post</h1>
+                                <h1>Daily Rasta Gallary</h1>
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
-                                    <li class="breadcrumb-item"><a href="{{ route('newspaper.index') }}">All
-                                            Newspaper</a></li>
-                                    <li class="breadcrumb-item active">Newspaper</li>
+                                    <li class="breadcrumb-item"><a href="{{ route('gallary.index') }}">All
+                                        Gallary</a></li>
+                                    <li class="breadcrumb-item active">Daily Rasta Gallary</li>
                                 </ol>
                             </div>
                         </div>
@@ -44,13 +44,13 @@
                         @endforeach
                     @endif
 
-                    <form method="POST" action="{{ route('newspaper.store') }}" enctype="multipart/form-data" id="quickForm">
+                    <form method="POST" action="{{ route('gallary.store') }}" enctype="multipart/form-data" id="quickForm">
                         @CSRF
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card card-primary">
                                     <div class="card-header">
-                                        <h3 class="card-title">Newspaper</h3>
+                                        <h3 class="card-title">Daily Rasta Gallary</h3>
 
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse"
@@ -63,17 +63,26 @@
 
 
                                         <div class="form-group">
-                                            <label for="inputTitle">News Date</label>
-                                            <input type="date" id="inputTitle" name="news_date" class="form-control">
+                                            <label for="inputTitle">Event Name</label>
+                                            <input type="text" id="inputTitle" name="event_name" class="form-control">
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="inputClientCompany">Top image</label>
+                                            <label for="inputClientCompany">Feature Image</label>
+                                            <div class="custom-file">
+                                                <input type="file" name="feature_image" class="custom-file-input"
+                                                    id="customFile">
+                                                <label class="custom-file-label" for="customFile">Choose Image</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputClientCompany">Gallary Images</label>
                                             <div class="custom-file">
                                                 <input type="file" name="image[]" multiple class="custom-file-input"
                                                     id="customFile">
                                                 <label class="custom-file-label" for="customFile">Choose Image</label>
-                                                <p style="color: green" >select multiple images</p>
+                                                <p style="color: green"> Choose multiple Images for gallary </p>
                                             </div>
                                         </div>
 
@@ -88,7 +97,7 @@
                         <div class="row mb-4">
                             <div class="col-12">
 
-                                <input type="submit" value="Publish Newspaper" class="btn btn-success float-right">
+                                <input type="submit" value="Publish Gallary" class="btn btn-success float-right">
                             </div>
                         </div>
                     </form>

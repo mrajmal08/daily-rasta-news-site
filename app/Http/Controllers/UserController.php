@@ -37,7 +37,7 @@ class UserController extends Controller
             return redirect()->route('news.index')->with('error','Sorry you are not admin');
         }
 
-        $users = User::all();
+        $users = User::orderBy('id', 'DESC')->get();
         return view('user.index', compact('users'));
     }
 

@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Gallary extends Model
+class GallaryItem extends Model
 {
     use HasFactory;
-    protected $table = "gallaries";
+    protected $table = "gallary_items";
     protected $guarded = [];
 }

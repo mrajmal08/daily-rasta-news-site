@@ -98,7 +98,7 @@
                         <div class="row mb-4">
                             <div class="col-12">
 
-                                <input type="submit" value="Publish News" class="btn btn-success float-right">
+                                <input type="submit" value="Update Newspaper" class="btn btn-success float-right">
                             </div>
                         </div>
                     </form>

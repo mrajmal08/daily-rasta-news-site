@@ -116,3 +116,6 @@ Route::get('/gallary/edit/{id}', [web\GallaryController::class, 'edit'])->name('
 Route::post('/gallary/update/{id}', [web\GallaryController::class, 'update'])->name('gallary.update');
 Route::get('/gallary/delete/{id}', [web\GallaryController::class, 'destroy'])->name('gallary.delete');
 
+
+Route::post('/gallary/items', [web\GallaryController::class, 'gallaryItems'])->name('gallary.items');
+

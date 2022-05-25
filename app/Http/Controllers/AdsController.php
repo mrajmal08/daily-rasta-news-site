@@ -34,7 +34,7 @@ class AdsController extends Controller
             return redirect()->route('news.index')->with('error', 'Sorry you are not admin');
         }
 
-        $ads = Ads::all();
+        $ads = Ads::orderBy('id', 'DESC')->get();
         return view('ads.index', compact('ads'));
     }
 

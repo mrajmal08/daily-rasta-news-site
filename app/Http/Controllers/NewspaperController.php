@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Newspaper;
 use Carbon\Carbon;
-use File;
-use Illuminate\Http\Request;
-use Redirect;
 use Validator;
+use Redirect;
+use File;
 
 class NewspaperController extends Controller
 {
+
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +25,7 @@ class NewspaperController extends Controller
      */
     public function index()
     {
-        $newspaper = Newspaper::all();
+        $newspaper = Newspaper::orderBy('id', 'DESC')->get();
         return view('newspaper.index', compact('newspaper'));
     }
 

@@ -36,7 +36,7 @@ class CategoryController extends Controller
             return redirect()->route('news.index')->with('error', 'Sorry you are not admin');
         }
 
-        $categories = Category::all();
+        $categories = Category::orderBy('id', 'DESC')->get();
         return view('category.index', compact('categories'));
     }
 

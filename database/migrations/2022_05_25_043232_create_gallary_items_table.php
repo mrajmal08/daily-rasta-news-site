@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('gallaries', function (Blueprint $table) {
+        Schema::create('gallary_items', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('event_name')->nullable();
-            $table->string('feature_image')->nullable();
+            $table->string('image')->nullable();
+            $table->unsignedBigInteger('gallary_id')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gallaries');
+        Schema::dropIfExists('gallary_items');
     }
 };
