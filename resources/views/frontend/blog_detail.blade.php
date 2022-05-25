@@ -104,18 +104,18 @@
 
                                     <div class="form-group">
                                         <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
-                                            placeholder="Write Comment"></textarea>
+                                            placeholder="پیغام لکھیں..."></textarea>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <input class="form-control" name="name" id="name" type="text" placeholder="Name">
+                                        <input class="form-control" name="name" id="name" type="text" placeholder="نام لکھیں">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <input class="form-control" name="email" id="email" type="email"
-                                            placeholder="Email">
+                                            placeholder="ای میل لکھیں">
                                     </div>
                                 </div>
 

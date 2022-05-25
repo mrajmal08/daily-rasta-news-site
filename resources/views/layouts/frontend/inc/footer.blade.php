@@ -32,9 +32,9 @@
 
                                 <div class="">
                                     <ul class="">
+                                        <li><a href="{{ route('about.us') }}">ہمارے بارے میں</a></li>
                                         <li><a href="{{ route('privacy.policy') }}">پرائیویسی پالیسی</a></li>
                                         <li><a href="{{ route('terms') }}">قوائد و ضوابط</a></li>
-                                        <li><a href="{{ route('staff') }}">سٹاف</a></li>
                                         <li><a href="{{ route('contact.us') }}">ہم سے رابطہ</a></li>
                                     </ul>
                                 </div>

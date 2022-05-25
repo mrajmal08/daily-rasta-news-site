@@ -496,7 +496,7 @@
                                 <div class="form-group">
                                     <input class="form-control" name="subject" id="subject" type="text"
                                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'"
-                                        placeholder="سبجیکٹ درج کریں۔ ">
+                                        placeholder="سبجیکٹ درج کریں ">
                                 </div>
                             </div>
                         </div>
