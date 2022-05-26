@@ -138,7 +138,7 @@ class FrontendController extends Controller
         $breaking_news = News::where('breaking_news', 1)->orderBy('id', 'DESC')->take(5)->get();
 
         $total_views = DB::table('website_views')->pluck('total_views')->first();
-        $categories = Category::paginate(4);
+        $categories = Category::paginate(8);
         $recent_categories = Category::take(8)->orderBy('id', 'DESC')->get();
 
         return view('frontend.categories', compact('categories', 'recent_categories', 'total_views', 'breaking_news'));

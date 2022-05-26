@@ -481,7 +481,20 @@ hr {
     color: #888;
 }
 #scrollUp {
-    background: #fc3f00;
+    background: #109CDE;
+    height: 50px;
+    width: 50px;
+    right: 31px;
+    bottom: 18px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 48px;
+    border: 2px solid transparent;
+}
+#scrollUp:hover {
+    background: #e6373d;
     height: 50px;
     width: 50px;
     right: 31px;
@@ -2941,14 +2954,35 @@ hr {
     top: -114px;
     cursor: pointer;
 }
+
+.youtube-area .testmonial-nav button:hover {
+    position: absolute;
+    color: #333;
+    border: none;
+    font-size: 21px;
+    background: #fc4902;
+    width: 55px;
+    height: 55px;
+    border-radius: 10px;
+    color: #ffffff;
+    left: -421px;
+    top: -114px;
+    cursor: pointer;
+}
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .youtube-area .testmonial-nav button {
         left: -348px;
     }
 }
+
 .youtube-area .testmonial-nav button.slick-next {
     left: -340px;
-    background: red;
+    background: #109CDE;
+    color: #fff;
+}
+.youtube-area .testmonial-nav button.slick-next:hover {
+    left: -340px;
+    background: #fc4902;
     color: #fff;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -3139,7 +3173,7 @@ hr {
     color: #109CDE;
 }
 .footer-area .footer-social a i {
-    color: #222222;
+    color: #109cde;
     margin-right: 12px;
     font-size: 19px;
     -webkit-transition: all 0.4s ease-out 0s;

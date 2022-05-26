@@ -4,77 +4,51 @@
     <main>
         <!-- About US Start -->
         <div class="about-area">
+            @include('layouts.frontend.inc.breakingnews')
+
             <div class="container">
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="d-flex justify-content-between align-items-center breaking-news bg-white">
-                                <div class="d-flex flex-row m-3 flex-grow-1 flex-fill justify-content-center py-2 text-white px-1 news rounded"
-                                    style="background-color: #f14c38">
-                                    <span class="d-flex align-items-center">&nbsp;اہم خبریں</span>
-                                </div>
-
-                                <marquee class="news-scroll" behavior="scroll" loop="100" scrolldelay="1"
-                                    scrollamount="12" direction="right" onmouseover="this.stop();"
-                                    onmouseout="this.start();">
-                                    @foreach ($breaking_news as $item)
-                                        <a href="{{ route('news.detail', [$item->slug]) }}">{{ $item->title }}</a>
-                                        <span class="dot"></span>
-                                    @endforeach
-                                </marquee>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
                 <div dir="rtl" class="row">
                     <div class="col-lg-8">
                         <!-- Trending Tittle -->
                         <div class="about-right mb-90">
-                            <div class="about-img">
-                                <img src="{{ asset('frontend/assets/img/post/about_heor.jpg') }}" alt="">
-                            </div>
-                            <div class="section-tittle mb-30 pt-30">
-                                <h3>About Us</h3>
+
+                            <div class="section-tittle mb-30 ">
+                                <h3>ہمارے بارے میں</h3>
                             </div>
                             <div class="about-prea">
-                                <p class="about-pera1 mb-25">Moms are like…buttons? Moms are like glue. Moms are like pizza
-                                    crusts. Moms are the ones who make sure things happen—from birth to school lunch.</p>
-                                <p class="about-pera1 mb-25">Moms are like…buttons? Moms are like glue. Moms are like pizza
-                                    crusts. Moms are the ones who make sure things happen—from birth to school lunch.</p>
+                                <p class="about-pera1 mb-25">ماں… بٹنوں کی طرح ہوتی ہیں؟ مائیں گوند کی طرح ہوتی ہیں۔ ماں پیزا کی طرح ہوتی ہے۔
+                                    کرسٹس ماں وہ ہیں جو اس بات کو یقینی بناتی ہیں کہ پیدائش سے لے کر اسکول کے لنچ تک۔</p>
+                               
                                 <p class="about-pera1 mb-25">
-                                    My hero when I was a kid was my mom. Same for everyone I knew. Moms are untouchable.
-                                    They’re elegant, smart, beautiful, kind…everything we want to be. At 29 years old, my
-                                    favorite compliment is being told that I look like my mom. Seeing myself in her image,
-                                    like this daughter up top, makes me so proud of how far I’ve come, and so thankful for
-                                    where I come from.
-                                    the refractor telescope uses a convex lens to focus the light on the eyepiece.
-                                    The reflector telescope has a concave lens which means it bends in. It uses mirrors to
-                                    focus the image that you eventually see.
-                                    Collimation is a term for how well tuned the telescope is to give you a good clear image
-                                    of what you are looking at. You want your telescope to have good collimation so you are
-                                    not getting a false image of the celestial body.
-                                    Aperture is a fancy word for how big the lens of your telescope is. But it’s an
-                                    important word because the aperture of the lens is the key to how powerful your
-                                    telescope is. Magnification has nothing to do with it, its all in the aperture.
-                                    Focuser is the housing that keeps the eyepiece of the telescope, or what you will look
-                                    through, in place. The focuser has to be stable and in good repair for you to have an
-                                    image you can rely on.
-                                    Mount and Wedge. Both of these terms refer to the tripod your telescope sits on. The
-                                    mount is the actual tripod and the wedge is the device that lets you attach the
-                                    telescope to the mount.
-                                    Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are the ones
-                                    who make sure things happen—from birth to school lunch.</p>
+                                    میرا ہیرو جب میں بچپن میں تھا تو میری ماں تھی۔ ہر ایک کے لیے ایک جیسا میں جانتا تھا۔ مائیں اچھوت ہیں۔
+                                    وہ خوبصورت، ہوشیار، خوبصورت، مہربان ہیں… ہر وہ چیز جو ہم بننا چاہتے ہیں۔ 29 سال کی عمر میں، میرا
+                                    پسندیدہ تعریف میں کہا جا رہا ہے کہ میں اپنی ماں جیسی لگتی ہوں۔ خود کو اس کی شکل میں دیکھ کر
+                                    اس بیٹی کی طرح، مجھے اس بات پر بہت فخر ہے کہ میں کہاں تک آیا ہوں، اور اس کے لیے بہت شکر گزار ہوں۔
+                                    میں کہاں سے آیا ہوں.
+                                    ریفریکٹر دوربین آئی پیس پر روشنی کو فوکس کرنے کے لیے ایک محدب لینس کا استعمال کرتی ہے۔
+                                    ریفلیکٹر دوربین میں مقعر کا لینس ہوتا ہے جس کا مطلب ہے کہ یہ اندر جھک جاتا ہے۔ یہ آئینے کا استعمال کرتا ہے۔
+                                    اس تصویر پر توجہ مرکوز کریں جو آپ آخر کار دیکھتے ہیں۔
+                                    کولیمیشن ایک اصطلاح ہے کہ آپ کو ایک اچھی واضح تصویر دینے کے لیے دوربین کتنی اچھی طرح سے ٹیونڈ ہے۔
+                                    آپ کیا دیکھ رہے ہیں. آپ چاہتے ہیں کہ آپ کی ٹیلی اسکوپ میں اچھی کولیمیشن ہو تو آپ ہیں۔
+                                    آسمانی جسم کی غلط تصویر نہ ملنا۔
+                                    آپ کی ٹیلی سکوپ کا لینس کتنا بڑا ہے اس کے لیے اپرچر ایک فینسی لفظ ہے۔ لیکن یہ ایک ہے
+                                    اہم لفظ کیونکہ لینس کا یپرچر اس بات کی کلید ہے کہ آپ کا کتنا طاقتور ہے۔
+                                    دوربین ہے. میگنیفیکیشن کا اس سے کوئی تعلق نہیں ہے، یہ سب یپرچر میں ہے۔
+                                    فوکسر وہ مکان ہے جو دوربین کے آئی پیس کو رکھتا ہے، یا آپ کیا دیکھیں گے۔
+                                    کے ذریعے، جگہ میں. فوکسر کو آپ کے پاس رکھنے کے لیے مستحکم اور اچھی مرمت میں ہونا چاہیے۔
+                                    تصویر جس پر آپ بھروسہ کر سکتے ہیں۔
+                                    ماؤنٹ اور ویج۔ یہ دونوں اصطلاحات اس تپائی کا حوالہ دیتے ہیں جس پر آپ کی دوربین بیٹھتی ہے۔ دی
+                                    mount اصل تپائی ہے اور ویج وہ آلہ ہے جو آپ کو منسلک کرنے دیتا ہے۔
+                                    پہاڑ پر دوربین.
+                                    ماں… بٹنوں کی طرح ہوتی ہیں؟ مائیں گوند کی طرح ہوتی ہیں۔ ماں پیزا کرسٹ کی طرح ہوتی ہیں۔ ماں ہی ہوتی ہیں۔
+                                    جو اس بات کو یقینی بناتے ہیں کہ پیدائش سے لے کر اسکول کے لنچ تک۔</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <!-- Section Tittle -->
                         <div class="section-tittle mb-40">
-                            <h3>Follow Us</h3>
+                            <h3>ہمیں فالو کریں</h3>
                         </div>
                         <!-- Flow Socail -->
                         <div class="single-follow mb-45">
@@ -124,7 +98,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+
         </div>
         <!-- About US End -->
     </main>

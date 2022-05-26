@@ -8,7 +8,7 @@
                             <div class="single-footer-caption">
                                 <!-- logo -->
                                 <div class="footer-logo">
-                                    <a href="index.html"><img src="http://dailyrasta.com/wp-content/uploads/2021/08/logo-gif-1.gif" alt=""></a>
+                                    <a href="index.html"><img src="{{ asset('frontend/assets/img/logo/logo-gif-1.gif') }}" alt=""></a>
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
