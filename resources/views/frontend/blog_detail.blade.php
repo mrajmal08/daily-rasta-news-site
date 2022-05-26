@@ -25,21 +25,33 @@
 
                         </div>
                     </div>
-                    <div class="navigation-top">
-                        <div class="d-sm-flex justify-content-between text-center">
-                            <p class="like-info"><span class="align-middle"><i
-                                        class="fa fa-heart"></i></span>&nbsp;{{ $blog->total_clicks }} لوگوں نے اس پوسٹ
-                                کو دیکھا</p>
-                            <div class="col-sm-4 text-center my-2 my-sm-0">
-                                <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
-                            </div>
-                            <ul class="social-icons">
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            </ul>
-                        </div>
 
+
+                    <div class="navigation-top">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p class="like-info"><span class="align-middle"><i
+                                        class="fa fa-heart"></i></span>&nbsp;{{ $blog->total_clicks }} لوگوں نے اس پوسٹ
+                                        کو دیکھا </p>
+                                </div>
+
+                                <div class="col-8" dir="ltr">
+                                    <div class="text-center my-2 my-sm-0">
+                                        <div class="social-share">
+                                            <div class="section-tittle">
+                                                <ul>
+                                                    <li><a href="{{ $twitter_link }}" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                                    <li><a href="{{ $facebook_link }}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                                    <li><a href="{{ $linkedin_link }}" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                                                    <li><a href="{{ $whatsapp_link }}" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="comments-area">

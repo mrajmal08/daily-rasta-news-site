@@ -56,12 +56,12 @@
                          </aside>
 
                         <aside class="single_sidebar_widget popular_post_widget">
-                            <h3 class="widget_title">Recent Blogs</h3>
+                            <h3 class="widget_title">حالیہ کالمز</h3>
                             @foreach ($recent_blog as $item)
                             <div class="media post_item">
                                 <img src="{{ asset('assets/blogFiles')."/".$item->feature_image }}" alt="{{ $item->title }}" style="width:75px; height:60px">
                                 <div class="media-body">
-                                    <a href="single-blog.html">
+                                    <a class="overflo" href="{{ route('blog.detail', [$item->slug]) }}">
                                         <h3>{{ $item->title }}</h3>
                                     </a>
                                     <p>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</p>
@@ -76,10 +76,10 @@
 
             <div class="col-md-12">
                 <div class="row">
-                <div class="col-md-5"></div>
-                <div class="col-md-2">{{$blog->links('pagination::bootstrap-4')}}</div>
-                <div class="col-md-5"></div>
-            </div>
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2">{{$blog->links('pagination::bootstrap-4')}}</div>
+                    <div class="col-md-5"></div>
+                </div>
             </div>
 
         </div>

@@ -53,8 +53,8 @@
                             </div>
                         </div>
                         <div class="col-xl-7 col-lg-7 col-md-7">
-                            <div class="header-banner f-right" style="margin-right: 65px">
-                                <img src="{{ asset('frontend/assets/img/hero/header_card.jpg') }}" alt="" style="width: 690px;
+                            <div class="header-banner f-right" style="margin-right: 80px">
+                                <img src="{{ asset('frontend/assets/img/hero/header_card.jpg') }}" alt="" style="width: 620px;
                                 height: 98px;">
                             </div>
                         </div>
@@ -88,8 +88,8 @@
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-lg-12 col-md-12 header-flex">
                             <!-- sticky -->
-                            <div class="sticky-logo">
-                                <a href="/"><img src="{{ asset('frontend/assets/img/logo/logo-gif-1.gif') }}"
+                            <div class="sticky-logo img">
+                                <a href="/"><img  src="{{ asset('frontend/assets/img/logo/logo-gif-1.gif') }}"
                                         alt=""></a>
 
                             </div>
@@ -107,10 +107,10 @@
                                         <li><a href="/کھیل/خبریں"><b>کھیل</b></a></li>
                                         <li><a href="/شوبز/خبریں"><b>شوبز</b></a></li>
                                         <li><a href="{{ route('gallery') }}"><b>گیلری</b></a></li>
+                                        <li><a href="{{ route('introduction') }}"><b>تعارف</b></a></li>
                                         <li><a href="{{ route('staff') }}"><b>سٹاف</b></a></li>
                                         <li><a href="{{ route('about.us') }}"><b>ہمارے بارے میں</b></a></li>
                                         <li><a href="{{ route('contact.us') }}"><b>ہم سے رابطہ</b></a></li>
-
 
                                     </ul>
                                 </nav>

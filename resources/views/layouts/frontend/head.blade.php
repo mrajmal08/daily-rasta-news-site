@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="icon" href="{{ url('frontend/assets/img/logo/favicon.PNG') }}">
     <title>Daily Rasta News Agency</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -105,10 +106,25 @@
             background-color: #f14c38;
             color: #ffffff;
         }
+        .rtl{
+            direction: rtl;
+        }
 
         @media screen and (max-width: 480px) {
-            .sizing {
-                width: 70%;
+            .img{
+                width: 50% !important;
+            }
+
+            .slick-list .slick-track{
+                left: -20px !important;
+            }
+
+            .what-new{
+                padding-left: 15px;
+            }
+
+            a:hover{
+               color: #fc3f00;
             }
 
             .rowcenter {
@@ -120,6 +136,15 @@
                 width: 80px !important;
                 /* display: none !important; */
             }
+            .rtl{
+                direction: ltr;
+            }
+            .disply{
+                display: none !important;
+            }
+            .center{
+                left: 38px;
+            }
         }
 
 
@@ -130,7 +155,11 @@
             -webkit-line-clamp: 1;
             /* number of lines to show */
             -webkit-box-orient: vertical;
+
         }
+        a:hover{
+               color: #fc3f00;
+            }
 
     </style>
 

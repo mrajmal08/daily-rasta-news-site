@@ -31,6 +31,7 @@ Route::get('/قوائد-و-ضوابط', [web\FrontendController::class, 'terms']
 Route::get('/پرائیویسی-پالیسی', [web\FrontendController::class, 'privacyPolicy'])->name('privacy.policy');
 Route::get('/سٹاف', [web\FrontendController::class, 'staff'])->name('staff');
 Route::get('/گیلری', [web\FrontendController::class, 'gallery'])->name('gallery');
+Route::get('/تعارف', [web\FrontendController::class, 'introduction'])->name('introduction');
 Route::get('/{slug}/گیلری', [web\FrontendController::class, 'galleryEvent'])->name('gallery.event');
 
 Route::get('/آج-کا-اخبار', [web\FrontendController::class, 'todayNewspaper'])->name('today.newspaper');

@@ -15,6 +15,8 @@ use App\Models\News;
 use App\Models\Newspaper;
 use Validator;
 use Redirect;
+use Share;
+use URL;
 use DB;
 use Hamcrest\Core\IsNot;
 
@@ -72,6 +74,12 @@ class FrontendController extends Controller
         $breaking_news = News::where('breaking_news', 1)->orderBy('id', 'DESC')->take(5)->get();
         $total_views = DB::table('website_views')->pluck('total_views')->first();
         return view('frontend.gallery', compact('total_views','breaking_news', 'galleries'));
+    }
+    public function introduction()
+    {
+        $breaking_news = News::where('breaking_news', 1)->orderBy('id', 'DESC')->take(5)->get();
+        $total_views = DB::table('website_views')->pluck('total_views')->first();
+        return view('frontend.introduction', compact('total_views', 'breaking_news'));
     }
 
     public function galleryEvent($slug){
@@ -162,6 +170,18 @@ class FrontendController extends Controller
         $total_views = DB::table('website_views')->pluck('total_views')->first();
         $news = News::where('slug', $slug)->first();
 
+        $url = URL::to('/'.$news->slug."/خبر"."/");
+        $social_share = Share::page($url, $news->tilte)
+        ->facebook()
+        ->twitter()
+        ->linkedin()
+        ->whatsapp()->getRawLinks();
+
+        $facebook_link = $social_share['facebook'];
+        $twitter_link = $social_share['twitter'];
+        $linkedin_link = $social_share['linkedin'];
+        $whatsapp_link = $social_share['whatsapp'];
+
         $previous_clicks = News::where('id', '=', $news->id)->pluck('clicks')->first();
         $new_clicks = $previous_clicks + 1;
         News::where('id', '=', $news->id)->update(['clicks' => $new_clicks]);
@@ -174,7 +194,7 @@ class FrontendController extends Controller
         //get reviews
         $reviews = Review::where('post_id', '=', $news->id)->where('type', 'news')->get();
 
-        return view('frontend.news_detail', compact( 'breaking_news', 'recent_news', 'news', 'category', 'categories', 'reviews', 'total_views'));
+        return view('frontend.news_detail', compact( 'breaking_news', 'recent_news', 'news', 'category', 'categories', 'reviews', 'total_views', 'facebook_link', 'twitter_link', 'linkedin_link', 'whatsapp_link'));
 
     }
 
@@ -196,6 +216,19 @@ class FrontendController extends Controller
 
         $blog_detail = Blog::where('slug', $slug)->first();
 
+        $url = URL::to('/'.$blog_detail->slug."/کالمز"."/");
+        $social_share = Share::page($url, $blog_detail->tilte)
+        ->facebook()
+        ->twitter()
+        ->linkedin()
+        ->whatsapp()->getRawLinks();
+
+        $facebook_link = $social_share['facebook'];
+        $twitter_link = $social_share['twitter'];
+        $linkedin_link = $social_share['linkedin'];
+        $whatsapp_link = $social_share['whatsapp'];
+
+
         $previous_clicks = Blog::where('id', '=', $blog_detail->id)->pluck('total_clicks')->first();
         $new_clicks = $previous_clicks + 1;
         Blog::where('id', '=', $blog_detail->id)->update(['total_clicks' => $new_clicks]);
@@ -205,7 +238,7 @@ class FrontendController extends Controller
         $recent_blog = Blog::take(5)->orderBy('id', 'DESC')->get();
         $reviews = Review::where('post_id', '=', $blog_detail->id)->where('type', 'blog')->get();
 
-        return view('frontend.blog_detail', compact('blog', 'categories', 'recent_blog', 'reviews', 'total_views', 'breaking_news'));
+        return view('frontend.blog_detail', compact('blog', 'categories', 'recent_blog', 'reviews', 'total_views', 'breaking_news', 'facebook_link', 'twitter_link', 'linkedin_link', 'whatsapp_link'));
     }
 
     public function postReview(Request $request)

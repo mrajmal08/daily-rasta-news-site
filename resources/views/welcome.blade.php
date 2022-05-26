@@ -49,7 +49,7 @@
                                 <div class="row">
                                     @foreach ($latest_categories as $item)
                                         <div class="col-lg-4">
-                                            <div class="single-bottom mb-35">
+                                            <div class="single-bottom rowcenter mb-35">
                                                 <div class="trend-bottom-img mb-30">
                                                     {{-- <img src="{{asset('frontend/assets/img/trending/trending_bottom2.jpg')}}" alt=""> --}}
                                                     <img src="{{ asset('assets/categoryImages') . '/' . $item->image }}"
@@ -111,9 +111,11 @@
                     <!-- section Tittle -->
                     <div class="row mt-5">
                         <div class="col-lg-12">
-                            <div class="section-tittle mb-30">
-                                <h3>ٹرینڈ نگ خبریں</h3>
+                             <div class="section-tittle float-left mb-1">
+                            <h3 class=" section-tittle widget_title p-3 rounded text-white mb-3"
+                                style="background-color: #109cde; width:152px; ">ٹرینڈ نگ خبریں</h3>
                             </div>
+
                         </div>
                     </div>
                     <div class="row">
@@ -124,12 +126,12 @@
                                     $cat_detail = App\Models\Category::where('id', $item->cat_id)->first();
                                     ?>
 
-                                    <div class="single-recent mb-100">
+                                    <div class="single-recent center mb-100">
                                         <div class="what-img">
                                             <img src="{{ asset('assets/postImages') . '/' . $item->feature_image }}"
                                                 alt="{{ $item->title }}" style="height: 326px;width: 350px;">
                                         </div>
-                                        <div class="what-cap">
+                                        <div class="what-cap center">
                                             <span class="color1"><a
                                                     href="{{ route('categories.detail', [$cat_detail->slug]) }}">{{ $cat_detail->title }}</a></span>
                                             <h4 class="overflo" dir="rtl"><a
@@ -151,8 +153,11 @@
                     <div class="col-lg-8">
                         <div class="row d-flex justify-content-between">
                             <div class="col-lg-3 col-md-3">
-                                <div class="section-tittle mb-30">
-                                    <h3>نیا کیا ہے</h3>
+                                <div class="section-tittle float-left mb-1 text-center ">
+                                    <!-- <h3>نیا کیا ہے</h3> -->
+                                    <h3 class=" section-tittle text-center widget_title p-3 rounded text-white mb-3"
+                                style="background-color: #109cde; width:152px; ">نیا کیا ہے</h3>
+
                                 </div>
                             </div>
                             <div class="col-lg-9 col-md-9">
@@ -181,7 +186,7 @@
                                                         <div class="single-what-news mb-100">
                                                             <div class="what-img">
                                                                 <img src="{{ asset('assets/postImages') . '/' . $item->feature_image }} "
-                                                                    alt="" style="height: 300px;width: 360px;">
+                                                                    alt="" style="height: 300px;width: 360px;" class="what-new">
                                                             </div>
                                                             <div class="what-cap">
                                                                 <span class="color1"><a
@@ -205,8 +210,10 @@
                     </div>
                     <div class="col-lg-4">
                         <!-- Section Tittle -->
-                        <div class="section-tittle mb-40">
-                            <h3>ہمیں فالو کریں</h3>
+                        <div class="section-tittle mb-2">
+                            <!-- <h3>ہمیں فالو کریں</h3> -->
+                            <h3 class=" section-tittle text-center widget_title p-3 rounded text-white mb-3"
+                                style="background-color: #109cde; width:152px; ">ہمیں فالو کریں</h3>
                         </div>
                         <!-- Flow Socail -->
                         <div class="single-follow mb-45">
@@ -264,8 +271,9 @@
                     <!-- section Tittle -->
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="section-tittle mb-30">
-                                <h3>مقبول خبریں</h3>
+                            <div class="section-tittle float-left mb-1">
+                                <h3 class=" section-tittle text-center widget_title p-3 rounded text-white mb-3"
+                                style="background-color: #109cde; width:152px; ">مقبول خبریں</h3>
                             </div>
                         </div>
                     </div>
@@ -355,8 +363,11 @@
                     <!-- section Tittle -->
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="section-tittle mb-30">
-                                <h3>بلاگ</h3>
+                            <div class="section-tittle float-left  mb-1">
+                                <!-- <h3>بلاگ</h3> -->
+                                <h3 class=" section-tittle text-center widget_title p-3 rounded text-white mb-3"
+                                style="background-color: #109cde; width:152px; ">بلاگ</h3>
+
                             </div>
                         </div>
                     </div>

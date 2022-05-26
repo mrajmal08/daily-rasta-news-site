@@ -4,8 +4,6 @@
     <!--================Blog Area =================-->
 
     @include('layouts.frontend.inc.breakingnews')
-
-
     <section dir="rtl" class="blog_area single-post-area pb-5">
         <div class="container">
 
@@ -14,7 +12,6 @@
                 <div class="col-lg-8 posts-list">
                     <div class="single-post">
                         <div class="feature-img">
-                            {{-- <img class="img-fluid" src="{{ asset('frontend/assets/img/blog/single_blog_1.png') }}}" alt=""> --}}
                             <img class="img-fluid" src="{{ asset('assets/postImages') . '/' . $news->top_image }}"
                                 alt="{{ $news->title }}" style="height: 487px;width: 730px;">
                         </div>
@@ -31,36 +28,35 @@
                             </p>
                         </div>
                     </div>
+
                     <div class="navigation-top">
-                        <div class="d-sm-flex justify-content-between text-center">
-                            <p class="like-info"><span class="align-middle"><i
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p class="like-info"><span class="align-middle"><i
                                         class="fa fa-heart"></i></span>&nbsp;{{ $news->clicks }} لوگوں نے اس پوسٹ کو
                                 دیکھا</p>
-                            <div class="col-sm-4 text-center my-2 my-sm-0">
-                                <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
+                                </div>
+
+                                <div class="col-8" dir="ltr">
+                                    <div class="text-center my-2 my-sm-0">
+                                        <div class="social-share">
+                                            <h3>Share</h3>
+                                            <div class="section-tittle">
+                                                <ul>
+                                                    <li><a href="{{ $twitter_link }}" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                                    <li><a href="{{ $facebook_link }}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                                    <li><a href="{{ $linkedin_link }}" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                                                    <li><a href="{{ $whatsapp_link }}" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
-
-                            <iframe
-                                src="https://www.facebook.com/plugins/share_button.php?href={{ route('news.detail', [$news->slug]) }}"
-                                width="77" height="28" style="border:none;overflow:hidden" scrolling="no"
-                                frameborder="0" allowfullscreen="true"
-                                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-
-                            {{-- <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{ route('news.detail', [$news->slug]) }}"
-                                target="_blank" class="btn btn-sm btn-primary" id="li">linkedin
-                                <i class="fa fa-linkedin" aria-hidden="true"></i>
-                            </a> --}}
-
-
-                        {{-- <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li> --}}
-                        {{-- </ul> --}}
-
-
                         </div>
                     </div>
+
                     <div class="">
 
                         @foreach ($reviews as $review)
@@ -171,7 +167,7 @@
                                         class="w-25 round">
                                     &nbsp;
                                     <div class="media-body">
-                                        <a href="{{ route('news.detail', [$news->slug]) }}">
+                                        <a class="overflo" href="{{ route('news.detail', [$news->slug]) }}">
                                             <h3>{{ $news->title }}</h3>
                                         </a>
 
