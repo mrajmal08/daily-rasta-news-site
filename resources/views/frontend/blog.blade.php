@@ -5,7 +5,7 @@
     <!--================Blog Area =================-->
     <section class="blog_area pb-5">
         @include('layouts.frontend.inc.breakingnews')
-
+        <div class="container">
             <div dir="rtl" class="row">
                 <div class="col-lg-8 mb-5 mb-lg-0">
                     <div class="blog_left_sidebar">
@@ -60,7 +60,7 @@
                             @foreach ($recent_blog as $item)
                             <div class="media post_item">
                                 <img src="{{ asset('assets/blogFiles')."/".$item->feature_image }}" alt="{{ $item->title }}" style="width:75px; height:60px">
-                                <div class="media-body">
+                                <div class="media-body mr-2">
                                     <a class="overflo" href="{{ route('blog.detail', [$item->slug]) }}">
                                         <h3>{{ $item->title }}</h3>
                                     </a>

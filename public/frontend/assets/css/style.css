@@ -2275,6 +2275,7 @@ hr {
 }
 .header-sticky.sticky-bar.sticky .sticky-logo {
     display: block !important;
+    width:100px;
 }
 .sticky-logo {
     display: none !important;

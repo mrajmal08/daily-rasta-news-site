@@ -119,8 +119,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12">
-                            <div class="recent-active dot-style d-flex dot-style">
+                        <div class=" col-md-12 col-lg-12 col-12">
+                            <div class="recent-active  d-flex dot-style hello">
                                 @foreach ($trending_news as $item)
                                     <?php
                                     $cat_detail = App\Models\Category::where('id', $item->cat_id)->first();

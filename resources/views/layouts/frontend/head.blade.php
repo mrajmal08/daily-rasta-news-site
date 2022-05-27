@@ -109,14 +109,31 @@
         .rtl{
             direction: rtl;
         }
+        @media only screen and (max-width: 414px) and (min-width: 375px)  {
+            .disply{
+                        display: none !important;
+            }
+            .hello .slick-list .slick-track{
+                left: -20px !important;
+            }
+            .slick-list .slick-track{
+                left: -2px !important;
+            }
+        }
+
 
         @media screen and (max-width: 480px) {
+
+
             .img{
                 width: 50% !important;
             }
 
+           .hello .slick-list .slick-track{
+                left: -41px !important;
+            }
             .slick-list .slick-track{
-                left: -20px !important;
+                left: -2px !important;
             }
 
             .what-new{

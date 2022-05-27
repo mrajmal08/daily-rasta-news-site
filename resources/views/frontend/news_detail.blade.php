@@ -6,11 +6,10 @@
     @include('layouts.frontend.inc.breakingnews')
     <section dir="rtl" class="blog_area single-post-area pb-5">
         <div class="container">
-
-
             <div class="row">
                 <div class="col-lg-8 posts-list">
                     <div class="single-post">
+
                         <div class="feature-img">
                             <img class="img-fluid" src="{{ asset('assets/postImages') . '/' . $news->top_image }}"
                                 alt="{{ $news->title }}" style="height: 487px;width: 730px;">
@@ -58,7 +57,6 @@
                     </div>
 
                     <div class="">
-
                         @foreach ($reviews as $review)
                             <div class="comment-list">
                                 <div class="single-comment justify-content-between d-flex">
