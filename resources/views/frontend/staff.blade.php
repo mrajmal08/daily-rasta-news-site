@@ -13,7 +13,6 @@
                     <div class="profile-description" style="font-size:16px;">Laravel Developer</div>
                 </div>
             </div>
-
             <div class="col-md-4 ">
                 <div class="profile-card-4 text-center my-5">
                     <img src="{{ asset('assets/staff/ajmal.jpg') }}" style="width:100% !important" ;
