@@ -19,7 +19,7 @@
                     <div class="container">
                         <div class="row p-lg-4">
                             <div class="col-12 rtl">
-                            <h5 class="rounded p-2 text-white d-sm-block d-lg-none mt-2" style="background-color: #f14c38; float: right; z-index: -1;">&nbsp;اہم خبریں</h5>
+                            <h5 class="rounded p-2 text-white d-sm-block d-md-none d-lg-none mt-2" style="background-color: #109CDE; float: right; z-index: -1;">&nbsp;اہم خبریں</h5>
                                 <div class="d-flex justify-content-between align-items-center breaking-news bg-white pt-3 pb-3">
                                     <div
                                         class="d-flex flex-row mb-3 mt-3 flex-grow-1 flex-fill justify-content-center py-2 text-white px-1 news rounded test disply" style="background-color: #109cde">

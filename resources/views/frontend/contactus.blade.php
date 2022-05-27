@@ -4,7 +4,7 @@
 
     <!-- ================ contact section start ================= -->
     <section class="contact-section">
-   
+
         <div class="container">
             <div class="d-none d-sm-block mb-5 pb-4">
                 <div id="map" style="height: 480px; position: relative; overflow: hidden;">
@@ -453,7 +453,9 @@
 
             <div dir="rtl" class="row">
                 <div class="col-12">
-                    <h2 class="contact-title">رابطے میں رہیں</h2>
+                <h3 class=" section-tittle text-center p-2 widget_title  rounded text-white "
+                                style="background-color: #109cde; width:152px; ">رابطے میں رہیں</h3>
+                    <!-- <h2 class="contact-title">رابطے میں رہیں</h2> -->
                 </div>
 
                 @if ($errors->any())
@@ -474,29 +476,29 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <textarea class="form-control w-100" name="comment" id="message" cols="30" rows="9" onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = 'Enter Message'"
+                                        onblur="this.placeholder = 'پیغام درج کریں'"
                                         placeholder="پیغام درج کریں"></textarea>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <input class="form-control valid" name="name" id="name" type="text"
-                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'"
+                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'اپنا نام درج کریں'"
                                         placeholder="اپنا نام درج کریں">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <input class="form-control valid" name="email" id="email" type="email"
-                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'"
-                                        placeholder="ای میل">
+                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'ای میل درج کریں'"
+                                        placeholder="ای میل درج کریں">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
                                     <input class="form-control" name="subject" id="subject" type="text"
-                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'"
-                                        placeholder="سبجیکٹ درج کریں ">
+                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'سبجیکٹ درج کریں'"
+                                        placeholder="سبجیکٹ درج کریں">
                                 </div>
                             </div>
                         </div>

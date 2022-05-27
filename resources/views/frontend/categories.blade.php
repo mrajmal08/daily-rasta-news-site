@@ -11,8 +11,10 @@
                 <div class="col-lg-8">
                     <div class="row d-flex justify-content-between">
                         <div class="col-lg-3 col-md-3">
-                            <div class="section-tittle mb-30">
-                                <h3>تمام کیٹاگریز</h3>
+                            <div class="section-tittle float-left ">
+                                <!-- <h3>تمام کیٹاگریز</h3> -->
+                                <h3 class=" section-tittle text-center widget_title p-3 rounded text-white mb-3"
+                                style="background-color: #109cde; width:152px; ">تمام کیٹاگریز</h3>
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-9">
@@ -65,6 +67,7 @@
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget post_category_widget">
                             <h4 class="widget_title">اقسام</h4>
+
                             <ul class="list cat-list">
                                 @foreach ($recent_categories as $category)
                                     <?php
@@ -85,18 +88,17 @@
 
                     <!-- Section Tittle -->
                     <div class="section-tittle mb-40">
-                        <h3>Follow Us</h3>
+                        <h3>ہمیں فالو کریں</h3>
                     </div>
                     <!-- Flow Socail -->
                     <div class="single-follow mb-45">
                         <div class="single-box">
                             <div class="follow-us d-flex align-items-center">
                                 <div class="follow-social">
-                                    <a href="#"><img src="{{ asset('frontend/assets/img/news/icon-fb.png') }}" alt=""></a>
+                                    <a href="#"><img src="{{ asset('frontend/assets/img/news/icon-fb.png') }}" alt=""> </a>
                                 </div>
                                 <div class="follow-count">
-                                    <span>8,045</span>
-                                    <p>Fans</p>
+                                <h5 class="mr-2">فیس بک</h5>
                                 </div>
                             </div>
                             <div class="follow-us d-flex align-items-center">
@@ -104,8 +106,7 @@
                                     <a href="#"><img src="{{ asset('frontend/assets/img/news/icon-tw.png') }}" alt=""></a>
                                 </div>
                                 <div class="follow-count">
-                                    <span>8,045</span>
-                                    <p>Fans</p>
+                                <h5 class="mr-2">ٹویٹر</h5>
                                 </div>
                             </div>
                             <div class="follow-us d-flex align-items-center">
@@ -114,8 +115,7 @@
                                             alt=""></a>
                                 </div>
                                 <div class="follow-count">
-                                    <span>8,045</span>
-                                    <p>Fans</p>
+                                <h5 class="mr-2">انسٹاگرام</h5>
                                 </div>
                             </div>
                             <div class="follow-us d-flex align-items-center">
@@ -124,8 +124,7 @@
                                             alt=""></a>
                                 </div>
                                 <div class="follow-count">
-                                    <span>8,045</span>
-                                    <p>Fans</p>
+                                <h5 class="mr-2">یوٹیوب</h5>
                                 </div>
                             </div>
                         </div>
@@ -144,12 +143,14 @@
 
 
     <!--Start pagination -->
-    <div class="col-md-12 mb-5">
+    <div class="col-md-12 mt-5 mb-5">
         <div class="row">
             <div class="col-md-5"></div>
-            <div class="col-md-2">{{$categories->links('pagination::bootstrap-4')}}</div>
+            <div class="col-md-2">{{ $categories->links('pagination::bootstrap-4') }}</div>
             <div class="col-md-5"></div>
         </div>
     </div>
+
+
     <!-- End pagination  -->
 @endsection

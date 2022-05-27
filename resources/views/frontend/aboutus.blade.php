@@ -10,15 +10,19 @@
                 <div dir="rtl" class="row">
                     <div class="col-lg-8">
                         <!-- Trending Tittle -->
-                        <div class="about-right mb-90">
+                        <div class="about-right ">
 
-                            <div class="section-tittle mb-30 ">
-                                <h3>ہمارے بارے میں</h3>
+                            <div class="section-tittle ">
+                                 <h3 class=" section-tittle text-center p-2 widget_title  rounded text-white "
+                                style="background-color: #109cde; width:152px; ">ہمارے بارے میں</h3>
+                                <!-- <h3>ہمارے بارے میں</h3> -->
+
+
                             </div>
                             <div class="about-prea">
-                                <p class="about-pera1 mb-25">ماں… بٹنوں کی طرح ہوتی ہیں؟ مائیں گوند کی طرح ہوتی ہیں۔ ماں پیزا کی طرح ہوتی ہے۔
+                                <p class="about-pera1 mb-2 mt-3">ماں… بٹنوں کی طرح ہوتی ہیں؟ مائیں گوند کی طرح ہوتی ہیں۔ ماں پیزا کی طرح ہوتی ہے۔
                                     کرسٹس ماں وہ ہیں جو اس بات کو یقینی بناتی ہیں کہ پیدائش سے لے کر اسکول کے لنچ تک۔</p>
-                               
+
                                 <p class="about-pera1 mb-25">
                                     میرا ہیرو جب میں بچپن میں تھا تو میری ماں تھی۔ ہر ایک کے لیے ایک جیسا میں جانتا تھا۔ مائیں اچھوت ہیں۔
                                     وہ خوبصورت، ہوشیار، خوبصورت، مہربان ہیں… ہر وہ چیز جو ہم بننا چاہتے ہیں۔ 29 سال کی عمر میں، میرا
@@ -47,8 +51,10 @@
                     </div>
                     <div class="col-lg-4">
                         <!-- Section Tittle -->
-                        <div class="section-tittle mb-40">
-                            <h3>ہمیں فالو کریں</h3>
+                        <div class="section-tittle mb-3">
+                        <h3 class=" section-tittle text-center p-2 widget_title  rounded text-white "
+                                style="background-color: #109cde; width:152px; ">ہمیں فالو کریں</h3>
+                            <!-- <h3>ہمیں فالو کریں</h3> -->
                         </div>
                         <!-- Flow Socail -->
                         <div class="single-follow mb-45">

@@ -48,7 +48,7 @@
                         <div class="col-xl-2 col-lg-2 col-md-2">
                             <div class="logo">
                                 {{-- <a href="index.html"><img src="{{ asset('frontend/assets/img/logo/logo.png') }}" alt=""></a> --}}
-                                <a href="/"><img src="{{ asset('frontend/assets/img/logo/logo-gif-1.gif') }}"
+                                <a href="/"><img class="med-width" src="{{ asset('frontend/assets/img/logo/logo-gif-1.gif') }}"
                                         alt=""></a>
                             </div>
                         </div>
@@ -89,8 +89,10 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 header-flex">
                             <!-- sticky -->
                             <div class="sticky-logo img">
-                                <a href="/"><img  src="{{ asset('frontend/assets/img/logo/logo-gif-1.gif') }}"
-                                        alt=""></a>
+                                <a href="/">
+                                    <img src="{{ asset('frontend/assets/img/logo/logo-gif-1.gif') }}"
+                                        alt="">
+                                    </a>
 
                             </div>
                             <!-- Main-menu -->

@@ -32,22 +32,11 @@
     </div>
 
     <!--Start pagination -->
-    <div class="pagination-area pb-45 text-center mt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="single-wrap d-flex justify-content-center">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-start">
-                                {{-- <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow roted"></span></a></li> --}}
-                                <li class="page-item"><a class="page-link"
-                                        href="#">{{ $news->links('pagination::bootstrap-4') }}</a></li>
-                                {{-- <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow right-arrow"></span></a></li> --}}
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
+    <div class="col-md-12 mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-2">{{$news->links('pagination::bootstrap-4')}}</div>
+            <div class="col-md-5"></div>
         </div>
     </div>
     <!-- End pagination  -->

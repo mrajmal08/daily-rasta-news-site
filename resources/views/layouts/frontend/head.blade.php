@@ -120,10 +120,27 @@
                 left: -2px !important;
             }
         }
+        @media only screen and (min-width: 768px) and (max-width: 991px) {
+        .header-area .header-mid .logo .med-width {
+         width: 200px !important;
+            }
 
+                .header-sticky.sticky-bar.sticky .main-menu ul > li > a {
+                padding: 13px 13px !important;
+            }
+
+            .info-open a img{
+                width: 114px !important;
+                margin-top: 14px;
+                height: 56px;
+            }
+
+        }
 
         @media screen and (max-width: 480px) {
-
+            .area{
+                padding-top: 20px !important;
+            }
 
             .img{
                 width: 50% !important;

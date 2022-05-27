@@ -119,7 +119,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class=" col-md-12 col-lg-12 col-12">
+                        <div class="col-12 col-md-12 col-lg-12">
                             <div class="recent-active  d-flex dot-style hello">
                                 @foreach ($trending_news as $item)
                                     <?php
@@ -305,10 +305,10 @@
             </div>
         </div>
         <!-- End Weekly-News -->
-        <div class="youtube-area video-padding">
+        <div class="youtube-area video-padding area">
             <div class="container">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="d-none d-lg-block col-12">
                         <div class="video-items-active">
                             @foreach ($videos as $item)
                                 <div class="video-items text-center">
@@ -326,7 +326,7 @@
                 </div>
                 <div class="video-info">
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="d-none d-lg-block col-lg-6">
                             <div class="video-caption">
                                 <div class="top-caption">
                                     {{-- <span class="color1">Politics</span> --}}

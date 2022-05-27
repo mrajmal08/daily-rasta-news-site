@@ -17,8 +17,14 @@
                 </div>
 
             </div>
-            <div class="col-md-8">
-                <h4 class="m-4"><strong>آج کا اخبار </strong></h4>
+            <div class="col-md-8 ">
+                <!-- <h4 class="m-4"><strong>آج کا اخبار </strong></h4> -->
+                <!-- <h3 class=" section-tittle widget_title p-3 rounded text-white mb-3"
+                                style="background-color: #109cde; width:152px; ">آج کا اخبار</h3> -->
+                                <div class="section-tittle float-left mt-3">
+                            <h3 class=" section-tittle text-center widget_title p-3 rounded text-white mb-3"
+                                style="background-color: #109cde; width:152px; ">آج کا اخبار</h3>
+                            </div>
             </div>
         </div>
 
@@ -34,7 +40,7 @@
 
         </div>
     </div>
-    <div class="col-md-12 mt-5">
+    <div class="col-md-12 mt-5 mb-5">
         <div class="row">
             <div class="col-md-5"></div>
             <div class="col-md-2">{{ $today_news->links('pagination::bootstrap-4') }}</div>

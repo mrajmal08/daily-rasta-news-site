@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h4 class="text-center pt-2"><strong>ہمارا سٹا ف</strong></h4>
+        <h4 class="text-center pt-5"><strong>ہمارا سٹا ف</strong></h4>
         <div dir="rtl" class="row">
 
             <div class="col-md-4 ">
